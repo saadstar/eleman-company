@@ -1,0 +1,180 @@
+.processHome{
+    min-height: calc(100vh - 95px);
+    display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        position: relative;
+
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid lightgray;
+    margin: 10px;
+    border-radius: 10px;
+}
+.card img{
+    width: 100%;
+    height: 300px;
+    border-radius: 0px;
+}
+.card h2{
+    padding-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+}
+.cardAdd{
+    background-color: rgb(140, 140, 215);
+        cursor: pointer;
+        padding: 5px;
+        border: 1px solid lightgray;
+        margin: 10px;
+    }
+.cardAdd .addProcess{
+    transform: translate(-40%,110%);
+    font-weight: bold;
+    font-size: 70px;
+    color: rgba(0, 0, 255, 0.428);
+}
+.layout {
+    background-color: rgba(86, 84, 84, 0.753);
+    position: absolute;
+    top: 0;
+    right: -14%;
+    width: 100vw;
+    height: 100%;
+    z-index: 235;
+}
+.processModal{
+    position: absolute;
+        top: 0;
+        left: 35%;
+        background-color: white !important;
+        border-radius: 5px;
+        padding: 16px;
+        color: black;
+        font-size: 20px;
+        width: 40%;
+}
+.modal-title{
+    text-align: center;
+        padding: 10px 0px;
+        font-size: 22px;
+        font-weight: bold;
+}
+.modal-body{
+    display: flex;
+        flex-direction: column;
+        gap: 10px;
+}
+.modal-body label{
+    text-align: right;
+        font-size: 17px;
+        font-weight: 500;
+}
+.modal-body input{
+    padding: 5px;
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 5px;
+}
+.modal-footer{
+    display: flex;
+        align-items: center;
+        /* gap: 23px; */
+        justify-content: space-between;
+}
+.modal-footer .modalClose{
+    padding: 10px 20px;
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        border-radius: 13px;
+        font-size: 15px;
+        cursor: pointer;
+}
+.modal-footer .modalClose:hover{
+    padding: 10px 20px;
+        border:1px solid red;
+        color: red;
+        background-color: white;
+        border-radius: 13px;
+        font-size: 15px;
+}
+.modal-footer .submit{
+    padding: 10px 20px;
+        background-color: green;
+        color: white;
+        border: 1px solid green;
+        border-radius: 13px;
+        font-size: 15px;
+        cursor: pointer;
+}
+.modal-footer .submit:hover{
+    padding: 10px 20px;
+        border:1px solid green;
+        color: green;
+        background-color: white;
+        border-radius: 13px;
+        font-size: 15px;
+}
+
+
+/* responsive design  */
+@media only screen and (max-width:1400px) {
+    .processHome {
+        min-height: calc(100vh - 95px);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card img {
+        width: 100%;
+        height: 300px;
+        border-radius: 0px;
+        display: block;
+    }
+
+    .cardAdd .addProcess {
+        font-weight: normal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: none;
+    }
+}
+@media only screen and (max-width:480px) {
+    .processHome {
+            min-height: calc(100vh - 95px);
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    .card img {
+        width: 100%;
+            height: 300px;
+            border-radius: 0px;
+            display: block  ;
+    }
+    .cardAdd .addProcess {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: none;
+        }
+                .processModal {
+                    position: absolute;
+                    top: 0;
+                    left: 10%;
+                    background-color: white !important;
+                    border-radius: 5px;
+                    padding: 16px;
+                    color: black;
+                    font-size: 20px;
+                    width: 80%;
+                }
+}
+

@@ -1,0 +1,113 @@
+.car{
+     min-height: 100vh; 
+    position: relative;
+} 
+table{
+    height: 100%;
+}
+.carHeader{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.car .carHeader button{
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 18px;
+}
+.car .carHeader button:hover{
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgba(218, 220, 222, 0.811);
+    border-color: white;
+}
+.col.d-flex{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.zz{
+    font-size: 15px;
+    font-weight: 400;
+    max-height: 200px;
+}
+/* Add Car  Design  */
+.addTubes {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.724);
+}
+
+.modalll {
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #2a3447;
+    padding: 50px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #2a3447;
+    top: 12px;
+    right: -50;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.modalll h1 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: #ddd;
+}
+
+.addTubes form {
+    display: flex;
+    max-width: 500px;
+    flex-direction: column;
+}
+
+.addTubes .formItem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.formItem>.label {
+    font-size: 14px;
+}
+
+.formItem>input {
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.addButton {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+/* // responsive design  */
+@media only screen and (max-width:480px) {
+    .carHeader{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
