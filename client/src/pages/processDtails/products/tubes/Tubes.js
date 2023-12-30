@@ -158,7 +158,7 @@ export const Tubes = ({ type }) => {
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 1000,
+                      pageSize: 100,
                     },
                   },
                 }}

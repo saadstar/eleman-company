@@ -165,7 +165,7 @@ export const ProcessDetails = () => {
   }, [repairValue]);
   const fetchProcessTitle = async () => {
     try {
-      const res = await axios.get(`https://api.eleaman.com/api//process/${id}`);
+      const res = await axios.get(`https://api.eleaman.com/api/process/${id}`);
       setProcessTitle(res.data);
     } catch (err) {
       console.log(err);

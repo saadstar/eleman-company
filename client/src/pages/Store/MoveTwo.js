@@ -10,7 +10,7 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
   const editHandler = async () => {
     try {
       const res = await axios.put(
-        `https://api.eleaman.com/api//store/${editData.id}`,
+        `https://api.eleaman.com/api/store/${editData.id}`,
         {
           ...editData,
           nameOne,
@@ -27,7 +27,7 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
   };
   const postHandler = async () => {
     try {
-      const res = await axios.post(`https://api.eleaman.com/api//store`, {
+      const res = await axios.post(`https://api.eleaman.com/api/store`, {
         ...editData,
         exist: 1,
         quantity: editData.quantity - quantityOut,

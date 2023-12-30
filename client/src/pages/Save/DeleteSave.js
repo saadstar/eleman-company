@@ -5,7 +5,7 @@ import axios from "axios";
 export const DeleteSave = ({ setDeleteOpen, deleteUserId }) => {
   const handleSubmit = async () => {
     try {
-      await axios.delete(`https://api.eleaman.com/api//save/${deleteUserId}`);
+      await axios.delete(`https://api.eleaman.com/api/save/${deleteUserId}`);
       toast.success("تم حذف العنصر بنجاح");
       setDeleteOpen(false);
     } catch (err) {

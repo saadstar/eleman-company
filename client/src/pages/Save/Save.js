@@ -68,7 +68,7 @@ export const Save = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://api.eleaman.com/api//save");
+        const res = await axios.get("https://api.eleaman.com/api/save");
         setRowData(res.data);
       } catch (err) {
         console.log(err);
@@ -209,7 +209,7 @@ export const Save = () => {
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 1000,
+                        pageSize: 100,
                       },
                     },
                   }}

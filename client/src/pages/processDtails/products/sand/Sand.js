@@ -176,7 +176,7 @@ export const Sand = ({ type, ar }) => {
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 1000,
+                      pageSize: 100,
                     },
                   },
                 }}
