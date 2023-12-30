@@ -11,12 +11,12 @@ export const AddDetails = ({ id, setAddOpen,sort }) => {
 
   const handleAdd = async () => {
     try {
-      await axios.post(`http://localhost:3500/api/processDetailes`, {
+      await axios.post(`https://api.eleaman.com/api/processDetailes`, {
         processId: id,
-        type:sort,
+        type: sort,
         note,
         price,
-        value:price
+        value: price,
       });
       navigate(`/process/${id}`);
       setNote("");

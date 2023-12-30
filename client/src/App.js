@@ -24,6 +24,8 @@ import { HomePage } from "./HomePage";
   
 function App() {
   const { user } = useContext(AuthContext);
+
+  console.log(process.env.REACT_APP_SERVER_URL);
   return (
     <div className="">
       <div className="main">

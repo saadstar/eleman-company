@@ -1,42 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export const MoveTwo = ({ setEditOpen, editData }) => {
-    const [nameOne, setNameOne] = useState("لا يوجد");
-    const [nameTwo, setNameTwo] = useState("لا يوجد");
+  const [nameOne, setNameOne] = useState("لا يوجد");
+  const [nameTwo, setNameTwo] = useState("لا يوجد");
   const [quantityOut, setQuantityOut] = useState(editData.quantity);
-  
-    const editHandler = async () => {
-        try {
-            const res = await axios.put(
-              `http://localhost:3500/api/store/${editData.id}`,
-              {
-                ...editData,
-                  nameOne,
-                nameTwo,
-                quantityOut,
-                exist: 2,
-              }
-            );
-           res.status === 200 && toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
-        } catch (err) {
-            console.log(err);
+
+  const editHandler = async () => {
+    try {
+      const res = await axios.put(
+        `https://api.eleaman.com/api//store/${editData.id}`,
+        {
+          ...editData,
+          nameOne,
+          nameTwo,
+          quantityOut,
+          exist: 2,
         }
-  }
-    const postHandler = async () => {
-        try {
-            const res = await axios.post(`http://localhost:3500/api/store`, {
-              ...editData,
-              exist: 1,
-              quantity: editData.quantity - quantityOut,
-            });
-          console.log(res.data);
-        } catch (err) {
-            console.log(err);
-        }
-  }
-  
+      );
+      res.status === 200 &&
+        toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const postHandler = async () => {
+    try {
+      const res = await axios.post(`https://api.eleaman.com/api//store`, {
+        ...editData,
+        exist: 1,
+        quantity: editData.quantity - quantityOut,
+      });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const butnHandler = () => {
     editHandler();
     postHandler();
@@ -80,12 +81,14 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
           </div>
           <button
             className="addButton"
-            onClick={quantityOut === editData.quantity ? editHandler : butnHandler}
+            onClick={
+              quantityOut === editData.quantity ? editHandler : butnHandler
+            }
           >
-          تحويل للفرعي
+            تحويل للفرعي
           </button>
         </form>
       </div>
     </div>
   );
-}
+};

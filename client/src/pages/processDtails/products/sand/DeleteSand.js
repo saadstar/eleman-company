@@ -6,7 +6,7 @@ export const DeleteSand = ({ setDeleteOpen, deleteUserId }) => {
   const handleSubmit = async () => {
     try {
       await axios.delete(
-        `http://localhost:3500/api/processDetailes/${deleteUserId}`
+        `https://api.eleaman.com/api/processDetailes/${deleteUserId}`
       );
       toast.success("تم حذف العنصر بنجاح");
       setDeleteOpen(false);

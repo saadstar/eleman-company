@@ -11,7 +11,7 @@ export const Car = () => {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/car");
+        const res = await axios.get("https://api.eleaman.com/api/car");
         setCarData(res.data);
       } catch (err) {
         console.log(err);

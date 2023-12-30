@@ -59,7 +59,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
   }, [img]);
   const uploadNewPrice = async ({ type }) => {
     try {
-      const res = await axios.post("http://localhost:3500/api/save", {
+      const res = await axios.post("https://api.eleaman.com/api//save", {
         ...inputs,
       });
       setInputs({});

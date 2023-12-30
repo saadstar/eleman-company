@@ -7,20 +7,19 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
 
 export const AddStore = ({ setAddOpen }) => {
   const [img, setImg] = useState(undefined);
-  const [imgPer, setImgPer] = useState(undefined);  
-  const [inputs,setInputs]=useState({})
+  const [imgPer, setImgPer] = useState(undefined);
+  const [inputs, setInputs] = useState({});
   const navigate = useNavigate("");
 
-const handleInputs = (e) => {
-  setInputs((prev) => {
-    return { ...prev, [e.target.name]: e.target.value };
-  });
+  const handleInputs = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
   const uploadFile = (file, urlType) => {
     const storage = getStorage(app);
@@ -32,11 +31,10 @@ const handleInputs = (e) => {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        urlType === "img"
-          && setImgPer(Math.round(progress));
+        urlType === "img" && setImgPer(Math.round(progress));
         switch (snapshot.state) {
           case "paused":
-           toast.error("ايقاف");
+            toast.error("ايقاف");
             break;
           case "running":
             toast.success("....حاري تحميل الصورة ");
@@ -58,10 +56,10 @@ const handleInputs = (e) => {
   useEffect(() => {
     img && uploadFile(img, "img");
   }, [img]);
-  
+
   const uploadNewStoreItem = async () => {
     try {
-    const res=  await axios.post("http://localhost:3500/api/store", {
+      const res = await axios.post("https://api.eleaman.com/api/store", {
         ...inputs,
         exist: 1,
       });
@@ -70,7 +68,7 @@ const handleInputs = (e) => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   return (
     <div className="addTubes">
       <div className="modalll">
@@ -107,8 +105,8 @@ const handleInputs = (e) => {
               onChange={handleInputs}
             />
           </div>
-          <div className="formItem" style={{cursor:"pointer"}}>
-            <label htmlFor="img" >صورة البون : </label>
+          <div className="formItem" style={{ cursor: "pointer" }}>
+            <label htmlFor="img">صورة البون : </label>
             {imgPer > 0 ? (
               "تم اضافه صوره البون"
             ) : (
@@ -120,11 +118,15 @@ const handleInputs = (e) => {
               />
             )}
           </div>
-          <button className="addButton" onClick={uploadNewStoreItem} disabled={imgPer !== 100 && true}>
+          <button
+            className="addButton"
+            onClick={uploadNewStoreItem}
+            disabled={imgPer !== 100 && true}
+          >
             أضافه
           </button>
         </form>
       </div>
     </div>
   );
-}
+};

@@ -82,7 +82,7 @@ const rows=rowData.map((item) => {
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/auth/");;
+        const res = await axios.get("https://api.eleaman.com/api/auth/");;
         setRowData(res.data);
       } catch (err) {
         console.log(err)
@@ -103,7 +103,7 @@ const rows=rowData.map((item) => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 10,
+              pageSize: 100,
             },
           },
           }}

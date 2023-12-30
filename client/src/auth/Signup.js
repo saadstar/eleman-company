@@ -34,7 +34,7 @@ const clickHandler = async (e) => {
   e.preventDefault();
   dispatch({ type: "LOGIN_START" });
   try {
-    const res = await axios.post("http://localhost:3500/api/auth/register", {
+    const res = await axios.post("https://api.eleaman.com/api/auth/register", {
       username,
       password,
       firstName,

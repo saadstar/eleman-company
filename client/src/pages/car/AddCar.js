@@ -11,11 +11,13 @@ export const AddCar = ({ setOpenModal }) => {
 
     const addCarHandler = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/api/car`, {
-                name,price,km
+            const res = await axios.post(`https://api.eleaman.com/api/car`, {
+              name,
+              price,
+              km,
             });
             res.status === 200 &&
-                toast.success("تم اضافه التحرك بنجاحز");
+                toast.success("تم اضافه التحرك بنجاح");
         } catch (err) {
             console.log(err);
         }

@@ -6,7 +6,7 @@ export const DeleteFunder = ({ setDeleteOpen, deleteUserId }) => {
   const handleSubmit = async () => {
     try {
       await axios.delete(
-        `http://localhost:3500/api/funderDetails/${deleteUserId}`
+        `https://api.eleaman.com/api/funderDetails/${deleteUserId}`
       );
       toast.success("تم حذف العنصر بنجاح");
     } catch (err) {

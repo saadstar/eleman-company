@@ -9,7 +9,9 @@ export const ProcessModal = ({ setOpenModal, fetchProcess }) => {
     const addProcess = async (e) => {
       try {
         if (title !== "") {          
-          const res = await axios.post("http://localhost:3500/api/process",{title});          
+          const res = await axios.post("https://api.eleaman.com/api/process", {
+            title,
+          });          
           if (res?.status === 200) {
             setOpenModal(false);
             navigate("/");          

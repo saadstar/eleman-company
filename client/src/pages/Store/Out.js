@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 
 export const Out = ({ setOutOpen, editData }) => {
   const [driver, setDriver] = useState("");
@@ -9,7 +8,7 @@ export const Out = ({ setOutOpen, editData }) => {
   const btnHandler = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:3500/api/store/${editData.id}`,
+        `https://api.eleaman.com/api/store/${editData.id}`,
         {
           ...editData,
           exist: 3,

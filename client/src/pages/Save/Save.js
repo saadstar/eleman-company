@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 import "./save.css";
-import axios from 'axios';
+import axios from "axios";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { AddPrice } from './AddPrice';
-import { ShowImg } from './ShowImg';
-import { DeleteSave } from './DeleteSave';
-import { AuthContext } from '../../auth/authContext/authContext';
+import { AddPrice } from "./AddPrice";
+import { ShowImg } from "./ShowImg";
+import { DeleteSave } from "./DeleteSave";
+import { AuthContext } from "../../auth/authContext/authContext";
 
 export const Save = () => {
   const [addOpen, setAddOpen] = useState(false);
@@ -68,7 +68,7 @@ export const Save = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/save");
+        const res = await axios.get("https://api.eleaman.com/api//save");
         setRowData(res.data);
       } catch (err) {
         console.log(err);
@@ -76,81 +76,81 @@ export const Save = () => {
     };
     fetchData();
   }, [rowData.id]);
-const columns = [
-  {
-    field: "name",
-    headerName: "اسم البيان",
-    width: 190,
-    editable: false,
-  },
-  {
-    field: "out",
-    headerName: "المصروف",
-    width: 110,
-    editable: false,
-  },
-  {
-    field: "in",
-    headerName: "الوارد",
-    width: 110,
-    editable: false,
-  },
-  {
-    field: "recived",
-    headerName: "المستلم",
-    width: 110,
-    editable: false,
-  },
-  {
-    field: "createdAt",
-    headerName: "التاريخ",
-    width: 160,
-  },
-  {
-    field: "img",
-    headerName: "ايصال العهده الماليه",
-    width: 140,
-    renderCell: (params) => {
-      const showHandler = () => {
-        setShowData(params.row);
-        setShowImgOpen(true);
-      };
-      return (
-        <img
-          src={params.row.img || "./images/noimg.png"}
-          style={{ cursor: "pointer" }}
-          alt=""
-          onClick={showHandler}
-        />
-      );
+  const columns = [
+    {
+      field: "name",
+      headerName: "اسم البيان",
+      width: 190,
+      editable: false,
     },
-  },
-  {
-    field: "Action",
-    headerName: "حذف",
-    width: 100,
-    renderCell: (params) => {
-      const deleteHandler = () => {
-        setDeleteUserId(params.row.id);
-        setDeleteOpen(true);
-      };
-      return (
-        <div className="action">
-          <i
-            class="fa-solid fa-trash"
-            style={{ color: "red", fontSize: "20px" }}
-            onClick={deleteHandler}
-          ></i>
-        </div>
-      );
+    {
+      field: "out",
+      headerName: "المصروف",
+      width: 110,
+      editable: false,
     },
-  },
-  {
-    field: "entry",
-    headerName: "المدخل",
-    width: 60,
-  },
-];
+    {
+      field: "in",
+      headerName: "الوارد",
+      width: 110,
+      editable: false,
+    },
+    {
+      field: "recived",
+      headerName: "المستلم",
+      width: 110,
+      editable: false,
+    },
+    {
+      field: "createdAt",
+      headerName: "التاريخ",
+      width: 160,
+    },
+    {
+      field: "img",
+      headerName: "ايصال العهده الماليه",
+      width: 140,
+      renderCell: (params) => {
+        const showHandler = () => {
+          setShowData(params.row);
+          setShowImgOpen(true);
+        };
+        return (
+          <img
+            src={params.row.img || "./images/noimg.png"}
+            style={{ cursor: "pointer" }}
+            alt=""
+            onClick={showHandler}
+          />
+        );
+      },
+    },
+    {
+      field: "Action",
+      headerName: "حذف",
+      width: 100,
+      renderCell: (params) => {
+        const deleteHandler = () => {
+          setDeleteUserId(params.row.id);
+          setDeleteOpen(true);
+        };
+        return (
+          <div className="action">
+            <i
+              class="fa-solid fa-trash"
+              style={{ color: "red", fontSize: "20px" }}
+              onClick={deleteHandler}
+            ></i>
+          </div>
+        );
+      },
+    },
+    {
+      field: "entry",
+      headerName: "المدخل",
+      width: 60,
+    },
+  ];
   const rows = filteredRecivedData.map((item) => {
     return {
       id: item._id,
@@ -160,7 +160,7 @@ const columns = [
       recived: item.recived,
       createdAt: item.createdAt.split("T")[0],
       img: item.img,
-      entry:user.username
+      entry: user.username,
     };
   });
   return (
@@ -209,7 +209,7 @@ const columns = [
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 10,
+                        pageSize: 1000,
                       },
                     },
                   }}
@@ -246,4 +246,4 @@ const columns = [
       )}
     </div>
   );
-}
+};

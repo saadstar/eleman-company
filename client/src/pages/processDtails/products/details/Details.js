@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../tubes/tubes.css";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Menu } from "../../Menu/Menu";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { AddDetails } from "./AddDetails";
 import { DeleteDetails } from "./DeleteDetails";
 
-export const Details = ({sort,ar}) => {
+export const Details = ({ sort, ar }) => {
   const [rowData, setRowData] = useState([]);
   const [addOpen, setAddOpen] = useState(false);
-     const [deleteOpen, setDeleteOpen] = useState(false);
-     const [deleteUserId, setDeleteUserId] = useState("");
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteUserId, setDeleteUserId] = useState("");
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
   const { id } = useParams();
   const totalArr = [];
@@ -41,13 +41,13 @@ export const Details = ({sort,ar}) => {
     const fetchRow = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3500/api/processDetailes/${id}`
+          `https://api.eleaman.com/api/processDetailes/${id}`
         );
         setRowData(res.data);
       } catch (err) {
         console.log(err);
       }
-      };      
+    };
     fetchRow();
   }, [rowData._id]);
   const columns = [
@@ -99,7 +99,7 @@ export const Details = ({sort,ar}) => {
       createdAt: item.createdAt.split("T")[0],
     };
   });
-    
+
   return (
     <div className="tubes">
       <div className="container loober">
@@ -124,7 +124,7 @@ export const Details = ({sort,ar}) => {
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 10,
+                      pageSize: 100,
                     },
                   },
                 }}

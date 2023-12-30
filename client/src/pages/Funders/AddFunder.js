@@ -13,10 +13,11 @@ export const AddFunder = ({ setAddOpen,id }) => {
     const addFunderDetails = async () => {
         try {
             const res = await axios.post(
-                "http://localhost:3500/api/funderDetails", {     
+              "https://api.eleaman.com/api/funderDetails",
+              {
                 ...inputs,
-                  value:inputs.quantity * inputs.price,
-                    funderCompanyId:id,
+                value: inputs.quantity * inputs.price,
+                funderCompanyId: id,
               }
             );
             res.status === 200 && toast.success("تمت اضافه بنجاح")

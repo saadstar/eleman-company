@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import "./tubes.css";
-import { Menu } from '../../Menu/Menu';
+import { Menu } from "../../Menu/Menu";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
-import { AddTubes } from './AddTubes';
-import { DeleteTubes } from './DeleteTubes';
+import { useParams } from "react-router-dom";
+import { AddTubes } from "./AddTubes";
+import { DeleteTubes } from "./DeleteTubes";
 
 export const Tubes = ({ type }) => {
   const [rowData, setRowData] = useState([]);
   const [addOpen, setAddOpen] = useState(false);
-   const [deleteOpen, setDeleteOpen] = useState(false);
-   const [deleteUserId, setDeleteUserId] = useState("");
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteUserId, setDeleteUserId] = useState("");
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
-  const [fullTotalQuantity , setFullTotalQuantity] = useState(0);
+  const [fullTotalQuantity, setFullTotalQuantity] = useState(0);
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
   const FilteredData = rowData.filter((item) => item.type === type);
-  
+
   const totalValue = () => {
     FilteredData.forEach((item) => {
       if (item.value === undefined) {
@@ -39,26 +39,26 @@ export const Tubes = ({ type }) => {
     totalValue();
     totalValueFun();
   }, [totalArr]);
- const totalQuantityValue = () => {
-   FilteredData.forEach((item) => {
-     if (item.quantity === undefined) {
-       totalQuantityArr.push(0);
-     } else {
-       totalQuantityArr.push(item.quantity);
-     }
-   });
- };
- const totalQuantityValueFun = () => {
-   let sum = 0;
-   for (let i = 0; i < totalQuantityArr.length; i++) {
-     sum += totalQuantityArr[i];
-   }
-   setFullTotalQuantity(sum);
- };
- useEffect(() => {
-   totalQuantityValue();
-   totalQuantityValueFun();
- }, [totalQuantityArr]);
+  const totalQuantityValue = () => {
+    FilteredData.forEach((item) => {
+      if (item.quantity === undefined) {
+        totalQuantityArr.push(0);
+      } else {
+        totalQuantityArr.push(item.quantity);
+      }
+    });
+  };
+  const totalQuantityValueFun = () => {
+    let sum = 0;
+    for (let i = 0; i < totalQuantityArr.length; i++) {
+      sum += totalQuantityArr[i];
+    }
+    setFullTotalQuantity(sum);
+  };
+  useEffect(() => {
+    totalQuantityValue();
+    totalQuantityValueFun();
+  }, [totalQuantityArr]);
   const columns = [
     {
       field: "note",
@@ -121,19 +121,19 @@ export const Tubes = ({ type }) => {
       createdAt: item.createdAt.split("T")[0],
     };
   });
- useEffect(() => {
-   const fetchRow = async () => {
-     try {
-       const res = await axios.get(
-         `http://localhost:3500/api/processDetailes/${id}`
-       );
-       setRowData(res.data);
-     } catch (err) {
-       console.log(err);
-     }
-   };
-   fetchRow();
- }, [rowData._id]);
+  useEffect(() => {
+    const fetchRow = async () => {
+      try {
+        const res = await axios.get(
+          `https://api.eleaman.com/api/processDetailes/${id}`
+        );
+        setRowData(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchRow();
+  }, [rowData._id]);
   return (
     <div className="tubes">
       <div className="container loober">
@@ -158,7 +158,7 @@ export const Tubes = ({ type }) => {
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 10,
+                      pageSize: 1000,
                     },
                   },
                 }}
@@ -193,4 +193,4 @@ export const Tubes = ({ type }) => {
       )}
     </div>
   );
-}
+};

@@ -14,14 +14,14 @@ export const AddSand = ({ id, setAddOpen, type,ar }) => {
 
     const handleAdd = async () => {
       try {      
-      await axios.post(`http://localhost:3500/api/processDetailes`, {
+      await axios.post(`https://api.eleaman.com/api/processDetailes`, {
         processId: id,
         type,
         note,
         precentage,
         quantity,
         price,
-        value:price * quantity
+        value: price * quantity,
       });
       navigate(`/process/${id}`);
       setNote("");

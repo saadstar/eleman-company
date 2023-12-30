@@ -12,7 +12,7 @@ export const AddTubes = ({id,setAddOpen,type}) => {
   
   const handleAdd = async () => {
     try { 
-          await axios.post(`http://localhost:3500/api/processDetailes`, {
+          await axios.post(`https://api.eleaman.com/api/processDetailes`, {
             processId: id,
             type,
             note,

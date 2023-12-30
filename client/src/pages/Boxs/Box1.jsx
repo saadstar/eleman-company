@@ -8,7 +8,7 @@ export const Box1 = () => {
     useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/save");
+        const res = await axios.get("https://api.eleaman.com/api/save");
         setRowData(res.data);
       } catch (err) {
         console.log(err);

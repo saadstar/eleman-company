@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { DataGrid, GridToolbar} from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./funder.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -11,17 +11,19 @@ export const FunderDetails = () => {
   const [addOpen, setAddOpen] = useState(false);
   const [rowData, setRowData] = useState([]);
   const [search, setSearch] = useState("");
-  const filtredData = rowData.filter((item) => search=== ""?item: item.name === search);
-   const [deleteOpen, setDeleteOpen] = useState(false);
-   const [deleteUserId, setDeleteUserId] = useState("");
+  const filtredData = rowData.filter((item) =>
+    search === "" ? item : item.name === search
+  );
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteUserId, setDeleteUserId] = useState("");
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3500/api/funderDetails/${id}`
+          `https://api.eleaman.com/api/funderDetails/${id}`
         );
         setRowData(res.data);
       } catch (err) {
@@ -111,7 +113,7 @@ export const FunderDetails = () => {
       storeType: item.storeType,
       price: item.price,
       value: item.value,
-      entry:user.username
+      entry: user.username,
     };
   });
   return (
@@ -151,7 +153,7 @@ export const FunderDetails = () => {
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 10,
+                  pageSize: 100,
                 },
               },
             }}

@@ -7,13 +7,13 @@ import { useParams } from "react-router-dom";
 import { AddSand } from "./AddSand";
 import { DeleteSand } from "./DeleteSand";
 
-export const Sand = ({type,ar}) => {
+export const Sand = ({ type, ar }) => {
   const [rowData, setRowData] = useState([]);
   const filterData = rowData.filter((item) => {
-    return item.type === type
+    return item.type === type;
   });
-     const [deleteOpen, setDeleteOpen] = useState(false);
-     const [deleteUserId, setDeleteUserId] = useState("");
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteUserId, setDeleteUserId] = useState("");
   const [addOpen, setAddOpen] = useState(false);
   const { id } = useParams();
   const totalArr = [];
@@ -22,13 +22,13 @@ export const Sand = ({type,ar}) => {
   const [fullTotalQuantity, setFullTotalQuantity] = useState(0);
 
   const totalValue = () => {
-   filterData.forEach((item) => {
-     if (item.value === undefined) {
-       totalArr.push(0);
-     } else {
-       totalArr.push(item.value);
-     }
-   });
+    filterData.forEach((item) => {
+      if (item.value === undefined) {
+        totalArr.push(0);
+      } else {
+        totalArr.push(item.value);
+      }
+    });
   };
   const totalValueFun = () => {
     let sum = 0;
@@ -42,31 +42,31 @@ export const Sand = ({type,ar}) => {
     totalValue();
     totalValueFun();
   }, [totalArr]);
-   const totalQuantityValue = () => {
-     filterData.forEach((item) => {
-       if (item.quantity === undefined) {
-         totalQuantityArr.push(0);
-       } else {
-         totalQuantityArr.push(item.quantity);
-       }
-     });
-   };
-   const totalQuantityValueFun = () => {
-     let sum = 0;
-     for (let i = 0; i < totalQuantityArr.length; i++) {
-       sum += totalQuantityArr[i];
-     }
-     setFullTotalQuantity(sum);
-   };
-   useEffect(() => {
-     totalQuantityValue();
-     totalQuantityValueFun();
-   }, [totalQuantityArr]);
+  const totalQuantityValue = () => {
+    filterData.forEach((item) => {
+      if (item.quantity === undefined) {
+        totalQuantityArr.push(0);
+      } else {
+        totalQuantityArr.push(item.quantity);
+      }
+    });
+  };
+  const totalQuantityValueFun = () => {
+    let sum = 0;
+    for (let i = 0; i < totalQuantityArr.length; i++) {
+      sum += totalQuantityArr[i];
+    }
+    setFullTotalQuantity(sum);
+  };
+  useEffect(() => {
+    totalQuantityValue();
+    totalQuantityValueFun();
+  }, [totalQuantityArr]);
   useEffect(() => {
     const fetchRow = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3500/api/processDetailes/${id}`
+          `https://api.eleaman.com/api/processDetailes/${id}`
         );
         setRowData(res.data);
       } catch (err) {
@@ -139,19 +139,18 @@ export const Sand = ({type,ar}) => {
       },
     },
   ];
-  const rows = filterData
-    .map((item) => {
-      return {
-        id: item._id,
-        note: item.note,
-        quantity: item.quantity,
-        price: item.price,
-        amount: item.precentage,
-        value: item.value,
-        precentge: item.quantity / item.precentage,
-        createdAt: item.createdAt.split("T")[0],
-      };
-    });
+  const rows = filterData.map((item) => {
+    return {
+      id: item._id,
+      note: item.note,
+      quantity: item.quantity,
+      price: item.price,
+      amount: item.precentage,
+      value: item.value,
+      precentge: item.quantity / item.precentage,
+      createdAt: item.createdAt.split("T")[0],
+    };
+  });
 
   return (
     <div className="tubes">
@@ -177,7 +176,7 @@ export const Sand = ({type,ar}) => {
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 10,
+                      pageSize: 1000,
                     },
                   },
                 }}

@@ -93,17 +93,7 @@ export const Navbar = () => {
                     <StoreIcon className="m-auto" />
                   </Link>
                 )}
-                {user.isAdmin === 1  && (
-                  <Link
-                    to="/save"
-                    style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
-                  >
-                    <h2>الخزنه</h2>
-                    <AddModeratorIcon className="m-auto" />
-                  </Link>
-                )}
-                {user.isAdmin === 2 && (
+                {user.isAdmin !== 2  && (
                   <Link
                     to="/save"
                     style={{ textDecoration: "none", color: "white" }}

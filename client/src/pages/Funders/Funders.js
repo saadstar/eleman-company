@@ -12,7 +12,7 @@ export const Funders = ({ar}) => {
 
   const postCompanyName = async () => {
      try {
-       const res = await axios.post("http://localhost:3500/api/funderCompany", {
+       const res = await axios.post("https://api.eleaman.com/api/funderCompany", {
          companyName,
        });
        res.status === 200 && toast.success("تم اضافه الممول بنجاح");
@@ -23,7 +23,7 @@ export const Funders = ({ar}) => {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/funderCompany");
+        const res = await axios.get("https://api.eleaman.com/api/funderCompany");
         setFunderCompanyData(res.data);
       } catch (err) {
         console.log(err);

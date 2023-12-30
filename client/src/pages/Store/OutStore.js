@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 import { ShowImg } from "./ShowImg";
 
 export const OutStore = () => {
-    const [rowData, setRowData] = useState([]);
-    const [showData, setShowData] = useState(undefined);
+  const [rowData, setRowData] = useState([]);
+  const [showData, setShowData] = useState(undefined);
   const [showOpen, setShowOpen] = useState(false);
-    const filteredData = rowData.filter((item) => item.exist === 3);
+  const filteredData = rowData.filter((item) => item.exist === 3);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3500/api/store");
+        const res = await axios.get("https://api.eleaman.com/api/store");
         setRowData(res.data);
       } catch (err) {
         console.log(err);
@@ -22,7 +22,7 @@ export const OutStore = () => {
     };
     fetchData();
   }, [rowData.id]);
-    
+
   const columns = [
     {
       field: "name",
@@ -94,8 +94,8 @@ export const OutStore = () => {
       updatedAt: item.updatedAt.split("T")[0],
       img: item.img,
       nameOne: item.nameOne,
-        nameTwo: item.nameTwo,
-      driver:item.driver,
+      nameTwo: item.nameTwo,
+      driver: item.driver,
     };
   });
   return (
@@ -128,7 +128,7 @@ export const OutStore = () => {
               initialState={{
                 pagination: {
                   paginationModel: {
-                    pageSize: 10,
+                    pageSize: 100,
                   },
                 },
               }}
