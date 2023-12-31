@@ -254,7 +254,7 @@ export const Store = ({ type }) => {
               initialState={{
                 pagination: {
                   paginationModel: {
-                    pageSize: 100,
+                    pageSize: 99,
                   },
                 },
               }}

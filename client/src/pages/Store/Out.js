@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 export const Out = ({ setOutOpen, editData }) => {
   const [driver, setDriver] = useState("");
-  console.log(editData);
   const btnHandler = async () => {
     try {
       const res = await axios.put(

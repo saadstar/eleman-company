@@ -118,7 +118,7 @@ export const OutStore = () => {
           <h1>المنصرف </h1>
         </div>
         {filteredData.length === 0 ? (
-          <div class="loader"></div>
+          <div class="">لا يوجد عناصر منصرفه</div>
         ) : (
           <div className="dataTable">
             <DataGrid
