@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./tubes.css";
+import "../tubes/tubes.css";
 import { Menu } from "../../Menu/Menu";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { AddTubes } from "./AddTubes";
-import { DeleteTubes } from "./DeleteTubes";
+import { AddWood } from "./AddWood";
+import { DeleteWood } from "./DeleteWood";
 
-export const Tubes = ({ type }) => {
+export const Wood = () => {
   const [rowData, setRowData] = useState([]);
   const [addOpen, setAddOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -17,7 +17,7 @@ export const Tubes = ({ type }) => {
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
-  const FilteredData = rowData.filter((item) => item.type === type);
+    const FilteredData = rowData.filter((item) => item.type === "wood");
 
   const totalValue = () => {
     FilteredData.forEach((item) => {
@@ -123,7 +123,7 @@ export const Tubes = ({ type }) => {
   });
   useEffect(() => {
     const fetchRow = async () => {
-      try {
+        try {
         const res = await axios.get(
           `https://api.eleaman.com/api/processDetailes/${id}`
         );
@@ -133,7 +133,7 @@ export const Tubes = ({ type }) => {
       }
     };
     fetchRow();
-  }, [rowData.id]);
+  }, [rowData._id]);
   return (
     <div className="tubes">
       <div className="container loober">
@@ -142,12 +142,12 @@ export const Tubes = ({ type }) => {
         </div>
         <div className="contentContainer">
           <div className="tubesHeader">
-            <h1>{type === "tubes" ? "مواسير" : "مصناعيه"}</h1>
+            <h1>خشب</h1>
             <button className="" onClick={() => setAddOpen(!addOpen)}>
-              أضافه {type === "tubes" ? "مواسير" : "مصناعيه"}
+              أضافه خشب
             </button>
           </div>
-          {rowData.length === 0 ? (
+          {FilteredData.length === 0 ? (
             <div class="">لا يوجد عناصر</div>
           ) : (
             <div className="dataTable">
@@ -184,9 +184,9 @@ export const Tubes = ({ type }) => {
           )}
         </div>
       </div>
-      {addOpen && <AddTubes setAddOpen={setAddOpen} id={id} type={type} />}
+      {addOpen && <AddWood setAddOpen={setAddOpen} id={id} type={"wood"} />}
       {deleteOpen && (
-        <DeleteTubes
+        <DeleteWood
           setDeleteOpen={setDeleteOpen}
           deleteUserId={deleteUserId}
         />

@@ -14,9 +14,14 @@ const StoreSchema = new Schema(
     quantityOut: {
       type: Number,
     },
-    img: {
+    // img: {
+    //   type: String,
+    // },
+    filename: {
       type: String,
-      required: true,
+    },
+    filepath: {
+      type: String,
     },
     nameOne: {
       type: String,

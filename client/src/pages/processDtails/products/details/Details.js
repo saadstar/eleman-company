@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../tubes/tubes.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Menu } from "../../Menu/Menu";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { AddDetails } from "./AddDetails";
 import { DeleteDetails } from "./DeleteDetails";
+import { AuthContext } from "../../../../auth/authContext/authContext";
 
 export const Details = ({ sort, ar }) => {
   const [rowData, setRowData] = useState([]);
@@ -16,6 +17,7 @@ export const Details = ({ sort, ar }) => {
   const { id } = useParams();
   const totalArr = [];
   const FilteredData = rowData.filter((item) => item.type === sort);
+  const { user } = useContext(AuthContext);
 
   const totalValue = () => {
     FilteredData.forEach((item) => {
@@ -61,7 +63,7 @@ export const Details = ({ sort, ar }) => {
       field: "price",
       headerName: "المدفوع",
       width: 100,
-      editable: true,
+      editable: false,
     },
     {
       field: "createdAt",
@@ -89,6 +91,12 @@ export const Details = ({ sort, ar }) => {
         );
       },
     },
+    {
+      field: "entry",
+      headerName: "المدخل",
+      width: 200,
+      editable: false,
+    },
   ];
   const rows = FilteredData.map((item) => {
     return {
@@ -97,6 +105,7 @@ export const Details = ({ sort, ar }) => {
       price: item.price,
       value: item.value,
       createdAt: item.createdAt.split("T")[0],
+      entry:user.username
     };
   });
 

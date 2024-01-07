@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const menu = [
   {
     id: 1,
@@ -114,22 +116,32 @@ export const menu = [
     ],
   },
 ];
+let userData=4
+  const fetchUserData = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/auth/");
+      return userData = res.data.length;
+    } catch (err) {
+      console.log(err)
+    }
+}
+fetchUserData();
 export const chartDataUser = {
   color: "#8884d8",
-  title: "Total Users",
-  number: "11,238",
+  title: "المستخدمين",
+  number: userData,
   dataKey: "users",
-  percentage: 45,
+  percentage: 50,
   data: [
-    {name:"Sun",users:400},
-    {name:"Mon",users:600},
-    {name:"tue",users:300},
-    {name:"wed",users:900},
-    {name:"thu",users:400},
-    {name:"fri",users:300},
-    {name:"sat",users:100},
-  ]
-}
+    { name: "Sun", users: 400 },
+    { name: "Mon", users: 600 },
+    { name: "tue", users: 300 },
+    { name: "wed", users: 900 },
+    { name: "thu", users: 400 },
+    { name: "fri", users: 300 },
+    { name: "sat", users: 100 },
+  ],
+};
 export const chartDataRenvue = {
   color: "teal",
   title: "Total Renvue",

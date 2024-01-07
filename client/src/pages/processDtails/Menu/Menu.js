@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, useParams } from "react-router-dom";
 import ScienceIcon from "@mui/icons-material/Science";
 import RoofingIcon from "@mui/icons-material/Roofing";
+
+
 export const Menu = () => {
   const { id } = useParams();
   return (
@@ -104,6 +106,16 @@ export const Menu = () => {
         <div className="item listItem">
           <div className="itemTitle">اعطال</div>
           <i class="fa-solid fa-hammer" id="none"></i>
+        </div>
+      </Link>
+      <Link
+        to={`/processDetails/wood/${id}`}
+        style={{ textDecoration: "none" }}
+        className="wTen"
+      >
+        <div className="item listItem">
+          <div className="itemTitle">خشب</div>
+          <i class="fa-solid fa-tree" id="none"></i>
         </div>
       </Link>
     </div>

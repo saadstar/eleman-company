@@ -21,6 +21,7 @@ import Signup from "./auth/Signup";
 import { Funders } from "./pages/Funders/Funders";
 import { OutStore } from "./pages/Store/OutStore";
 import { HomePage } from "./HomePage";
+import { Wood } from "./pages/processDtails/products/Wood/Wood";
   
 function App() {
   const { user } = useContext(AuthContext);
@@ -80,6 +81,10 @@ function App() {
               <Route
                 path="/processDetails/azl/:id"
                 element={<Details sort="azl" ar="عزل" />}
+              />
+              <Route
+                path="/processDetails/wood/:id"
+                element={<Wood />}
               />
               <Route path="/users" element={<Users />} />
               <Route path="/signup" element={<Signup />} />

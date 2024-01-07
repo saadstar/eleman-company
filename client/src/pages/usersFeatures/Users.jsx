@@ -82,7 +82,7 @@ const rows=rowData.map((item) => {
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://api.eleaman.com/api/auth/");;
+        const res = await axios.get("https://api.eleaman.com/api/auth/");
         setRowData(res.data);
       } catch (err) {
         console.log(err)

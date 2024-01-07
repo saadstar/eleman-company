@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./processDetails.css";
 import { Menu } from "./Menu/Menu";
 import { useParams } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 export const ProcessDetails = () => {
@@ -19,6 +18,7 @@ export const ProcessDetails = () => {
   const azlValue = [];
   const transportValue = [];
   const repairValue = [];
+  const woodValue = [];
   const [tubesTotal, setTubesTotal] = useState(0);
   const [sandTotal, setSandTotal] = useState(0);
   const [senTotal, setSenTotal] = useState(0);
@@ -29,6 +29,7 @@ export const ProcessDetails = () => {
   const [azlTotal, setAzlTotal] = useState(0);
   const [transportTotal, setTransportTotal] = useState(0);
   const [repairTotal, setRepairTotal] = useState(0);
+  const [woodTotal, setWoodTotal] = useState(0);
   const overTotal =
     tubesTotal +
     sandTotal +
@@ -39,7 +40,8 @@ export const ProcessDetails = () => {
     materialsTotal +
     azlTotal +
     transportTotal +
-    repairTotal;
+    repairTotal +
+    woodTotal;
   const mine = processBand.map((item) => {
     if (item.type === "tubes") {
       tubesValue.push(item.value);
@@ -61,6 +63,8 @@ export const ProcessDetails = () => {
       repairValue.push(item.value);
     } else if (item.type === "azl") {
       azlValue.push(item.value);
+    }   else if (item.type === "wood") {
+      woodValue.push(item.value);
     }
   });
   const sumTypeValue = () => {
@@ -72,7 +76,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumTypeValue();
-  }, [tubesValue]);
+  });
   const sumSandValue = () => {
     let sum = 0;
     for (let i = 0; i < sandValue.length; i++) {
@@ -82,7 +86,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumSandValue();
-  }, [sandValue]);
+  });
   const sumsenValue = () => {
     let sum = 0;
     for (let i = 0; i < senValue.length; i++) {
@@ -92,7 +96,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumsenValue();
-  }, [senValue]);
+  });
   const sumcementValue = () => {
     let sum = 0;
     for (let i = 0; i < cementValue.length; i++) {
@@ -102,7 +106,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumcementValue();
-  }, [cementValue]);
+  });
   const sumDetailsValue = () => {
     let sum = 0;
     for (let i = 0; i < detailsValue.length; i++) {
@@ -112,7 +116,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumDetailsValue();
-  }, [detailsValue]);
+  });
   const sumWorkerValue = () => {
     let sum = 0;
     for (let i = 0; i < workerValue.length; i++) {
@@ -122,7 +126,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumWorkerValue();
-  }, [workerValue]);
+  });
   const sumMaterialsValue = () => {
     let sum = 0;
     for (let i = 0; i < materialsValue.length; i++) {
@@ -132,7 +136,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumMaterialsValue();
-  }, [materialsValue]);
+  });
   const sumAzlValue = () => {
     let sum = 0;
     for (let i = 0; i < azlValue.length; i++) {
@@ -142,7 +146,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumAzlValue();
-  }, [azlValue]);
+  });
   const sumTransportValue = () => {
     let sum = 0;
     for (let i = 0; i < transportValue.length; i++) {
@@ -152,7 +156,7 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumTransportValue();
-  }, [transportValue]);
+  });
   const sumRepairValue = () => {
     let sum = 0;
     for (let i = 0; i < repairValue.length; i++) {
@@ -162,7 +166,17 @@ export const ProcessDetails = () => {
   };
   useEffect(() => {
     sumRepairValue();
-  }, [repairValue]);
+  });
+  const sumWoodValue = () => {
+    let sum = 0;
+    for (let i = 0; i < woodValue.length; i++) {
+      sum += woodValue[i];
+    }
+    setWoodTotal(sum);
+  };
+  useEffect(() => {
+    sumWoodValue();
+  });
   const fetchProcessTitle = async () => {
     try {
       const res = await axios.get(`https://api.eleaman.com/api/process/${id}`);
@@ -184,7 +198,7 @@ export const ProcessDetails = () => {
   useEffect(() => {
     fetchProcessValue();
     fetchProcessTitle();
-  }, [processBand._id]);
+  });
 
   return (
     <div className="processDetails">
@@ -205,47 +219,51 @@ export const ProcessDetails = () => {
               </tr>
               <tr>
                 <td>مواسير</td>
-                <td>{tubesTotal}</td>
+                <td>{Math.round(tubesTotal)}</td>
               </tr>
               <tr>
                 <td>رمل</td>
-                <td>{sandTotal}</td>
+                <td>{Math.round(sandTotal)}</td>
               </tr>
               <tr>
                 <td>سن</td>
-                <td>{senTotal}</td>
+                <td>{Math.round(senTotal)}</td>
               </tr>
               <tr>
                 <td>اسمنت</td>
-                <td>{cementTotal}</td>
+                <td>{Math.round(cementTotal)}</td>
               </tr>
               <tr>
                 <td>نثريات</td>
-                <td>{detailsTotal}</td>
+                <td>{Math.round(detailsTotal)}</td>
               </tr>
               <tr>
                 <td>مصناعيه</td>
-                <td>{workerTotal}</td>
+                <td>{Math.round(workerTotal)}</td>
               </tr>
               <tr>
                 <td>خامات</td>
-                <td>{materialsTotal}</td>
+                <td>{Math.round(materialsTotal)}</td>
               </tr>
               <tr>
                 <td>عزل</td>
-                <td>{azlTotal}</td>
+                <td>{Math.round(azlTotal)}</td>
               </tr>
               <tr>
                 <td>انتقالات مواقع</td>
-                <td>{transportTotal}</td>
+                <td>{Math.round(transportTotal)}</td>
               </tr>
               <tr>
                 <td>اعطال</td>
-                <td>{repairTotal}</td>
+                <td>{Math.round(repairTotal)}</td>
+              </tr>
+              <tr>
+                <td>خشب</td>
+                <td>{Math.round(woodTotal)}</td>
               </tr>
               <tr className="tabletHeader">
                 <th className="band">اجمالي العمليه</th>
-                <th className="band">{overTotal}</th>
+                <th className="band">{Math.round(overTotal)}</th>
               </tr>
             </table>
           </div>
