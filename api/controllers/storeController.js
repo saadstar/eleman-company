@@ -6,9 +6,7 @@ const Store = require("../modals/StoreModal");
 const createStore = asyncHandler(async (req, res) => {
     try {
         const newStore = new Store({
-          ...req.body,
-          filename: req.file.filename,
-          filepath: req.file.path,
+          ...req.body
         });
         const savedStore = await newStore.save();
         res.status(200).json(savedStore);
