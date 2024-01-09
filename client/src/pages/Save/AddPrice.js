@@ -1,69 +1,31 @@
-import React, { useState, useEffect } from "react";
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
-import app from "../../firebase";
+import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./save.css";
 
 export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
-  const [img, setImg] = useState(undefined);
-  const [imgPer, setImgPer] = useState(undefined);
-  const [inputs, setInputs] = useState({});
+  const [file, setFile] = useState(undefined);
+  const [name, setName] = useState("");
+  const [out, setOut] = useState(0);
+  const [recived, setRecived] = useState("");
+  const [inn, setIn] = useState(0);
   const navigate = useNavigate("");
 
-  const handleInputs = (e) => {
-    setInputs((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-  const uploadFile = (file, urlType) => {
-    const storage = getStorage(app);
-    const fileName = new Date().getTime() + file.name;
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        urlType === "img" && setImgPer(Math.round(progress));
-        switch (snapshot.state) {
-          case "paused":
-            toast.error("ايقاف");
-            break;
-          case "running":
-            toast.success("....حاري تحميل الصورة ");
-            break;
-          default:
-            break;
-        }
-      },
-      (error) => {},
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setInputs((prev) => {
-            return { ...prev, [urlType]: downloadURL };
-          });
-        });
-      }
-    );
-  };
-  useEffect(() => {
-    img && uploadFile(img, "img");
-  }, [img]);
-  const uploadNewPrice = async ({ type }) => {
+  const uploadNewPrice = async () => {
     try {
-      const res = await axios.post("https://api.eleaman.com/api/save", {
-        ...inputs,
-      });
-      setInputs({});
-      res.status === 200 && navigate("/");
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("name", name);
+      formData.append("out", out);
+      formData.append("inn", inn);
+      formData.append("recived", recived);
+      const res = await axios.post(
+        "https://api.eleaman.com/api/save",
+        formData
+      );
+      toast.success("تم بنجاح.");
+      res.status === 200 && navigate("/save");
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +51,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 placeholder="ادخل تفاصيل صرف المبلغ"
                 type="text"
                 required
-                onChange={handleInputs}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="formItem">
@@ -99,7 +61,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 placeholder="ادخل المبلغ المصروف"
                 type="number"
                 required
-                onChange={handleInputs}
+                onChange={(e) => setOut(e.target.value)}
               />
             </div>
             <div className="formItem">
@@ -109,27 +71,19 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 placeholder="ادخل مستلم المبلغ"
                 type="text"
                 required
-                onChange={handleInputs}
+                onChange={(e) => setRecived(e.target.value)}
               />
             </div>
             <div className="formItem">
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
-              {imgPer > 0 ? (
-                "تم اضافه صوره الايصال"
-              ) : (
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setImg(e.target.files[0])}
-                  required
-                />
-              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files[0])}
+                required
+              />
             </div>
-            <button
-              className="addButton"
-              disabled={imgPer !== 100 && true}
-              onClick={uploadNewPrice}
-            >
+            <button className="addButton" onClick={uploadNewPrice}>
               أضافه
             </button>
           </form>
@@ -138,31 +92,22 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
             <div className="formItem">
               <label htmlFor="in"> المبلغ الوارد: </label>
               <input
-                name="in"
                 placeholder="ادخل المبلغ الوارد"
                 type="number"
                 required
-                onChange={handleInputs}
+                onChange={(e) => setIn(e.target.value)}
               />
             </div>
             <div className="formItem">
               <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
-              {imgPer > 0 ? (
-                "تم اضافه صوره الايصال"
-              ) : (
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setImg(e.target.files[0])}
-                  required
-                />
-              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files[0])}
+                required
+              />
             </div>
-            <button
-              className="addButton"
-              disabled={imgPer !== 100 && true}
-              onClick={uploadNewPrice}
-            >
+            <button className="addButton" onClick={uploadNewPrice}>
               أضافه
             </button>
           </form>

@@ -55,7 +55,7 @@ export const Store = ({ type }) => {
       width: 160,
     },
     {
-      field: "img",
+      field: "filename",
       headerName: "صورة البون",
       width: 140,
       renderCell: (params) => {
@@ -65,7 +65,10 @@ export const Store = ({ type }) => {
         };
         return (
           <img
-            src={params.row.img || "./images/noimg.png"}
+            src={
+              `https://api.eleaman.com/${params.row.filename}` ||
+              "./images/noimg.png"
+            }
             style={{ cursor: "pointer" }}
             onClick={showHandler}
             alt=""
@@ -125,7 +128,7 @@ export const Store = ({ type }) => {
       name: item.name,
       quantity: item.quantity,
       createdAt: item.createdAt.split("T")[0],
-      img: item.img,
+      filename: item.filename,
       entry: user.username,
     };
   });
@@ -166,7 +169,7 @@ export const Store = ({ type }) => {
       editable: false,
     },
     {
-      field: "img",
+      field: "filename",
       headerName: "صورة البون",
       width: 150,
       renderCell: (params) => {
@@ -176,7 +179,10 @@ export const Store = ({ type }) => {
         };
         return (
           <img
-            src={params.row.img || "./images/noimg.png"}
+            src={
+              `https://api.eleaman.com/${params.row.filename}` ||
+              "./images/noimg.png"
+            }
             alt=""
             onClick={showHandler}
             style={{ cursor: "pointer" }}
@@ -217,7 +223,7 @@ export const Store = ({ type }) => {
       quantity: item.quantity,
       quantityOut: item.quantityOut,
       updatedAt: item.updatedAt.split("T")[0],
-      img: item.img,
+      filename: item.filename,
       nameOne: item.nameOne,
       nameTwo: item.nameTwo,
       entry: user.username,

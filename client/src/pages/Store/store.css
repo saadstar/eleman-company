@@ -83,17 +83,20 @@
 }
 
 /* Show img design  */
-.showImg .modal{
+.showImg .showModal{
+padding: 50px;
+    border-radius: 10px;
+    background-color: #2a3447;
     padding: 50px;
-        border-radius: 10px;
-        position: relative;
-        background-color: #2a3447;
-        height: 80vh;
-        width: 80vh;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #2a3447;
+    top: 3%;
+    right: 25%;
 }
 .hugeImg {
-    width: 500px;
-    height: 600px;
+    width: 80%;
+    height: 80%;
     border-radius: 1px;
     object-fit: contain;
 }

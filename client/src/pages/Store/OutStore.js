@@ -60,7 +60,7 @@ export const OutStore = () => {
       editable: false,
     },
     {
-      field: "img",
+      field: "filename",
       headerName: "صورة البون",
       width: 150,
       renderCell: (params) => {
@@ -70,7 +70,10 @@ export const OutStore = () => {
         };
         return (
           <img
-            src={params.row.img || "./images/noimg.png"}
+            src={
+              `https://api.eleaman.com/${params.row.filename}` ||
+              "./images/noimg.png"
+            }
             alt=""
             onClick={showHandler}
             style={{ cursor: "pointer" }}
@@ -92,7 +95,7 @@ export const OutStore = () => {
       quantity: item.quantity,
       quantityOut: item.quantityOut,
       updatedAt: item.updatedAt.split("T")[0],
-      img: item.img,
+      filename: item.filename,
       nameOne: item.nameOne,
       nameTwo: item.nameTwo,
       driver: item.driver,
@@ -128,7 +131,7 @@ export const OutStore = () => {
               initialState={{
                 pagination: {
                   paginationModel: {
-                    pageSize: 100,
+                    pageSize: 99,
                   },
                 },
               }}

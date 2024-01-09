@@ -14,16 +14,14 @@ const StoreSchema = new Schema(
     quantityOut: {
       type: Number,
     },
-    img: {
+    filename: {
       type: String,
-      required:true,
+      required: true,
     },
-    // filename: {
-    //   type: String,
-    // },
-    // filepath: {
-    //   type: String,
-    // },
+    filepath: {
+      type: String,
+      required: true,
+    },
     nameOne: {
       type: String,
     },
@@ -31,7 +29,7 @@ const StoreSchema = new Schema(
       type: String,
     },
     driver: {
-      type:String
+      type: String,
     },
     exist: {
       type: Number,

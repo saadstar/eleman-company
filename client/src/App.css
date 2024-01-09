@@ -56,7 +56,7 @@ body{
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  gap: 12%;
+  gap: 3%;
 }
 a{
   color: var(--soft-color) !important;
@@ -65,14 +65,15 @@ a{
       display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 21px;
+        gap: 10px;
         color: var(--soft-color) !important;
         font-weight: bold;
 }
 .nav-item{
-  padding: 6px;
+  padding: 5px;
   border-radius: 9px;
   color: var(--soft-color);
+  font-size: 19px;
 }
 .nav-item:hover{
   background-color: var(--soft-bg);

@@ -8,7 +8,7 @@ const SaveSchema = new Schema({
     out: {
         type: Number,
     },
-    in: {
+    inn: {
         type:Number
     },
     Value: {
@@ -17,8 +17,9 @@ const SaveSchema = new Schema({
     recived: {
         type:String
     },
-    img: {
-        type:String
+    filename: {
+        type: String,
+        required:true
     }
 }, { timestamps: true });
 

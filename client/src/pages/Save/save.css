@@ -58,21 +58,29 @@
 .MuiDataGrid-columnHeader.MuiDataGrid-columnHeader--alignCenter.MuiDataGrid-withBorderColor.MuiDataGrid-columnHeaderCheckbox {
     display: none;
 }
-
-.showImg .modal {
-    padding: 50px;
+.showSaveImg{
+    position: absolute;
+    top: 0;
+    left: 14%;
+    background-color: #818a9c;
+}
+.saveClose{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.showSaveImg .modall {
     border-radius: 10px;
-    position: relative;
-    background-color: #2a3447;
-    height: 80vh;
-    width: 80vh;
 }
 
-.hugeImg {
-    max-width: 500px;
-    max-height: 600px;
+.hugeSaveImg {
+    max-width: 70%;
+    max-height: 70%;
     border-radius: 1px;
     object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* // add user componnet  */

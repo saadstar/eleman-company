@@ -13,7 +13,7 @@ export const Home = () => {
         <div className='box box1'>
           <Box1/>
         </div>
-        <div className='box box2'><ChartBox {...chartDataUser} /></div>
+        <div className='box box2'><ChartBox {...chartDataUser} navi="/users" /></div>
         <div className='box box3'><ChartBox {...chartDataProduct} /></div>
         <div className='box box4'><BieChartBox/></div>
         <div className='box box5'><ChartBox {...chartDataConvension} /></div>

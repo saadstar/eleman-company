@@ -18,7 +18,7 @@ export const ChartBox = (props) => {
             <span>{props.title}</span>
           </div>
           <h1>{props.number}</h1>
-          <Link to="/" style={{ color: props.color }}>
+          <Link to={`${props.navi}`} style={{ color: props.color }}>
             View All
           </Link>
         </div>

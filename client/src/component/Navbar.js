@@ -11,6 +11,8 @@ import AddModeratorIcon from "@mui/icons-material/AddModerator";
 import StoreIcon from "@mui/icons-material/Store";
 import AirplayIcon from "@mui/icons-material/Airplay";
 import PaidIcon from "@mui/icons-material/Paid";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import EngineeringIcon from "@mui/icons-material/Engineering";
 
 export const Navbar = () => {
     const { dispatch, user } = useContext(AuthContext);
@@ -30,7 +32,7 @@ export const Navbar = () => {
   return (
     <div className="navBar">
       <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid axin ">
+        <div class="container-fluid axin">
           <div className="icons">
             <div className="user">
               <span>{user === null ? "User" : `${user.firstName}`}</span>
@@ -57,7 +59,7 @@ export const Navbar = () => {
                   <Link
                     to="/process"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item  d-flex gap-3"
+                    className="nav-item  d-flex gap-2"
                   >
                     <h2>العمليات</h2>
                     <AirplayIcon className="m-auto" />
@@ -67,7 +69,7 @@ export const Navbar = () => {
                   <Link
                     to="/charts"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>التحليلات</h2>
                     <AutoGraphIcon className="m-auto" />
@@ -77,7 +79,7 @@ export const Navbar = () => {
                   <Link
                     to="/users"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>المستخدمين</h2>
                     <SupervisorAccountIcon className="m-auto" />
@@ -87,17 +89,17 @@ export const Navbar = () => {
                   <Link
                     to="/store"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>المخازن</h2>
                     <StoreIcon className="m-auto" />
                   </Link>
                 )}
-                {user.isAdmin !== 2  && (
+                {user.isAdmin !== 2 && (
                   <Link
                     to="/save"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>الخزنه</h2>
                     <AddModeratorIcon className="m-auto" />
@@ -107,7 +109,7 @@ export const Navbar = () => {
                   <Link
                     to="/car"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>السياره</h2>
                     <DirectionsCarIcon className="m-auto" />
@@ -117,7 +119,7 @@ export const Navbar = () => {
                   <Link
                     to="/funders"
                     style={{ textDecoration: "none", color: "white" }}
-                    className="nav-item d-flex gap-3"
+                    className="nav-item d-flex gap-2"
                   >
                     <h2>الممولين</h2>
                     <PaidIcon className="m-auto" />
@@ -125,6 +127,22 @@ export const Navbar = () => {
                 )}
               </div>
             )}
+            <Link
+              to="/sallery"
+              style={{ textDecoration: "none", color: "white" }}
+              className="nav-item d-flex gap-1"
+            >
+              <h2>المرتبات</h2>
+              <AttachMoneyIcon className="m-auto" />
+            </Link>
+            <Link
+              to="/staff"
+              style={{ textDecoration: "none", color: "white" }}
+              className="nav-item d-flex gap-1"
+            >
+              <h2>العده</h2>
+              <EngineeringIcon className="m-auto" />
+            </Link>
           </div>
         </div>
       </nav>

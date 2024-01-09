@@ -25,8 +25,6 @@ import { Wood } from "./pages/processDtails/products/Wood/Wood";
   
 function App() {
   const { user } = useContext(AuthContext);
-
-  console.log(process.env.REACT_APP_SERVER_URL);
   return (
     <div className="">
       <div className="main">
@@ -38,7 +36,7 @@ function App() {
                 <Route exact path="/" element={<Login />} />
               ) : (
                 <Route exact path="/" element={<HomePage />} />
-                )}
+              )}
               <Route exact path="/process" element={<ProcessHome />} />
               <Route exact path="/charts" element={<Home />} />
               <Route path="/process/:id" element={<ProcessDetails />} />
@@ -82,18 +80,41 @@ function App() {
                 path="/processDetails/azl/:id"
                 element={<Details sort="azl" ar="عزل" />}
               />
-              <Route
-                path="/processDetails/wood/:id"
-                element={<Wood />}
-              />
+              <Route path="/processDetails/wood/:id" element={<Wood />} />
               <Route path="/users" element={<Users />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/store" element={<Store />} />
               <Route path="/outStore" element={<OutStore />} />
               <Route path="/save" element={<Save />} />
               <Route path="/car" element={<Car />} />
-              <Route path="/funders" element={<Funders ar="برجاء اختيار شركه التمويل. "/>} />
+              <Route
+                path="/funders"
+                element={<Funders ar="برجاء اختيار شركه التمويل. " />}
+              />
               <Route path="/funders/:id" element={<Funders />} />
+              <Route
+                path="/sallery"
+                element={
+                  <div
+                    className="d-flex fw-bold text-center "
+                    style={{ fontSize: "70px", color: "red" }}
+                  >
+                    نعمل علي المرتبات في الوقت الحالي برجاء انتظار التحديث
+                    القادم.
+                  </div>
+                }
+              />
+              <Route
+                path="/staff"
+                element={
+                  <div
+                    className="d-flex fw-bold text-center"
+                    style={{ fontSize: "70px", color: "red" }}
+                  >
+                    نعمل علي العده في الوقت الحالي برجاء انتظار التحديث القادم.
+                  </div>
+                }
+              />
             </Routes>
           </div>
         </div>

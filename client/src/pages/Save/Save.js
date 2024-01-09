@@ -27,11 +27,7 @@ export const Save = () => {
 
   const totalValue = () => {
     filteredRecivedData.forEach((item) => {
-      if (item.in === undefined) {
-        totalArr.push(0);
-      } else {
-        totalArr.push(item.in);
-      }
+      totalArr.push(item.inn);
     });
   };
   const totalValueFun = () => {
@@ -44,14 +40,10 @@ export const Save = () => {
   useEffect(() => {
     totalValue();
     totalValueFun();
-  }, [totalArr]);
+  });
   const totalOutValue = () => {
     filteredRecivedData.forEach((item) => {
-      if (item.out === undefined) {
-        totalOutArr.push(0);
-      } else {
-        totalOutArr.push(item.out);
-      }
+      totalOutArr.push(item.out);
     });
   };
   const totalOutValueFun = () => {
@@ -64,7 +56,7 @@ export const Save = () => {
   useEffect(() => {
     totalOutValue();
     totalOutValueFun();
-  }, [totalOutArr]);
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +67,7 @@ export const Save = () => {
       }
     };
     fetchData();
-  }, [rowData.id]);
+  }, [rowData._id]);
   const columns = [
     {
       field: "name",
@@ -90,7 +82,7 @@ export const Save = () => {
       editable: false,
     },
     {
-      field: "in",
+      field: "inn",
       headerName: "الوارد",
       width: 110,
       editable: false,
@@ -107,7 +99,7 @@ export const Save = () => {
       width: 160,
     },
     {
-      field: "img",
+      field: "filename",
       headerName: "ايصال العهده الماليه",
       width: 140,
       renderCell: (params) => {
@@ -117,7 +109,10 @@ export const Save = () => {
         };
         return (
           <img
-            src={params.row.img || "./images/noimg.png"}
+            src={
+              `https://api.eleaman.com/${params.row.filename}` ||
+              "./images/noimg.png"
+            }
             style={{ cursor: "pointer" }}
             alt=""
             onClick={showHandler}
@@ -155,11 +150,11 @@ export const Save = () => {
     return {
       id: item._id,
       name: item.name,
-      in: item.in,
+      inn: item.inn,
       out: item.out,
       recived: item.recived,
       createdAt: item.createdAt.split("T")[0],
-      img: item.img,
+      filename: item.filename,
       entry: user.username,
     };
   });
@@ -209,7 +204,7 @@ export const Save = () => {
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 100,
+                        pageSize: 99,
                       },
                     },
                   }}
