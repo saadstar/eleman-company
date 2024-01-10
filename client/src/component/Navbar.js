@@ -135,14 +135,6 @@ export const Navbar = () => {
               <h2>المرتبات</h2>
               <AttachMoneyIcon className="m-auto" />
             </Link>
-            <Link
-              to="/staff"
-              style={{ textDecoration: "none", color: "white" }}
-              className="nav-item d-flex gap-1"
-            >
-              <h2>العده</h2>
-              <EngineeringIcon className="m-auto" />
-            </Link>
           </div>
         </div>
       </nav>

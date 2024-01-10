@@ -74,15 +74,14 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 onChange={(e) => setRecived(e.target.value)}
               />
             </div>
-            <div className="formItem">
+             <div className="formItem">
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setFile(e.target.files[0])}
-                required
               />
-            </div>
+            </div> 
             <button className="addButton" onClick={uploadNewPrice}>
               أضافه
             </button>
@@ -98,15 +97,14 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 onChange={(e) => setIn(e.target.value)}
               />
             </div>
-            <div className="formItem">
+             <div className="formItem">
               <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setFile(e.target.files[0])}
-                required
               />
-            </div>
+            </div> 
             <button className="addButton" onClick={uploadNewPrice}>
               أضافه
             </button>

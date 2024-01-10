@@ -14,10 +14,13 @@ export const Tubes = ({ type }) => {
   const [deleteUserId, setDeleteUserId] = useState("");
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
   const [fullTotalQuantity, setFullTotalQuantity] = useState(0);
+  const [search,setSearch] = useState("");
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
-  const FilteredData = rowData.filter((item) => item.type === type);
+  const FilteredData = rowData.filter((item) => {
+    return search === "" ? item : item.type === type
+  });
 
   const totalValue = () => {
     FilteredData.forEach((item) => {
@@ -38,7 +41,7 @@ export const Tubes = ({ type }) => {
   useEffect(() => {
     totalValue();
     totalValueFun();
-  }, [FilteredData]);
+  });
   const totalQuantityValue = () => {
     FilteredData.forEach((item) => {
       if (item.quantity === undefined) {
@@ -58,7 +61,7 @@ export const Tubes = ({ type }) => {
   useEffect(() => {
     totalQuantityValue();
     totalQuantityValueFun();
-  }, [totalQuantityArr]);
+  });
   const columns = [
     {
       field: "note",
@@ -133,7 +136,7 @@ export const Tubes = ({ type }) => {
       }
     };
     fetchRow();
-  }, [rowData.id]);
+  }, [rowData._id]);
   return (
     <div className="tubes">
       <div className="container loober">
@@ -145,6 +148,18 @@ export const Tubes = ({ type }) => {
             <h1>{type === "tubes" ? "مواسير" : "مصناعيه"}</h1>
             <button className="" onClick={() => setAddOpen(!addOpen)}>
               أضافه {type === "tubes" ? "مواسير" : "مصناعيه"}
+            </button>
+          </div>
+          <div class="d-flex pb-2" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="أبحث بالعنصر"
+              aria-label="Search"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button class="btn btn-success" type="submit">
+              أبحث
             </button>
           </div>
           {rowData.length === 0 ? (
@@ -177,7 +192,7 @@ export const Tubes = ({ type }) => {
                 disableDensitySelector
               />
               <div className="sum">
-                <h2>{`اجمالي الكميات بالمتر: ${fullTotalQuantity}`}</h2>
+                <h2>{`اجمالي الكميات بالمتر: ${Math.round(fullTotalQuantity)}`}</h2>
                 <h2>{`اجمالي السعر: ${Math.round(fullTotalPrice)}`}</h2>
               </div>
             </div>

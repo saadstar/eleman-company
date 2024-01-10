@@ -57,22 +57,20 @@ export const Store = ({ type }) => {
     {
       field: "filename",
       headerName: "صورة البون",
-      width: 140,
+      width: 120,
       renderCell: (params) => {
         const showHandler = () => {
           setShowData(params.row);
           setShowOpen(true);
         };
         return (
-          <img
-            src={
-              `https://api.eleaman.com/${params.row.filename}` ||
-              "./images/noimg.png"
-            }
+          <button
             style={{ cursor: "pointer" }}
+            className="btn btn-outline-primary"
             onClick={showHandler}
-            alt=""
-          />
+          >
+            عرض الصوره
+          </button>
         );
       },
     },
@@ -171,22 +169,20 @@ export const Store = ({ type }) => {
     {
       field: "filename",
       headerName: "صورة البون",
-      width: 150,
+      width: 120,
       renderCell: (params) => {
         const showHandler = () => {
           setShowData(params.row);
           setShowOpen(!showOpen);
         };
         return (
-          <img
-            src={
-              `https://api.eleaman.com/${params.row.filename}` ||
-              "./images/noimg.png"
-            }
-            alt=""
-            onClick={showHandler}
+          <button
             style={{ cursor: "pointer" }}
-          />
+            className="btn btn-outline-primary"
+            onClick={showHandler}
+          >
+            عرض الصوره
+          </button>
         );
       },
     },

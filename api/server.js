@@ -11,7 +11,7 @@ const authRoute = require("./routes/authRoute");
 const carRoute = require("./routes/carRoute");
 const funderCompanyRoute = require("./routes/funderCompany");
 const funderDetailsRoute = require("./routes/funderDetailsRoute");
-const salleryRoute = require("./routes/funderDetailsRoute");
+const salleryRoute = require("./routes/salleryRoute");
 const cookieParser = require("cookie-parser");
 
 connectDB();

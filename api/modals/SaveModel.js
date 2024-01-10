@@ -19,7 +19,6 @@ const SaveSchema = new Schema({
     },
     filename: {
         type: String,
-        required:true
     }
 }, { timestamps: true });
 

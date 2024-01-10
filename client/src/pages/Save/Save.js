@@ -101,22 +101,16 @@ export const Save = () => {
     {
       field: "filename",
       headerName: "ايصال العهده الماليه",
-      width: 140,
+      width: 120,
       renderCell: (params) => {
         const showHandler = () => {
           setShowData(params.row);
           setShowImgOpen(true);
         };
         return (
-          <img
-            src={
-              `https://api.eleaman.com/${params.row.filename}` ||
-              "./images/noimg.png"
-            }
-            style={{ cursor: "pointer" }}
-            alt=""
+          <button style={{ cursor: "pointer" }}  className="btn btn-outline-primary"         
             onClick={showHandler}
-          />
+          >عرض الصوره</button>
         );
       },
     },

@@ -22,6 +22,7 @@ import { Funders } from "./pages/Funders/Funders";
 import { OutStore } from "./pages/Store/OutStore";
 import { HomePage } from "./HomePage";
 import { Wood } from "./pages/processDtails/products/Wood/Wood";
+import { Sallery } from "./pages/Sallery/Sallery";
   
 function App() {
   const { user } = useContext(AuthContext);
@@ -94,15 +95,7 @@ function App() {
               <Route path="/funders/:id" element={<Funders />} />
               <Route
                 path="/sallery"
-                element={
-                  <div
-                    className="d-flex fw-bold text-center "
-                    style={{ fontSize: "70px", color: "red" }}
-                  >
-                    نعمل علي المرتبات في الوقت الحالي برجاء انتظار التحديث
-                    القادم.
-                  </div>
-                }
+                element={<Sallery/> }
               />
               <Route
                 path="/staff"
