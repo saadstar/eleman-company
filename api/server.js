@@ -11,6 +11,7 @@ const authRoute = require("./routes/authRoute");
 const carRoute = require("./routes/carRoute");
 const funderCompanyRoute = require("./routes/funderCompany");
 const funderDetailsRoute = require("./routes/funderDetailsRoute");
+const salleryRoute = require("./routes/funderDetailsRoute");
 const cookieParser = require("cookie-parser");
 
 connectDB();
@@ -29,6 +30,7 @@ app.use("/api/auth/", authRoute);
 app.use("/api/car", carRoute);
 app.use("/api/funderCompany", funderCompanyRoute);
 app.use("/api/funderDetails", funderDetailsRoute);
+app.use("/api/sallery", salleryRoute);
 
 
 
