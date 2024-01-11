@@ -67,7 +67,7 @@ export const Save = () => {
       }
     };
     fetchData();
-  }, [rowData._id]);
+  }, [filteredRecivedData._id]);
   const columns = [
     {
       field: "name",
@@ -187,7 +187,7 @@ export const Save = () => {
             </button>
           </div>
           {filteredRecivedData.length === 0 ? (
-            <div class="">لا يوجد عناصر</div>
+            <div class="d-flex fw-bold fz-5 text-center justify-center ">لا يوجد عناصر</div>
           ) : (
             <>
               <div className="dataTable">
@@ -221,10 +221,10 @@ export const Save = () => {
           )}
         </div>
       </div>
-      <div>
+      {filteredRecivedData.length !== 0 && <div>
         <h1> أجمالي المصروف : {fullOutValue}</h1>
         <h1> أجمالي الوارد : {fullValue}</h1>
-      </div>
+      </div>}
       {addOpen && <AddPrice setAddOpen={setAddOpen} />}
       {outOpen && <AddPrice setOutOpen={setOutOpen} type="out" />}
       {showImgOpen && (

@@ -12,8 +12,9 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
   const [inn, setIn] = useState(0);
   const navigate = useNavigate("");
 
-  const uploadNewPrice = async () => {
+  const uploadNewPrice = async (e) => {
     try {
+      e.preventDefault();
       const formData = new FormData();
       formData.append("file", file);
       formData.append("name", name);
@@ -26,6 +27,8 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
         formData
       );
       toast.success("تم بنجاح.");
+      setAddOpen(false);
+      setOutOpen(false);
       res.status === 200 && navigate("/save");
     } catch (err) {
       console.log(err);
