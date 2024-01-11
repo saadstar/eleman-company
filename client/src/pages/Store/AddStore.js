@@ -8,18 +8,19 @@ export const AddStore = ({ setAddOpen }) => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const navigate = useNavigate("");
-
-  const uploadNewStoreItem = async () => {
+  const uploadNewStoreItem = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("name", name);
       formData.append("exist", 1);
       formData.append("quantity", quantity);
+      toast.warn("جاري رفع الصوره برجاء الانتظار...");
       const res = await axios.post(
         "https://api.eleaman.com/api/store",
         formData
-      );
+        );
       setAddOpen(false);
       toast.success("تم اضافه العنصر بنجاح.");
       res.status === 200 && navigate("/store");
@@ -66,9 +67,7 @@ export const AddStore = ({ setAddOpen }) => {
             <label htmlFor="img">صورة البون : </label>
             <input
               type="file"
-              accept="image/*"
               onChange={(e) => setFile(e.target.files[0])}
-              required
             />
           </div>
           <button className="addButton" onClick={uploadNewStoreItem}>

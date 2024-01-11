@@ -19,7 +19,10 @@ export const Tubes = ({ type }) => {
   const totalArr = [];
   const totalQuantityArr = [];
   const FilteredData = rowData.filter((item) => {
-    return search === "" ? item : item.type === type
+    return  item.type === type
+  });
+  const searchFilteredData = FilteredData.filter((item) => {
+    return search === "" ? item : item.note === search;
   });
 
   const totalValue = () => {
@@ -114,7 +117,7 @@ export const Tubes = ({ type }) => {
     },
   ];
 
-  const rows = FilteredData.map((item) => {
+  const rows = searchFilteredData.map((item) => {
     return {
       id: item._id,
       note: item.note,

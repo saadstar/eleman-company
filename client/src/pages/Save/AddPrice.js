@@ -20,6 +20,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
       formData.append("out", out);
       formData.append("inn", inn);
       formData.append("recived", recived);
+            toast.warn("جاري رفع الصوره برجاء الانتظار...");
       const res = await axios.post(
         "https://api.eleaman.com/api/save",
         formData
@@ -78,7 +79,6 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
               <input
                 type="file"
-                accept="image/*"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </div> 
@@ -101,7 +101,6 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
               <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
               <input
                 type="file"
-                accept="image/*"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </div> 
