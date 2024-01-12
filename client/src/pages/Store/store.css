@@ -17,19 +17,17 @@
     background-color: rgb(115, 119, 119);
     border-radius: 10px;
 }
-.full-width .d-flex h1{
-    padding: 10px;
+.full-width .d-flex h1 {
+    padding: 15px;
     cursor: pointer;
     text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px;
+    margin: 0px;
 }
 .full-width .d-flex h1:hover{   
     background-color: rgb(211, 209, 209);
-    color: black;
-}
+    color: black;}
+
 .store .storeHeader {
     display: flex;
     align-items: center;
@@ -81,26 +79,6 @@
 .MuiDataGrid-columnHeader.MuiDataGrid-columnHeader--alignCenter.MuiDataGrid-withBorderColor.MuiDataGrid-columnHeaderCheckbox {
     display: none;
 }
-
-/* Show img design  */
-.showImg .showModal{
-padding: 50px;
-    border-radius: 10px;
-    background-color: #2a3447;
-    padding: 50px;
-    border-radius: 10px;
-    position: absolute;
-    background-color: #2a3447;
-    top: 3%;
-    right: 25%;
-}
-.hugeImg {
-    width: 80%;
-    height: 80%;
-    border-radius: 1px;
-    object-fit: contain;
-}
-
 /* // add user componnet  */
 .addTubes {
     width: 100vw;

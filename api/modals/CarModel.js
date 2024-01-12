@@ -15,6 +15,9 @@ const CarSchema = new Schema(
       type: Number,
       required: true
     },
+    oil: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );

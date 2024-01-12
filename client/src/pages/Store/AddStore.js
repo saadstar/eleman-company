@@ -7,6 +7,7 @@ export const AddStore = ({ setAddOpen }) => {
   const [file, setFile] = useState(undefined);
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate("");
   const uploadNewStoreItem = async (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ export const AddStore = ({ setAddOpen }) => {
       formData.append("exist", 1);
       formData.append("quantity", quantity);
       toast.warn("جاري رفع الصوره برجاء الانتظار...");
+      setLoading(true);
       const res = await axios.post(
         "https://api.eleaman.com/api/store",
         formData
@@ -24,57 +26,66 @@ export const AddStore = ({ setAddOpen }) => {
       setAddOpen(false);
       toast.success("تم اضافه العنصر بنجاح.");
       res.status === 200 && navigate("/store");
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
   return (
+   
     <div className="addTubes">
-      <div className="modalll">
-        <span className="close" onClick={() => setAddOpen(false)}>
-          X
-        </span>
-        <h1>{`أضافه عنصر جديد`}</h1>
-        <form onSubmit={(e) => e.preventDefault}>
-          <div className="formItem">
-            <label htmlFor="name">اسم العنصر: </label>
-            {name === "" && (
-              <span
-                style={{ color: "red", fontSize: "10px", fontWeight: "300" }}
-              >
-                برجاء ادخل العنصر
-              </span>
-            )}
-            <input
-              name="name"
-              placeholder="بيانات العنصر بالتفصيل"
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+      
+          <div className="modalll">
+            <span className="close" onClick={() => setAddOpen(false)}>
+              X
+            </span>
+            <h1>{`أضافه عنصر جديد`}</h1>
+           {loading === true ?(<div className="loading">
+            <span className="loader"></span>
+           </div>):( <form onSubmit={(e) => e.preventDefault}>
+              <div className="formItem">
+                <label htmlFor="name">اسم العنصر: </label>
+                {name === "" && (
+                  <span
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                      fontWeight: "300",
+                    }}
+                  >
+                    برجاء ادخل العنصر
+                  </span>
+                )}
+                <input
+                  name="name"
+                  placeholder="بيانات العنصر بالتفصيل"
+                  type="text"
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="formItem">
+                <label htmlFor="quantity">الكميه:</label>
+                <input
+                  name="quantity"
+                  placeholder="ادخل الكميه"
+                  type="number"
+                  required
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+              </div>
+              <div className="formItem" style={{ cursor: "pointer" }}>
+                <label htmlFor="img">صورة البون : </label>
+                <input
+                  type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+          </div>        
+              <button className="addButton" onClick={uploadNewStoreItem}>
+                أضافه
+             </button>
+            </form>)}
           </div>
-          <div className="formItem">
-            <label htmlFor="quantity">الكميه:</label>
-            <input
-              name="quantity"
-              placeholder="ادخل الكميه"
-              type="number"
-              required
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-          </div>
-          <div className="formItem" style={{ cursor: "pointer" }}>
-            <label htmlFor="img">صورة البون : </label>
-            <input
-              type="file"
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-          </div>
-          <button className="addButton" onClick={uploadNewStoreItem}>
-            أضافه
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
   );
 };

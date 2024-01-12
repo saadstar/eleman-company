@@ -1,5 +1,6 @@
 .tubes{
     position: relative;
+    height: 100%;
 }
 .tubes .tubesHeader {
     display: flex;
@@ -45,69 +46,6 @@
 .MuiDataGrid-columnHeader.MuiDataGrid-columnHeader--alignCenter.MuiDataGrid-withBorderColor.MuiDataGrid-columnHeaderCheckbox{
     display: none;
 }
-/* // add user componnet  */
-.addTubes {
-    width: 97vw;
-    height: 100vh ;
-    position: absolute;
-    top: -10%;
-    right: -100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.724);
-}
-
-.modalll {
-    padding: 50px;
-    border-radius: 10px;
-    position: relative;
-    background-color: #2a3447
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.modal h1 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #ddd;
-}
-
-.addTubes form {
-    display: flex;
-    max-width: 500px;
-    flex-direction: column;
-}
-.addTubes .formItem {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.formItem>.label {
-    font-size: 14px;
-}
-
-.formItem>input {
-    padding: 10px;
-    background-color: transparent;
-    color: white;
-    outline: none;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.addButton {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-}
 .css-1w53k9d-MuiDataGrid-overlay{
     display: none;
 }
@@ -120,43 +58,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-/* delete tube  */
-/* add company modal  */
-.modal-relitave {
-    background-color: rgba(0, 0, 0, 0.724);
-    width: 89vw;
-    height: 100vw;
-    position: absolute;
-    top: -5px;
-    left: -20%;
-}
-
-.modal-relitave .modalll {
-    padding: 50px;
-    border-radius: 10px;
-    background-color: #2a3447;
-    padding: 50px;
-    border-radius: 10px;
-    position: absolute;
-    background-color: #2a3447;
-    top: 33px;
-    right: 40%;
-}
-
-.modal-relitave .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.modal-relitave .modalll h1 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #ddd;
 }
 /* //loading  */
 /* HTML: <div class="loader"></div> */
@@ -177,21 +78,4 @@
     100% {
         transform: rotate(1turn)
     }
-}
-/* responsive design  */
-@media only screen and (max-width:480px) {
-.addTubes {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: -10%;
-    right: -30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.724);
-}
-.tubes{
-    height: 100vh;
-}
 }

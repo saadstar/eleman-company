@@ -14,12 +14,12 @@ const SaveSchema = new Schema({
     Value: {
         type:Number
     },
-    recived: {
-        type:String
-    },
-    filename: {
-        type: String,
-    }
+    // recived: {
+    //     type:String
+    // },
+    // filename: {
+    //     type: String,
+    // }
 }, { timestamps: true });
 
 

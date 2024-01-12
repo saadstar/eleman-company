@@ -13,8 +13,7 @@ export const DeleteStore = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-    <div className="modal-relitave">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setDeleteOpen(false)}>
           X
         </span>
@@ -34,6 +33,5 @@ export const DeleteStore = ({ setDeleteOpen, deleteUserId }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

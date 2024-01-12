@@ -21,6 +21,7 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--main-bg);
 }
 .main{
   font-family: "Inter",sans-serif;
@@ -155,6 +156,33 @@ height: calc(100vh - 120px );
 .MuiDataGrid-columnHeaderTitle.css-t89xny-MuiDataGrid-columnHeaderTitle{
 font-weight: bold;
 font-size: 14px;
+}
+/* loading  */
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #353638;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 /* responsive design  */
 @media only screen and (max-width:480px) {

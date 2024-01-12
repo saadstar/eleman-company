@@ -1,21 +1,18 @@
 import React from "react";
+import "../modal.css";
 
 export const ShowImg = ({ setShowImgOpen, showData }) => {
   return (
-    <div className="showSaveImg p-4">
-      <div className="modall">
-        <div className="saveClose">
+    <div className="myModal p-4">
           <span className="close" onClick={() => setShowImgOpen(false)}>
             X
           </span>
           <h1>{`صورة الايصال : `}</h1>
-        </div>
         <img
           src={`https://api.eleaman.com/${showData.filename}`}
           alt=""
           className="hugeSaveImg"
         />
       </div>
-    </div>
   );
 };

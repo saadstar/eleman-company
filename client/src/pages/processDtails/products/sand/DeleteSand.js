@@ -1,6 +1,7 @@
 import React from 'react'
 import { toast } from 'react-toastify';
 import axios from "axios";
+import "../../../modal.css";
 
 export const DeleteSand = ({ setDeleteOpen, deleteUserId }) => {
   const handleSubmit = async () => {
@@ -15,8 +16,7 @@ export const DeleteSand = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-    <div className="modal-relitave">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setDeleteOpen(false)}>
           X
         </span>
@@ -36,6 +36,5 @@ export const DeleteSand = ({ setDeleteOpen, deleteUserId }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

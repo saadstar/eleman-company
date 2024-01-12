@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../../../modal.css";
 
 export const AddWood = ({ id, setAddOpen }) => {
   const [note, setNote] = useState("");
@@ -30,8 +31,7 @@ export const AddWood = ({ id, setAddOpen }) => {
     };
     
   return (
-    <div className="addTubes">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>
@@ -80,6 +80,5 @@ export const AddWood = ({ id, setAddOpen }) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };

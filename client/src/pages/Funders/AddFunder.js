@@ -26,8 +26,7 @@ export const AddFunder = ({ setAddOpen,id }) => {
         }
     }
     return (
-    <div className="modal-relitave">
-        <div className="modalll">
+        <div className="myModal">
         <span className="close" onClick={() => setAddOpen(false)}>
             X
         </span>
@@ -112,6 +111,5 @@ export const AddFunder = ({ setAddOpen,id }) => {
             </button>
           </form>
         </div>
-      </div>
     );
 };

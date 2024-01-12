@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../tubes/tubes.css";
+import "../../../modal.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -32,8 +32,7 @@ export const AddSand = ({ id, setAddOpen, type,ar }) => {
     }
   };
   return (
-    <div className="addTubes">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>
@@ -101,6 +100,5 @@ export const AddSand = ({ id, setAddOpen, type,ar }) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };

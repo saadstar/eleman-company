@@ -24,17 +24,30 @@ export const Car = () => {
     <div className="car">
       <div className="carHeader">
         <h1>السياره</h1>
-        <button onClick={() => setOpenModal(true)}>اضف تحرك سياره</button>
+        <button
+          onClick={() => setOpenModal(true)}
+        >
+          اضف تحرك سياره
+        </button>
       </div>
       <table class="table table-hover mt-3">
         <thead>
-          <tr>
-            <th scope="col d-flex" className="col d-flex">
+          <tr className="bb">
+            <th scope="col d-flex" className="text-center">
               سائق السياره
             </th>
-            <th scope="col d-flex">سعر البنزين</th>
-            <th scope="col d-flex">الكيلومتر</th>
-            <th scope="col d-flex">التاريخ</th>
+            <th scope="col d-flex" className="text-center">
+              سعر البنزين
+            </th>
+            <th scope="col d-flex" className="text-center">
+              الكيلومتر
+            </th>
+            <th scope="col d-flex" className="text-center">
+              الزيت
+            </th>
+            <th scope="col d-flex" className="text-center">
+              التاريخ
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -43,12 +56,13 @@ export const Car = () => {
               <td className="zz">{item.name}</td>
               <td className="zz">{item.price}</td>
               <td className="zz">{item.km}</td>
+              <td className="zz">{item.oil}</td>
               <td className="zz">{item.createdAt.split("T")[0]}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {openModal && <AddCar setOpenModal={setOpenModal} />}
+       {openModal && <AddCar setOpenModal={setOpenModal} />} 
     </div>
   );
 }

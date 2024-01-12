@@ -22,11 +22,11 @@ export const Tubes = ({ type }) => {
     return  item.type === type
   });
   const searchFilteredData = FilteredData.filter((item) => {
-    return search === "" ? item : item.note === search;
+    return search === "" ? item : item.other === search;
   });
 
   const totalValue = () => {
-    FilteredData.forEach((item) => {
+    searchFilteredData.forEach((item) => {
       if (item.value === undefined) {
         totalArr.push(0);
       } else {
@@ -46,7 +46,7 @@ export const Tubes = ({ type }) => {
     totalValueFun();
   });
   const totalQuantityValue = () => {
-    FilteredData.forEach((item) => {
+    searchFilteredData.forEach((item) => {
       if (item.quantity === undefined) {
         totalQuantityArr.push(0);
       } else {
@@ -75,30 +75,30 @@ export const Tubes = ({ type }) => {
     {
       field: "quantity",
       headerName: "الكميه",
-      width: 100,
+      width: 120,
       editable: false,
     },
     {
       field: "price",
       headerName: "سعر المتر",
       type: "number",
-      width: 100,
+      width: 120,
       editable: true,
     },
     {
       field: "value",
       headerName: "اجمالي",
-      width: 200,
+      width: 180,
     },
     {
       field: "createdAt",
       headerName: "التاريخ",
-      width: 150,
+      width: 120,
     },
     {
       field: "Action",
       headerName: "حذف",
-      width: 100,
+      width: 60,
       renderCell: (params) => {
         const deleteHandler = () => {
           setDeleteUserId(params.row.id);
@@ -116,7 +116,63 @@ export const Tubes = ({ type }) => {
       },
     },
   ];
-
+  const WorkerColumns = [
+    {
+      field: "note",
+      headerName: "اسم البيان",
+      width: 250,
+      editable: false,
+    },
+    {
+      field: "quantity",
+      headerName: "الكميه",
+      width: 100,
+      editable: false,
+    },
+    {
+      field: "price",
+      headerName: "سعر المتر",
+      type: "number",
+      width: 100,
+      editable: true,
+    },
+    {
+      field: "other",
+      headerName: "الصنايعي",
+      width: 150,
+      editable: false,
+    },
+    {
+      field: "value",
+      headerName: "اجمالي",
+      width: 180,
+    },
+    {
+      field: "createdAt",
+      headerName: "التاريخ",
+      width: 120,
+    },
+    {
+      field: "Action",
+      headerName: "حذف",
+      width: 60,
+      renderCell: (params) => {
+        const deleteHandler = () => {
+          setDeleteUserId(params.row.id);
+          setDeleteOpen(true);
+        };
+        return (
+          <div className="action">
+            <i
+              class="fa-solid fa-trash"
+              style={{ color: "red", fontSize: "20px" }}
+              onClick={deleteHandler}
+            ></i>
+          </div>
+        );
+      },
+    },
+  ];
   const rows = searchFilteredData.map((item) => {
     return {
       id: item._id,
@@ -124,6 +180,7 @@ export const Tubes = ({ type }) => {
       quantity: item.quantity,
       price: item.price,
       value: item.value,
+      other:item.other,
       createdAt: item.createdAt.split("T")[0],
     };
   });
@@ -139,7 +196,7 @@ export const Tubes = ({ type }) => {
       }
     };
     fetchRow();
-  }, [rowData._id]);
+  }, [searchFilteredData._id]);
   return (
     <div className="tubes">
       <div className="container loober">
@@ -172,7 +229,7 @@ export const Tubes = ({ type }) => {
               <DataGrid
                 className="dataGrid"
                 rows={rows}
-                columns={columns}
+                columns={type=== "tubes"?columns:WorkerColumns}
                 initialState={{
                   pagination: {
                     paginationModel: {

@@ -69,20 +69,6 @@
     align-items: center;
     justify-content: space-around;
 }
-.showSaveImg .modall {
-    border-radius: 10px;
-}
-
-.hugeSaveImg {
-    max-width: 70%;
-    max-height: 70%;
-    border-radius: 1px;
-    object-fit: contain;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* // add user componnet  */
 .addTubes {
     width: 100vw;

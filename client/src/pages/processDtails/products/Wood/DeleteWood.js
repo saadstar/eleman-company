@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../../../modal.css";
 
 export const DeleteWood = ({ setDeleteOpen, deleteUserId }) => {
   const navigate = useNavigate("");
@@ -19,8 +20,7 @@ export const DeleteWood = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-    <div className="modal-relitave">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setDeleteOpen(false)}>
           X
         </span>
@@ -40,6 +40,5 @@ export const DeleteWood = ({ setDeleteOpen, deleteUserId }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

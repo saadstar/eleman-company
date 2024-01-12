@@ -25,6 +25,9 @@ const ProcessDetailsSchema = new Schema(
     },
     value: {
       type:Number
+    },
+    other: {
+      type:String
     }
   },
   { timestamps: true }

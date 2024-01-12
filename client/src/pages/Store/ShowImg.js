@@ -2,8 +2,7 @@ import React from "react";
 import "./store.css";
 export const ShowImg = ({ setShowOpen, showData }) => {
   return (
-    <div className="showImg">
-      <div className="showModal">
+    <div className="myModal">
         <span className="close" onClick={() => setShowOpen(false)}>
           X
         </span>
@@ -13,7 +12,6 @@ export const ShowImg = ({ setShowOpen, showData }) => {
           alt=""
           className="hugeImg"
         />
-      </div>
     </div>
   );
 };

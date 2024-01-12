@@ -3,6 +3,7 @@ import "../tubes/tubes.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../../../modal.css";
 
 export const AddDetails = ({ id, setAddOpen,sort }) => {
   const [note, setNote] = useState("");
@@ -22,13 +23,13 @@ export const AddDetails = ({ id, setAddOpen,sort }) => {
       setNote("");
       setPrice(0);
       toast.success("تمت اضافه عنصر بنجاح. ");
+      setAddOpen(false);
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <div className="addTubes">
-      <div className="modalll">
+      <div className="myModal">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>
@@ -68,6 +69,5 @@ export const AddDetails = ({ id, setAddOpen,sort }) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };
