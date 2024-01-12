@@ -23,6 +23,7 @@ import { OutStore } from "./pages/Store/OutStore";
 import { HomePage } from "./HomePage";
 import { Wood } from "./pages/processDtails/products/Wood/Wood";
 import { Sallery } from "./pages/Sallery/Sallery";
+import { LandingHome } from "./component/LandingHome/LandingHome";
   
 function App() {
   const { user } = useContext(AuthContext);
@@ -36,7 +37,7 @@ function App() {
               {user === null ? (
                 <Route exact path="/" element={<Login />} />
               ) : (
-                <Route exact path="/" element={<HomePage />} />
+                <Route exact path="/" element={<LandingHome />} />
               )}
               <Route exact path="/process" element={<ProcessHome />} />
               <Route exact path="/charts" element={<Home />} />

@@ -12,7 +12,6 @@ import StoreIcon from "@mui/icons-material/Store";
 import AirplayIcon from "@mui/icons-material/Airplay";
 import PaidIcon from "@mui/icons-material/Paid";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import EngineeringIcon from "@mui/icons-material/Engineering";
 
 export const Navbar = () => {
     const { dispatch, user } = useContext(AuthContext);
@@ -125,8 +124,6 @@ export const Navbar = () => {
                     <PaidIcon className="m-auto" />
                   </Link>
                 )}
-              </div>
-            )}
             <Link
               to="/sallery"
               style={{ textDecoration: "none", color: "white" }}
@@ -135,6 +132,8 @@ export const Navbar = () => {
               <h2>المرتبات</h2>
               <AttachMoneyIcon className="m-auto" />
             </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>

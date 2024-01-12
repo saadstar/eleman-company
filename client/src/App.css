@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
 *{
   padding: 0;
   margin: 0;
@@ -14,6 +16,7 @@ a{
   --main-color:white;
   --soft-color:#ddd;
   --dark-color:#2a3447;
+  --nav-color: #ffcd36;
 }
 body{
   font-family: 'Open Sans', sans-serif;
@@ -69,6 +72,7 @@ a{
         gap: 10px;
         color: var(--soft-color) !important;
         font-weight: bold;
+        font-family: 'Lalezar',sans-serif;
 }
 .nav-item{
   padding: 5px;
