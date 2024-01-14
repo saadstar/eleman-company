@@ -1,5 +1,4 @@
 import React , { useState, useEffect } from 'react';
-import { topDealUsers } from "../../component/data";
 import "./boxOne.css";
 import axios from "axios";
 
@@ -15,15 +14,16 @@ export const Box1 = () => {
       }
     };
     fetchData();    
-    },[rowData._id])
-    
+    },[rowData._id])   
   
   return (
       <div className='top-box'>
-          <h1>الأكثر استهلاكاً</h1>
+          <h1>الأكثر صرفاَ</h1>
           <div className='list'>
           {
-              rowData.slice(5).map((deal) => (
+          rowData.sort((x, y) => {
+            return  y.out -x.out 
+          }).slice(0,5).map((deal) => (
                   <div key={deal._id} className='listItem'>
                       <div className='user'>
                           <img src={deal.img} alt="dsaf" className='boxImg'/>

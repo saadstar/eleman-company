@@ -40,19 +40,19 @@ export const Store = ({ type }) => {
     {
       field: "name",
       headerName: "اسم العنصر",
-      width: 190,
+      width: 220,
       editable: false,
     },
     {
       field: "quantity",
       headerName: "الكميه",
-      width: 110,
+      width: 80,
       editable: false,
     },
     {
       field: "createdAt",
       headerName: "التاريخ",
-      width: 160,
+      width: 130,
     },
     {
       field: "filename",
@@ -77,7 +77,7 @@ export const Store = ({ type }) => {
     {
       field: "exist",
       headerName: "صرف فرعي",
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         const editHandler = () => {
           setEditData(params.row);
@@ -116,7 +116,7 @@ export const Store = ({ type }) => {
     {
       field: "entry",
       headerName: "المدخل",
-      width: 50,
+      width: 70,
       editable: false,
     },
   ];
@@ -140,30 +140,30 @@ export const Store = ({ type }) => {
     {
       field: "quantityOut",
       headerName: "الكميه",
-      width: 110,
+      width: 90,
       editable: false,
     },
     {
       field: "quantity",
       headerName: "أصل الكميه",
-      width: 110,
+      width: 90,
       editable: false,
     },
     {
       field: "updatedAt",
       headerName: "التاريخ",
-      width: 160,
+      width: 120,
     },
     {
       field: "nameOne",
       headerName: "المهندس المستلم",
-      width: 160,
+      width: 120,
       editable: false,
     },
     {
       field: "nameTwo",
       headerName: "المقاول المستلم",
-      width: 160,
+      width: 120,
       editable: false,
     },
     {
@@ -189,7 +189,7 @@ export const Store = ({ type }) => {
     {
       field: "exist",
       headerName: "صرف نهائي",
-      width: 200,
+      width: 100,
       renderCell: (params) => {
         const editHandler = () => {
           setEditData(params.row);

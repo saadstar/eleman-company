@@ -14,6 +14,9 @@ const SaveSchema = new Schema({
     Value: {
         type:Number
     },
+    proccessName: {
+        type:String
+    },
     // recived: {
     //     type:String
     // },

@@ -14,14 +14,14 @@ const StoreSchema = new Schema(
     quantityOut: {
       type: Number,
     },
-    filename: {
-      type: String,
-      required: true,
-    },
-    filepath: {
-      type: String,
-      required: true,
-    },
+    // filename: {
+    //   type: String,
+    //   required: true,
+    // },
+    // filepath: {
+    //   type: String,
+    //   required: true,
+    // },
     nameOne: {
       type: String,
     },

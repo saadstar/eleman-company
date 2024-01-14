@@ -10,6 +10,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
   const [name, setName] = useState("");
   const [out, setOut] = useState(0);
   const [inn, setIn] = useState(0);
+  const [proccessName, setProccessName] = useState("لا يوجد");
   const navigate = useNavigate("");
 
   // to activate img upload and recive dont forget to active img from backend
@@ -22,6 +23,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
       formData.append("out", out);
       formData.append("inn", inn);
       formData.append("recived", recived);
+      formData.append("proccessName", proccessName);
       toast.warn("جاري رفع الصوره برجاء الانتظار...");
       const res = await axios.post(
         "https://api.eleaman.com/api/save",
@@ -40,6 +42,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
     try {
       const res = await axios.post("https://api.eleaman.com/api/save", {
         name,
+        proccessName,
         out,
         inn,
       });
@@ -95,6 +98,15 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
                 onChange={(e) => setRecived(e.target.value)}
               />
             </div> */}
+            <div className="formItem">
+              <label htmlFor="proccessName">العمليه</label>
+              <input
+                name="proccessName"
+                placeholder="ادخل اسم العمليه"
+                type="text"
+                onChange={(e) => setProccessName(e.target.value)}
+              />
+            </div>
             {/* <div className="formItem">
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />

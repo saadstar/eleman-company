@@ -22,7 +22,7 @@ export const Save = () => {
   let totalArr = [];
   let totalOutArr = [];
   const filteredRecivedData = rowData.filter((item) => {
-    return search === "" ? item : item.recived === search;
+    return search === "" ? item :  item.proccessName === search;
   });
 
   const totalValue = () => {
@@ -99,6 +99,11 @@ export const Save = () => {
       width: 160,
     },
     {
+      field: "proccessName",
+      headerName: "العمليه",
+      width: 120,
+    },
+    {
       field: "filename",
       headerName: "ايصال العهده الماليه",
       width: 120,
@@ -108,9 +113,13 @@ export const Save = () => {
           setShowImgOpen(true);
         };
         return (
-          <button style={{ cursor: "pointer" }}  className="btn btn-outline-primary"         
+          <button
+            style={{ cursor: "pointer" }}
+            className="btn btn-outline-primary"
             onClick={showHandler}
-          >عرض الصوره</button>
+          >
+            عرض الصوره
+          </button>
         );
       },
     },
@@ -150,6 +159,7 @@ export const Save = () => {
       createdAt: item.createdAt.split("T")[0],
       filename: item.filename,
       entry: user.username,
+      proccessName: item.proccessName,
     };
   });
   return (
@@ -179,7 +189,7 @@ export const Save = () => {
               class="form-control w-50 me-2 p-2"
               onChange={(e) => setSearch(e.target.value)}
               type="search"
-              placeholder="ابحث باسم المستلم"
+              placeholder="ابحث باسم العمليه"
               aria-label="Search"
             />
             <button type="button" class="btn btn-light">
