@@ -59,7 +59,7 @@ export const Sallery = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredSallery.map((item) => (
+            {filteredSallery.reverse().map((item) => (
               <tr>
                 <td className="zz">{item.name}</td>
                 <td className="zz">{item.role}</td>

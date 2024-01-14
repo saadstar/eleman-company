@@ -139,7 +139,7 @@ export const Sand = ({ type, ar }) => {
       },
     },
   ];
-  const rows = filterData.map((item) => {
+  const rows = filterData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,

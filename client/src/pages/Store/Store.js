@@ -120,7 +120,7 @@ export const Store = ({ type }) => {
       editable: false,
     },
   ];
-  const rows = existData.map((item) => {
+  const rows = existData.reverse().map((item) => {
     return {
       id: item._id,
       name: item.name,
@@ -212,7 +212,7 @@ export const Store = ({ type }) => {
     },
   ];
 
-  const existTwoRows = ExistTwoData.map((item) => {
+  const existTwoRows = ExistTwoData.reverse().map((item) => {
     return {
       id: item._id,
       name: item.name,

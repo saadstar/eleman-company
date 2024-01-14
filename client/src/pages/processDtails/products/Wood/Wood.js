@@ -111,7 +111,7 @@ export const Wood = () => {
     },
   ];
 
-  const rows = FilteredData.map((item) => {
+  const rows = FilteredData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,

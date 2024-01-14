@@ -102,7 +102,7 @@ export const FunderDetails = () => {
       width: 40,
     },
   ];
-  const rows = filtredData.map((item) => {
+  const rows = filtredData.reverse().map((item) => {
     return {
       id: item._id,
       name: item.name,

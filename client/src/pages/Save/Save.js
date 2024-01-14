@@ -11,7 +11,7 @@ export const Save = () => {
   const [addOpen, setAddOpen] = useState(false);
   const [outOpen, setOutOpen] = useState(false);
   const [showImgOpen, setShowImgOpen] = useState(false);
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState([])
   const [fullValue, setFullValue] = useState();
   const [fullOutValue, setFullOutValue] = useState();
   const [search, setSearch] = useState("");
@@ -149,7 +149,7 @@ export const Save = () => {
       width: 60,
     },
   ];
-  const rows = filteredRecivedData.map((item) => {
+  const rows = filteredRecivedData.reverse().map((item) => {
     return {
       id: item._id,
       name: item.name,

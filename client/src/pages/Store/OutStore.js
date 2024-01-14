@@ -107,7 +107,7 @@ export const OutStore = () => {
       },
     },
   ];
-  const rows = filteredData.map((item) => {
+  const rows = filteredData.reverse().map((item) => {
     return {
       id: item._id,
       name: item.name,

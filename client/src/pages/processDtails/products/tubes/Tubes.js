@@ -173,14 +173,14 @@ export const Tubes = ({ type }) => {
       },
     },
   ];
-  const rows = searchFilteredData.map((item) => {
+  const rows = searchFilteredData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,
       quantity: item.quantity,
       price: item.price,
       value: item.value,
-      other:item.other,
+      other: item.other,
       createdAt: item.createdAt.split("T")[0],
     };
   });
