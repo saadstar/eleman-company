@@ -4,8 +4,12 @@ import { toast } from "react-toastify";
 
 export const Out = ({ setOutOpen, editData }) => {
   const [driver, setDriver] = useState("");
-  const btnHandler = async () => {
+  const [loading, setLoading] = useState(false);
+
+  const btnHandler = async (e) => {
     try {
+      e.preventDefault();
+      setLoading(true);
       const res = await axios.put(
         `https://api.eleaman.com/api/store/${editData.id}`,
         {
@@ -15,6 +19,8 @@ export const Out = ({ setOutOpen, editData }) => {
         }
       );
       res.status === 200 && toast.success("تم صرف العنصر بنجاح");
+      setOutOpen(false);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -27,7 +33,7 @@ export const Out = ({ setOutOpen, editData }) => {
           X
         </span>
         <h1>{`صرف نهائي`}</h1>
-        <form onSubmit={(e) => e.preventDefault}>
+        <form>
           <div className="formItem">
             <label htmlFor="driver">السائق المستلم : </label>
             <input
@@ -38,9 +44,9 @@ export const Out = ({ setOutOpen, editData }) => {
               required
             />
           </div>
-          <button className="addButton" onClick={btnHandler}>
-            صرف نهائي{" "}
-          </button>
+          {loading === true ? <span className="loader"></span>: (<button className="addButton" onClick={btnHandler}>
+            صرف نهائي
+          </button>)}
         </form>
       </div>
     </div>

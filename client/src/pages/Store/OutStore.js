@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./store.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ShowImg } from "./ShowImg";
+import { toast } from "react-toastify";
 
 export const OutStore = () => {
   const [rowData, setRowData] = useState([]);
   const [showData, setShowData] = useState(undefined);
   const [showOpen, setShowOpen] = useState(false);
-  const navigate=useNavigate("")
   const filteredData = rowData.filter((item) => item.exist === 3);
 
   useEffect(() => {
@@ -91,10 +91,11 @@ export const OutStore = () => {
       headerName: "اعاده",
       width: 100,
       renderCell: (params) => {
-        const retrunStore = async () => {
+        const retrunStore = async (e) => {
           try {
+            e.preventDefault();
             const res = await axios.put(`https://api.eleaman.com/api/store/${params.row.id}`, { exist: 1 });;
-            res.status === 200 && navigate("/store");
+            res.status === 200 && toast.success("تمت الأعاده.");
           } catch (err) {
             console.log(err);
           }

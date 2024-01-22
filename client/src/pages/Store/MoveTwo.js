@@ -6,9 +6,13 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
   const [nameOne, setNameOne] = useState("لا يوجد");
   const [nameTwo, setNameTwo] = useState("لا يوجد");
   const [quantityOut, setQuantityOut] = useState(editData.quantity);
+  const [loading, setLoading] = useState(false);
+  const [openQuantity, setOpenQuantity] = useState(false);
 
-  const editHandler = async () => {
+  const editHandler = async (e) => {
     try {
+      e.preventDefault();
+      setLoading(true);
       const res = await axios.put(
         `https://api.eleaman.com/api/store/${editData.id}`,
         {
@@ -21,26 +25,37 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
       );
       res.status === 200 &&
         toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
+      setEditOpen(false);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
-  const postHandler = async () => {
-    try {
-      const res = await axios.post(`https://api.eleaman.com/api/store`, {
-        ...editData,
-        exist: 1,
-        quantity: editData.quantity - quantityOut,
-      });
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const butnHandler = () => {
-    editHandler();
-    postHandler();
+  const butnHandler = async(e) => {
+     try {
+       e.preventDefault();
+       setLoading(true);
+        await axios.put(
+         `https://api.eleaman.com/api/store/${editData.id}`,
+         {
+           ...editData,
+           nameOne,
+           nameTwo,
+           quantityOut,
+           exist: 2,
+         }
+       );
+        await axios.post(`https://api.eleaman.com/api/store`, {
+          ...editData,
+          exist: 1,
+          quantity: editData.quantity - quantityOut,
+        });
+         toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
+       setEditOpen(false);
+       setLoading(false);
+     } catch (err) {
+       console.log(err);
+     }
   };
   return (
     <div className="addTubes">
@@ -70,23 +85,41 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
               required
             />
           </div>
-          <div className="formItem">
-            <label htmlFor="quantityOut">صرف كميه محدده :</label>
-            <input
-              name="quantityOut"
-              placeholder="اذا كنت تريد صرف الكميه كلها اضغط 1"
-              type="number"
-              onChange={(e) => setQuantityOut(e.target.value)}
-            />
+          <div className="mb-3">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                onClick={(e) => setOpenQuantity(!openQuantity)}
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault">
+                صرف كميه محدده
+              </label>
+            </div>
+            {openQuantity && (
+              <div className="formItem">
+                <label htmlFor="quantityOut">الكميه المصروفه : </label>
+                <input
+                  name="quantityOut"
+                  type="number"
+                  onChange={(e) => setQuantityOut(e.target.value)}                  
+                />
+              </div>
+            )}
           </div>
-          <button
+          {loading === true ? (
+          <span className="loader"></span>
+          )
+         : (<button
             className="addButton"
             onClick={
               quantityOut === editData.quantity ? editHandler : butnHandler
             }
           >
             تحويل للفرعي
-          </button>
+          </button>)}
         </form>
       </div>
     </div>

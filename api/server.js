@@ -12,6 +12,8 @@ const carRoute = require("./routes/carRoute");
 const funderCompanyRoute = require("./routes/funderCompany");
 const funderDetailsRoute = require("./routes/funderDetailsRoute");
 const salleryRoute = require("./routes/salleryRoute");
+const analyicsRoute = require("./routes/analyicsRoute");
+const analyicsDetailsRoute = require("./routes/analyicsDetailsRoute");
 const cookieParser = require("cookie-parser");
 
 connectDB();
@@ -31,6 +33,8 @@ app.use("/api/car", carRoute);
 app.use("/api/funderCompany", funderCompanyRoute);
 app.use("/api/funderDetails", funderDetailsRoute);
 app.use("/api/sallery", salleryRoute);
+app.use("/api/analyics", analyicsRoute);
+app.use("/api/analyicsDetails", analyicsDetailsRoute);
 
 
 

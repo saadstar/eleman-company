@@ -10,8 +10,9 @@ export const AddFunder = ({ setAddOpen,id }) => {
         return { ...prev, [e.target.name]: e.target.value };
       });
     };
-    const addFunderDetails = async () => {
+    const addFunderDetails = async (e) => {
         try {
+          e.preventDefault();
             const res = await axios.post(
               "https://api.eleaman.com/api/funderDetails",
               {
@@ -20,7 +21,8 @@ export const AddFunder = ({ setAddOpen,id }) => {
                 funderCompanyId: id,
               }
             );
-            res.status === 200 && toast.success("تمت اضافه بنجاح")
+          res.status === 200 && toast.success("تمت اضافه بنجاح");
+          setAddOpen(false);
         } catch (err) {
             console.log(err);
         }

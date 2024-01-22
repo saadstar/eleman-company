@@ -20,9 +20,11 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import { Funders } from "./pages/Funders/Funders";
 import { OutStore } from "./pages/Store/OutStore";
-import { HomePage } from "./HomePage";
 import { Wood } from "./pages/processDtails/products/Wood/Wood";
 import { Sallery } from "./pages/Sallery/Sallery";
+import { Analyics } from "./pages/Analyics/Analyics";
+import { AnalyicsDetails } from "./pages/AnalyicsDetails/AnalyicsDetails";
+import { AnalyicsReport } from "./pages/AnalyicsDetails/AnalyicsReport/AnalyicsReport";
 import { LandingHome } from "./component/LandingHome/LandingHome";
   
 function App() {
@@ -94,21 +96,11 @@ function App() {
                 element={<Funders ar="برجاء اختيار شركه التمويل. " />}
               />
               <Route path="/funders/:id" element={<Funders />} />
-              <Route
-                path="/sallery"
-                element={<Sallery/> }
-              />
-              <Route
-                path="/staff"
-                element={
-                  <div
-                    className="d-flex fw-bold text-center"
-                    style={{ fontSize: "70px", color: "red" }}
-                  >
-                    نعمل علي العده في الوقت الحالي برجاء انتظار التحديث القادم.
-                  </div>
-                }
-              />
+              <Route path="/sallery" element={<Sallery />} />
+              <Route path="/analyics" element={<Analyics />} />
+              <Route path="/analyics/:id" element={<AnalyicsDetails />} />
+              <Route path="/analyics/report/:id" element={<AnalyicsReport type="one" dataNum={2} />} />
+              <Route path="/analyics/finalreport/:id" element={<AnalyicsReport type="two" dataNum={3} />} />
             </Routes>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useContext   }  from 'react'
+import React, { useContext,useState   }  from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,9 +12,11 @@ import StoreIcon from "@mui/icons-material/Store";
 import AirplayIcon from "@mui/icons-material/Airplay";
 import PaidIcon from "@mui/icons-material/Paid";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import ArticleIcon from "@mui/icons-material/Article";
 
 export const Navbar = () => {
-    const { dispatch, user } = useContext(AuthContext);
+  const { dispatch, user } = useContext(AuthContext);
+  const [isClose, setIsClose] = useState(false);
   const navigate = useNavigate("");
 
     const logout = async() => {
@@ -30,16 +32,24 @@ export const Navbar = () => {
     
   return (
     <div className="navBar">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid axin">
+      <div className={isClose === true ? "d-none" : "navBarCloser"}>
+        <div className="navd-flex">
+          <div className="Navclose close" onClick={() => setIsClose(true)}>
+            X
+          </div>
+          <h2>شركه الايمان</h2>
           <div className="icons">
             <div className="user">
-              <span>{user === null ? "User" : `${user.firstName}`}</span>
+              <span>{user === null ? "User" : `${user.username}`}</span>
             </div>
             {user !== null && (
               <i class="fa-solid fa-right-from-bracket" onClick={logout}></i>
             )}
           </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">        
           <button
             class="navbar-toggler text-white bg-white"
             type="button"
@@ -72,6 +82,16 @@ export const Navbar = () => {
                   >
                     <h2>التحليلات</h2>
                     <AutoGraphIcon className="m-auto" />
+                  </Link>
+                )}
+                {user.isAdmin === 1 && (
+                  <Link
+                    to="/analyics"
+                    style={{ textDecoration: "none", color: "white" }}
+                    className="nav-item d-flex gap-2"
+                  >
+                    <h2>التقارير</h2>
+                    <ArticleIcon className="m-auto" />
                   </Link>
                 )}
                 {user.isAdmin === 1 && (
@@ -124,14 +144,14 @@ export const Navbar = () => {
                     <PaidIcon className="m-auto" />
                   </Link>
                 )}
-            <Link
-              to="/sallery"
-              style={{ textDecoration: "none", color: "white" }}
-              className="nav-item d-flex gap-1"
-            >
-              <h2>المرتبات</h2>
-              <AttachMoneyIcon className="m-auto" />
-            </Link>
+                <Link
+                  to="/sallery"
+                  style={{ textDecoration: "none", color: "white" }}
+                  className="nav-item d-flex gap-1"
+                >
+                  <h2>المرتبات</h2>
+                  <AttachMoneyIcon className="m-auto" />
+                </Link>
               </div>
             )}
           </div>

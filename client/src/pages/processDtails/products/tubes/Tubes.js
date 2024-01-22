@@ -196,7 +196,7 @@ export const Tubes = ({ type }) => {
       }
     };
     fetchRow();
-  }, [searchFilteredData._id]);
+  });
   return (
     <div className="tubes">
       <div className="container loober">

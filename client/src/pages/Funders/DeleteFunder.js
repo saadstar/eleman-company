@@ -3,12 +3,14 @@ import { toast } from 'react-toastify';
 import axios from "axios";
 
 export const DeleteFunder = ({ setDeleteOpen, deleteUserId }) => {
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     try {
+      e.preventDefault();
       await axios.delete(
         `https://api.eleaman.com/api/funderDetails/${deleteUserId}`
       );
       toast.success("تم حذف العنصر بنجاح");
+      setDeleteOpen(false);
     } catch (err) {
       console.log(err);
     }

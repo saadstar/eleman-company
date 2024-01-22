@@ -8,10 +8,9 @@ export const AddStore = ({ setAddOpen }) => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate("");
   const uploadNewStoreItem = async (e) => {
-    e.preventDefault();
     try {
+      e.preventDefault();
       const formData = new FormData();
       // formData.append("file", file);
       formData.append("name", name);
@@ -24,8 +23,7 @@ export const AddStore = ({ setAddOpen }) => {
         formData
       );
       setAddOpen(false);
-      toast.success("تم اضافه العنصر بنجاح.");
-      res.status === 200 && navigate("/store");
+      res.status === 200 && toast.success("تم اضافه العنصر بنجاح.");
       setLoading(false);
     } catch (err) {
       console.log(err);

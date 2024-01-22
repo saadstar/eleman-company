@@ -19,19 +19,19 @@ export const FunderDetails = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.eleaman.com/api/funderDetails/${id}`
+      );
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `https://api.eleaman.com/api/funderDetails/${id}`
-        );
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
-  }, [id]);
+  });
   const columns = [
     {
       field: "name",
@@ -59,27 +59,27 @@ export const FunderDetails = () => {
     {
       field: "site",
       headerName: "الموقع",
-      width: 160,
+      width: 100,
     },
     {
       field: "storeType",
       headerName: "المخزن",
-      width: 150,
+      width: 100,
     },
     {
       field: "value",
       headerName: "السعر",
-      width: 70,
+      width: 100,
     },
     {
       field: "createdAt",
       headerName: "التاريخ",
-      width: 160,
+      width: 120,
     },
     {
       field: "Action",
       headerName: "حذف",
-      width: 100,
+      width: 50,
       renderCell: (params) => {
         const deleteHandler = () => {
           setDeleteUserId(params.row.id);

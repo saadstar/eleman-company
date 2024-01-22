@@ -10,8 +10,9 @@ export const AddCar = ({ setOpenModal }) => {
   const [oil, setOil] = useState(0);
   const [openOil, setOpenOil] = useState(false);
 
-    const addCarHandler = async () => {
+    const addCarHandler = async (e) => {
       try {
+        e.preventDefault();
             const res = await axios.post(`https://api.eleaman.com/api/car`, {
               name,
               price,

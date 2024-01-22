@@ -10,34 +10,36 @@ export const Funders = ({ar}) => {
   const [funderCompanyData, setFunderCompanyData] = useState([]);
   const [companyName, setCompanyName] = useState("");
 
-  const postCompanyName = async () => {
+  const postCompanyName = async (e) => {
      try {
+       e.preventDefault();
        const res = await axios.post("https://api.eleaman.com/api/funderCompany", {
          companyName,
        });
        res.status === 200 && toast.success("تم اضافه الممول بنجاح");
+       setAddCompany(false);
      } catch (err) {
        console.log(err);
      }
   }
-  useEffect(() => {
-    const fetchCompany = async () => {
-      try {
-        const res = await axios.get("https://api.eleaman.com/api/funderCompany");
-        setFunderCompanyData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+  const fetchCompany = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/funderCompany");
+      setFunderCompanyData(res.data);
+    } catch (err) {
+      console.log(err);
     }
+  }
+  useEffect(() => {
     fetchCompany();    
-    postCompanyName();
-  },[funderCompanyData._id])
+    // postCompanyName();
+  })
   return (
     <div className="funder">
       <div className="container">
         <div className="menurContainer">
           <div className="menur">
-            {funderCompanyData.map((item) => {
+            {funderCompanyData.reverse().map((item) => {
               return (
                 <Link
                   to={`/funders/${item._id}`}
@@ -67,8 +69,7 @@ export const Funders = ({ar}) => {
         )}
       </div>
       {addCompany && (
-        <div className="modal-relitave">
-          <div className="modalll">
+          <div className="myModal">
             <span className="close" onClick={() => setAddCompany(false)}>
               X
             </span>
@@ -88,7 +89,7 @@ export const Funders = ({ar}) => {
               </button>
             </form>
           </div>
-        </div>
+       
       )}
     </div>
   );

@@ -57,17 +57,17 @@ export const Save = () => {
     totalOutValue();
     totalOutValueFun();
   });
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/save");
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("https://api.eleaman.com/api/save");
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
-  }, [filteredRecivedData._id]);
+  });
   const columns = [
     {
       field: "name",

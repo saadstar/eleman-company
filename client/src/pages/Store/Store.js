@@ -25,17 +25,17 @@ export const Store = ({ type }) => {
   const ExistTwoData = rowData.filter((item) => item.exist === 2);
   const { user } = useContext(AuthContext);
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/store");
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("https://api.eleaman.com/api/store");
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
-  }, [rowData.id]);
+  });
   const columns = [
     {
       field: "name",
@@ -77,7 +77,7 @@ export const Store = ({ type }) => {
     {
       field: "exist",
       headerName: "صرف فرعي",
-      width: 150,
+      width: 80,
       renderCell: (params) => {
         const editHandler = () => {
           setEditData(params.row);
@@ -96,7 +96,7 @@ export const Store = ({ type }) => {
     {
       field: "Action",
       headerName: "حذف",
-      width: 100,
+      width: 60,
       renderCell: (params) => {
         const deleteHandler = () => {
           setDeleteUserId(params.row.id);
@@ -116,7 +116,7 @@ export const Store = ({ type }) => {
     {
       field: "entry",
       headerName: "المدخل",
-      width: 70,
+      width: 100,
       editable: false,
     },
   ];

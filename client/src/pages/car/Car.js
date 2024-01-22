@@ -8,17 +8,17 @@ export const Car = () => {
   const [carData, setCarData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        const res = await axios.get("https://api.eleaman.com/api/car");
-        setCarData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+  const fetchCar = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/car");
+      setCarData(res.data);
+    } catch (err) {
+      console.log(err);
     }
+  }
+  useEffect(() => {
     fetchCar();
-  },[carData._id])
+  })
 
   return (
     <div className="car">
@@ -51,8 +51,8 @@ export const Car = () => {
           </tr>
         </thead>
         <tbody>
-          {carData.map((item) => (
-            <tr>
+          {carData.reverse().map((item) => (
+            <tr key={item._id}>
               <td className="zz">{item.name}</td>
               <td className="zz">{item.price}</td>
               <td className="zz">{item.km}</td>

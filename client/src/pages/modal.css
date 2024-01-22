@@ -57,6 +57,7 @@
     outline: none;
     border: 1px solid #ddd;
     border-radius: 3px;
+    width: 100%;
 }
 
 .addButton {

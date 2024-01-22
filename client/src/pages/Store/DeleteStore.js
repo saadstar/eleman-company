@@ -3,10 +3,11 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 export const DeleteStore = ({ setDeleteOpen, deleteUserId }) => {
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     try {
+      e.preventDefault();
       await axios.delete(`https://api.eleaman.com/api/store/${deleteUserId}`);
-      toast.success("تم حذف العنصر بنجاح");
+      toast.error("تم حذف العنصر ");
       setDeleteOpen(false);
     } catch (err) {
       console.log(err);

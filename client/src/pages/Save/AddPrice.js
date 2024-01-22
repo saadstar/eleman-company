@@ -8,6 +8,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
   const [file, setFile] = useState(undefined);
   const [recived, setRecived] = useState("");
   const [name, setName] = useState("");
+    const [loading, setLoading] = useState(false);
   const [out, setOut] = useState(0);
   const [inn, setIn] = useState(0);
   const [proccessName, setProccessName] = useState("لا يوجد");
@@ -40,14 +41,17 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
   // to activate upload  without img and recived name
   const uploadNewPriceWithoutImg = async (e) => {
     try {
+      e.preventDefault();
+      setLoading(true)
       const res = await axios.post("https://api.eleaman.com/api/save", {
         name,
-        proccessName,
         out,
         inn,
+        proccessName,
       });
       toast.success("تم بنجاح.");
-      setAddOpen(false);
+      setLoading(false);
+      // setAddOpen(false);
       setOutOpen(false);
       res.status === 200 && navigate("/save");
     } catch (err) {
@@ -111,9 +115,13 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             </div> */}
-            <button className="addButton" onClick={uploadNewPriceWithoutImg}>
-              أضافه
-            </button>
+            {loading === true ? (
+              <span className="loader"></span>
+            ) : (
+              <button className="addButton" onClick={uploadNewPriceWithoutImg}>
+                أضافه
+              </button>
+            )}
           </form>
         ) : (
           <form onSubmit={(e) => e.preventDefault}>

@@ -43,6 +43,7 @@ body{
 .contentContainer{
   padding: 5px 20px;
   width: 100%;
+  color: white;
 }
 /* //navbar  */
 
@@ -55,12 +56,17 @@ body{
   background-color: var(--main-bg);
   color: var(--soft-color) !important;
 }
-.axin {
+.navd-flex{
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
   align-items: center;
-  gap: 3%;
+  justify-content: space-around;
+}
+.navBarCloser{
+  background-color: rgba(51, 50, 50, 0.61);
+  padding: 10px;
+}
+.navBarCloser:hover{
+  background-color: rgba(240, 92, 92, 0.778);
 }
 a{
   color: var(--soft-color) !important;
@@ -68,7 +74,7 @@ a{
 .nAV{
       display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         gap: 10px;
         color: var(--soft-color) !important;
         font-weight: bold;
