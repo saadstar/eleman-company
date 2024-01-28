@@ -26,6 +26,7 @@ import { Analyics } from "./pages/Analyics/Analyics";
 import { AnalyicsDetails } from "./pages/AnalyicsDetails/AnalyicsDetails";
 import { AnalyicsReport } from "./pages/AnalyicsDetails/AnalyicsReport/AnalyicsReport";
 import { LandingHome } from "./component/LandingHome/LandingHome";
+import { Insurance } from "./pages/processDtails/products/Insurance/Insurance";
   
 function App() {
   const { user } = useContext(AuthContext);
@@ -85,6 +86,27 @@ function App() {
                 element={<Details sort="azl" ar="عزل" />}
               />
               <Route path="/processDetails/wood/:id" element={<Wood />} />
+              <Route
+                path="/processDetails/workerInsurance/:id"
+                element={
+                  <Insurance type="workerInsurance" ar="التأمين و العماله" />
+                }
+              />
+              <Route
+                path="/processDetails/finalInsurance/:id"
+                element={
+                  <Insurance type="finalInsurance" ar="التأمين الابتدائي" />
+                }
+              />
+              <Route
+                path="/processDetails/returnInsurance/:id"
+                element={
+                  <Insurance
+                    type="returnInsurance"
+                    ar="التأمين الاستحقاقي النهائي"
+                  />
+                }
+              />
               <Route path="/users" element={<Users />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/store" element={<Store />} />
@@ -99,8 +121,14 @@ function App() {
               <Route path="/sallery" element={<Sallery />} />
               <Route path="/analyics" element={<Analyics />} />
               <Route path="/analyics/:id" element={<AnalyicsDetails />} />
-              <Route path="/analyics/report/:id" element={<AnalyicsReport type="one" dataNum={2} />} />
-              <Route path="/analyics/finalreport/:id" element={<AnalyicsReport type="two" dataNum={3} />} />
+              <Route
+                path="/analyics/report/:id"
+                element={<AnalyicsReport type="one" dataNum={2} />}
+              />
+              <Route
+                path="/analyics/finalreport/:id"
+                element={<AnalyicsReport type="two" dataNum={3} />}
+              />
             </Routes>
           </div>
         </div>

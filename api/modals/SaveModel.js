@@ -17,12 +17,12 @@ const SaveSchema = new Schema({
     proccessName: {
         type:String
     },
-    // recived: {
-    //     type:String
-    // },
-    // filename: {
-    //     type: String,
-    // }
+    recived: {
+        type:String
+    },
+    filename: {
+        type: String,
+    }
 }, { timestamps: true });
 
 

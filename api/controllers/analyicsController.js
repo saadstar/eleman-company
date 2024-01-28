@@ -20,4 +20,13 @@ const allAnalyics = asyncHandler(async (req, res) => {
     res.status(505).json(err);
   }
 });
-module.exports = { createAnalyics, allAnalyics };
+// get an Process @GET  by id
+const aAnalyics = asyncHandler(async (req, res) => {
+  try {
+    const oneAnalyics = await Analyics.findById(req.params.id);
+    res.status(200).json(oneAnalyics);
+  } catch (err) {
+    res.status(505).json(err);
+  }
+});
+module.exports = { createAnalyics, allAnalyics, aAnalyics };

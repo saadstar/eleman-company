@@ -2,6 +2,9 @@ import React from 'react'
 import { Link, useParams } from "react-router-dom";
 import ScienceIcon from "@mui/icons-material/Science";
 import RoofingIcon from "@mui/icons-material/Roofing";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 
 
 export const Menu = () => {
@@ -85,7 +88,7 @@ export const Menu = () => {
       >
         <div className="item listItem">
           <div className="itemTitle">عزل</div>
-          <i class="fa-solid fa-caret-up"id="none"></i>
+          <i class="fa-solid fa-caret-up" id="none"></i>
         </div>
       </Link>
       <Link
@@ -116,6 +119,36 @@ export const Menu = () => {
         <div className="item listItem">
           <div className="itemTitle">خشب</div>
           <i class="fa-solid fa-tree" id="none"></i>
+        </div>
+      </Link>
+      <Link
+        to={`/processDetails/workerInsurance/${id}`}
+        style={{ textDecoration: "none" }}
+        className="wTen"
+      >
+        <div className="item listItem">
+          <div className="itemTitle">التأمين </div>
+          <AccountBalanceIcon id="none" />
+        </div>
+      </Link>
+      <Link
+        to={`/processDetails/finalInsurance/${id}`}
+        style={{ textDecoration: "none" }}
+        className="wTen"
+      >
+        <div className="item listItem">
+          <div className="itemTitle">التأمين الابتدائي</div>
+          <AccountBalanceWalletIcon id='none'/>
+        </div>
+      </Link>
+      <Link
+        to={`/processDetails/returnInsurance/${id}`}
+        style={{ textDecoration: "none" }}
+        className="wTen"
+      >
+        <div className="item listItem">
+          <div className="itemTitle">التأمين الاستحقاقي </div>
+          <AccountTreeIcon id='none'/>
         </div>
       </Link>
     </div>

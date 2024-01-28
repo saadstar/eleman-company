@@ -8,15 +8,15 @@ export const ProcessHome = () => {
   const [openModal, setOpenModal] = useState(false);
   const [processData, setProcessData] = useState([]);
 
-  useEffect(() => {
-    const fetchProcess = async () => {
-      try {
-        const res = await axios.get("https://api.eleaman.com/api/process");
-        setProcessData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+  const fetchProcess = async () => {
+    try {
+      const res = await axios.get("https://api.eleaman.com/api/process");
+      setProcessData(res.data);
+    } catch (err) {
+      console.log(err);
     }
+  }
+  useEffect(() => {
     fetchProcess();
   },[processData._id])
   return (

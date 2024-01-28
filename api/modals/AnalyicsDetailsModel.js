@@ -14,7 +14,23 @@ const ProcessDetailsSchema = new Schema({
         type: Number,
         required: true
     },
-    exportNum: {
+    feNum: {
+        type: Number,
+        required: true
+    },
+    cementNum: {
+        type: Number,
+        required: true
+    },
+    sandNum: {
+        type: Number,
+        required: true
+    },
+    senNum: {
+        type: Number,
+        required: true
+    },
+    workerNum: {
         type: Number,
         required: true
     },
@@ -24,19 +40,15 @@ const ProcessDetailsSchema = new Schema({
     },
     floorNum: {
         type: Number,
-        required: true
     },
     houseNum: {
         type: Number,
-        required: true
     },
     woodNum: {
         type: Number,
-        required: true
     },
     blindNum: {
         type: Number,
-        required: true
     },
     lockNum: {
         type: Number,
@@ -44,7 +56,6 @@ const ProcessDetailsSchema = new Schema({
     },
     waterNum: {
         type: Number,
-        required: true
     },
     value: {
         type: Number,

@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./processDetails.css";
 import { Menu } from "./Menu/Menu";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../../auth/authContext/authContext";
+import { toast } from "react-toastify";
 
 export const ProcessDetails = () => {
+  const { user } = useContext(AuthContext);
   const [processBand, setProcessBand] = useState([]);
+  const [processData, setProcessData] = useState([]);
+  const [processIncome, setProcessIncome] = useState(0);
   const [processTitle, setProcessTitle] = useState({});
   const { id } = useParams();
   const tubesValue = [];
@@ -63,7 +68,7 @@ export const ProcessDetails = () => {
       repairValue.push(item.value);
     } else if (item.type === "azl") {
       azlValue.push(item.value);
-    }   else if (item.type === "wood") {
+    } else if (item.type === "wood") {
       woodValue.push(item.value);
     }
   });
@@ -199,7 +204,29 @@ export const ProcessDetails = () => {
     fetchProcessValue();
     fetchProcessTitle();
   });
-
+  const fetchProcess = async (e) => {
+    try {
+      const res = await axios.get(`https://api.eleaman.com/api/process/${id}`);
+      setProcessData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addIncomeProcess = async (e) => {
+    try {
+      e.preventDefault();
+      const res = await axios.put(`https://api.eleaman.com/api/process/${id}`, {
+        processIncome,
+      });
+      res.status === 200 && toast.success("تم اضافه الوارد بنجاح");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchProcess();
+    addIncomeProcess();
+  });
   return (
     <div className="processDetails">
       <div className="container loober">
@@ -267,6 +294,91 @@ export const ProcessDetails = () => {
               </tr>
             </table>
           </div>
+          {user.isAdmin === 1 && (
+            <div className="processReport p-3">
+              <div className="processReport-flex">
+                <h1>مكسب العمليه</h1>
+                {/* <!-- Button trigger modal --> */}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  أضافه المبلغ الوارد
+                </button>
+                {/* <!-- Modal --> */}
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <label
+                          class="color-black"
+                          style={{ color: "black" }}
+                          htmlFor="IncomeProcess"
+                        >
+                          المبلغ الوارد
+                        </label>
+                        <input
+                          placeholder="ادخل المبلغ الوارد"
+                          type="number"
+                          id="IncomeProcess"
+                          onChange={(e) => setProcessIncome(e.target.value)}
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onClick={addIncomeProcess}
+                        >
+                          أضافه
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          أغلاق
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {processData.processIncome && (
+                <>
+                  <div className="processReport-flex">
+                    <h2>الوارد</h2>
+                    <span className="processReport-red">
+                      {Math.round(processData.processIncome)}
+                    </span>
+                  </div>
+                  <div className="processReport-flex">
+                    <h2>المكسب</h2>
+                    <span className="processReport-green">
+                      {Math.round(processData.processIncome) -
+                        Math.round(overTotal)}
+                    </span>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

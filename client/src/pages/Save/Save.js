@@ -197,7 +197,9 @@ export const Save = () => {
             </button>
           </div>
           {filteredRecivedData.length === 0 ? (
-            <div class="d-flex fw-bold fz-5 text-center justify-center ">لا يوجد عناصر</div>
+            <div class="d-flex fw-bold fz-5 text-center justify-center ">
+              لا يوجد عناصر
+            </div>
           ) : (
             <>
               <div className="dataTable">
@@ -231,12 +233,14 @@ export const Save = () => {
           )}
         </div>
       </div>
-      {filteredRecivedData.length !== 0 && <div>
-        <h1> أجمالي المصروف : {fullOutValue}</h1>
-        <h1> أجمالي الوارد : {fullValue}</h1>
-      </div>}
-      {addOpen && <AddPrice setAddOpen={setAddOpen} />}
-      {outOpen && <AddPrice setOutOpen={setOutOpen} type="out" />}
+      {filteredRecivedData.length !== 0 && (
+        <div>
+          <h1> أجمالي المصروف : {fullOutValue}</h1>
+          <h1> أجمالي الوارد : {fullValue}</h1>
+        </div>
+      )}
+      {addOpen && <AddPrice setAddOpen={setAddOpen} type='in' />}
+      {outOpen && <AddPrice setOutOpen={setOutOpen} type="out" outOpen={outOpen} />}
       {showImgOpen && (
         <ShowImg setShowImgOpen={setShowImgOpen} showData={showData} />
       )}

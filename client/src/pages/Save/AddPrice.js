@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./save.css";
 
-export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
+export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
   const [file, setFile] = useState(undefined);
   const [recived, setRecived] = useState("");
   const [name, setName] = useState("");
@@ -50,9 +50,9 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
         proccessName,
       });
       toast.success("تم بنجاح.");
+    type !== "out" && setAddOpen(false);
       setLoading(false);
-      // setAddOpen(false);
-      setOutOpen(false);
+      type === 'out' && setOutOpen(false);
       res.status === 200 && navigate("/save");
     } catch (err) {
       console.log(err);
@@ -138,9 +138,11 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen }) => {
               <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             </div> */}
-            <button className="addButton" onClick={uploadNewPriceWithoutImg}>
-              أضافه
-            </button>
+              {loading === true ? (
+                <span className="loader"></span>
+              ) : (<button className="addButton" onClick={uploadNewPriceWithoutImg}>
+                أضافه
+              </button>)}
           </form>
         )}
       </div>

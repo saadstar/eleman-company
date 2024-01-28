@@ -16,7 +16,6 @@ export const ProcessModal = ({ setOpenModal, fetchProcess }) => {
             setOpenModal(false);
             navigate("/");          
             toast.success(`تمت اضافه ${res.data.title} بنجاح  `);
-            toast.success(`برجاء عمل ريلود للصفحه`);
             
           } else {
             toast.error(`!برجاء التحقق من الانترنت`);          

@@ -107,6 +107,14 @@
     font-size: 29px;
     
 }
+.myModal {
+    position: absolute;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #202e4e;
+    top: -2% !important;
+    right: 45% !important;
+}
 /* inflicationBox */
 .inflicationMean{
     background-color: rgba(239, 239, 15, 0.832);

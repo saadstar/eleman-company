@@ -29,7 +29,16 @@ const singleProcess = asyncHandler(async (req, res) => {
         res.status(505).json(err);
     }
 })
+// editProcessByid @PUT /:id
+const editProcess = asyncHandler(async (req, res) => {
+  try {
+    const getProcessByid = await Process.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
+    res.status(200).json(getProcessByid);
+  } catch (err) {
+    res.status(505).json(err);
+  }
+});
 
 
 
-module.exports = { createProcess, singleProcess, allProcess };
+module.exports = { createProcess, singleProcess, allProcess, editProcess };

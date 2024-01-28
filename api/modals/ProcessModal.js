@@ -12,6 +12,9 @@ const ProcessSchema = new Schema(
       type: String,
       default:"https://www.pexels.com/photo/person-holding-pen-pointing-at-graph-590020/",
     },
+    processIncome: {
+      type:Number
+    }
   },
   { timestamps: true }
 );
