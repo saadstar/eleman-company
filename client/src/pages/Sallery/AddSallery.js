@@ -29,7 +29,6 @@ export const AddSallery = ({ setOpenModal }) => {
     }
   };
   return (
-    <div className="addTubes">
       <div className="modalll">
         <span className="close" onClick={() => setOpenModal(false)}>
           X
@@ -94,6 +93,5 @@ export const AddSallery = ({ setOpenModal }) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };

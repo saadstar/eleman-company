@@ -20,25 +20,22 @@ export const DeleteWood = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-      <div className="myModal">
-        <span className="close" onClick={() => setDeleteOpen(false)}>
-          X
-        </span>
-        <h1>{`حذف العنصر`}</h1>
-        <div className="">
-          <p className="item">هل متأكد من مسح العنصر التالي ؟</p>
-          <div className="deleteButtons">
-            <button className="deleteButton" onClick={handleSubmit}>
-              حذف
-            </button>
-            <button
-              className="cancelButton"
-              onClick={() => setDeleteOpen(false)}
-            >
-              الغاء
-            </button>
-          </div>
+    <div className="deleteModal">
+      <span className="close" onClick={() => setDeleteOpen(false)}>
+        X
+      </span>
+      <h1>{`حذف العنصر`}</h1>
+      <div className="">
+        <p className="item">هل متأكد من مسح العنصر التالي ؟</p>
+        <div className="deleteButtons">
+          <button className="deleteButton" onClick={handleSubmit}>
+            حذف
+          </button>
+          <button className="cancelButton" onClick={() => setDeleteOpen(false)}>
+            الغاء
+          </button>
         </div>
       </div>
+    </div>
   );
 };

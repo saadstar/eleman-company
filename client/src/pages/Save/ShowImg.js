@@ -3,16 +3,20 @@ import "../modal.css";
 
 export const ShowImg = ({ setShowImgOpen, showData }) => {
   return (
-    <div className="myModal p-4">
-          <span className="close" onClick={() => setShowImgOpen(false)}>
-            X
-          </span>
-          <h1>{`صورة الايصال : `}</h1>
+    <div className="showHugeImg p-4">
+      <span className="close" onClick={() => setShowImgOpen(false)}>
+        X
+      </span>
+      <h1>{`صورة الايصال : `}</h1>
+      {showData.filename !== undefined ?(
         <img
           src={`https://api.eleaman.com/${showData.filename}`}
           alt=""
-          className="hugeSaveImg"
+          className="saveShowImgLimit"
         />
-      </div>
+      ):(
+        <h1 className='no-pic'>لا توجد صوره </h1>
+      )}
+    </div>
   );
 };

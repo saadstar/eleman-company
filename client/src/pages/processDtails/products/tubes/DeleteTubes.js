@@ -15,7 +15,7 @@ export const DeleteTubes = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-      <div className="myModal">
+      <div className="deleteModal">
         <span className="close" onClick={() => setDeleteOpen(false)}>
           X
         </span>

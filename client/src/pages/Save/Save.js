@@ -11,7 +11,7 @@ export const Save = () => {
   const [addOpen, setAddOpen] = useState(false);
   const [outOpen, setOutOpen] = useState(false);
   const [showImgOpen, setShowImgOpen] = useState(false);
-  const [rowData, setRowData] = useState([])
+  const [rowData, setRowData] = useState([]);
   const [fullValue, setFullValue] = useState();
   const [fullOutValue, setFullOutValue] = useState();
   const [search, setSearch] = useState("");
@@ -22,7 +22,7 @@ export const Save = () => {
   let totalArr = [];
   let totalOutArr = [];
   const filteredRecivedData = rowData.filter((item) => {
-    return search === "" ? item :  item.proccessName === search;
+    return search === "" ? item :  item.proccessName = search;
   });
 
   const totalValue = () => {
@@ -72,41 +72,35 @@ export const Save = () => {
     {
       field: "name",
       headerName: "اسم البيان",
-      width: 190,
+      width: 200,
       editable: false,
     },
     {
       field: "out",
       headerName: "المصروف",
-      width: 110,
+      width: 90,
       editable: false,
     },
     {
       field: "inn",
       headerName: "الوارد",
-      width: 110,
-      editable: false,
-    },
-    {
-      field: "recived",
-      headerName: "المستلم",
-      width: 110,
+      width: 90,
       editable: false,
     },
     {
       field: "createdAt",
       headerName: "التاريخ",
-      width: 160,
+      width: 120,
     },
     {
       field: "proccessName",
       headerName: "العمليه",
-      width: 120,
+      width: 110,
     },
     {
       field: "filename",
       headerName: "ايصال العهده الماليه",
-      width: 120,
+      width: 110,
       renderCell: (params) => {
         const showHandler = () => {
           setShowData(params.row);
@@ -124,9 +118,15 @@ export const Save = () => {
       },
     },
     {
+      field: "recived",
+      headerName: "المستلم",
+      width: 90,
+      editable: false,
+    },
+    {
       field: "Action",
       headerName: "حذف",
-      width: 100,
+      width: 60,
       renderCell: (params) => {
         const deleteHandler = () => {
           setDeleteUserId(params.row.id);
@@ -164,7 +164,6 @@ export const Save = () => {
   });
   return (
     <div className="save">
-      <div className="">
         <div className="">
           <div className="hederDetails">
             <div className="saveHeader">
@@ -232,7 +231,6 @@ export const Save = () => {
             </>
           )}
         </div>
-      </div>
       {filteredRecivedData.length !== 0 && (
         <div>
           <h1> أجمالي المصروف : {fullOutValue}</h1>

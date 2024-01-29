@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../modal.css";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 export const AddStore = ({ setAddOpen }) => {
-  // const [file, setFile] = useState(undefined);
+  const [file, setFile] = useState(undefined);
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [loading, setLoading] = useState(false);
+
   const uploadNewStoreItem = async (e) => {
     try {
       e.preventDefault();
       const formData = new FormData();
-      // formData.append("file", file);
+      formData.append("file", file);
       formData.append("name", name);
       formData.append("exist", 1);
       formData.append("quantity", quantity);
-      // toast.warn("جاري رفع الصوره برجاء الانتظار...");
+      toast.warn("جاري رفع الصوره برجاء الانتظار...");
       setLoading(true);
       const res = await axios.post(
         "https://api.eleaman.com/api/store",
@@ -30,7 +31,6 @@ export const AddStore = ({ setAddOpen }) => {
     }
   };
   return (
-    <div className="addTubes">
       <div className="modalll">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
@@ -73,19 +73,18 @@ export const AddStore = ({ setAddOpen }) => {
                 onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
-            {/* <div className="formItem" style={{ cursor: "pointer" }}>
+             <div className="formItem" style={{ cursor: "pointer" }}>
                 <label htmlFor="img">صورة البون : </label>
                 <input
                   type="file"
                   onChange={(e) => setFile(e.target.files[0])}
                 />
-          </div>         */}
+          </div>        
             <button className="addButton" onClick={uploadNewStoreItem}>
               أضافه
             </button>
           </form>
         )}
       </div>
-    </div>
   );
 };

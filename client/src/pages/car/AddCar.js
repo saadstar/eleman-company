@@ -2,6 +2,7 @@ import React, {  useState } from "react";
 import "../modal.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import '../modal.css';
 
 export const AddCar = ({ setOpenModal }) => {
     const [name, setName] = useState("");
@@ -27,7 +28,7 @@ export const AddCar = ({ setOpenModal }) => {
         }
   }  
   return (
-      <div className="myModal">
+      <div className="modalll">
         <span className="close" onClick={() => setOpenModal(false)}>
           X
         </span>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../modal.css";
 
 export const AddAnalyicsDetails = ({ setAddOpen, dataNum, id }) => {
   const [value, setValue] = useState(0);
@@ -92,7 +93,7 @@ export const AddAnalyicsDetails = ({ setAddOpen, dataNum, id }) => {
     totalValueHandler();
   });
   return (
-    <div className="myModal myAddModal">
+    <div className="modalll">
       <span className="close" onClick={() => setAddOpen(false)}>
         X
       </span>

@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-
+    height:100%;
 }
 .full-width{
     width: 100%;
@@ -34,7 +34,6 @@
     gap: 20px;
     margin-bottom: 20px;
 }
-
 .storeHeader button {
     padding: 5px;
     cursor: pointer;
@@ -56,98 +55,25 @@
     background-color: white;
     padding: 20px;
 }
-
 .MuiDataGrid-toolbarContainer {
     flex-direction: row-reverse;
     align-items: center;
 }
-
 .dataTable img {
     width: 100%;
     height: 99%;
     border-radius: 2%;
     object-fit: cover;
 }
-
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeSmall.css-ptiqhd-MuiSvgIcon-root {
     display: none;
 }
-
 .MuiInputBase-input.MuiInput-input.MuiInputBase-inputTypeSearch.MuiInputBase-inputAdornedStart.MuiInputBase-inputAdornedEnd.css-c63i49-MuiInputBase-input-MuiInput-input,
 .MuiDataGrid-columnHeaderDraggableContainer,
 .MuiDataGrid-cellCheckbox.MuiDataGrid-cell--withRenderer.MuiDataGrid-cell.MuiDataGrid-cell--textCenter.MuiDataGrid-withBorderColor,
 .MuiDataGrid-columnHeader.MuiDataGrid-columnHeader--alignCenter.MuiDataGrid-withBorderColor.MuiDataGrid-columnHeaderCheckbox {
     display: none;
 }
-/* // add user componnet  */
-.addTubes {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0%;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.724);
-}
-
-.modalll {
-    padding: 50px;
-    border-radius: 10px;
-    background-color: #2a3447;
-    padding: 50px;
-    border-radius: 10px;
-    position: absolute;
-    background-color: #2a3447;
-    top: 12px;
-    right: -50;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.modalll h1 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #ddd;
-}
-.addTubes form {
-    display: flex;
-    max-width: 500px;
-    flex-direction: column;
-}
-
-.addTubes .formItem {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.formItem>.label {
-    font-size: 14px;
-}
-
-.formItem>input {
-    padding: 10px;
-    background-color: transparent;
-    color: white;
-    outline: none;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.addButton {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-}
-
 .css-1w53k9d-MuiDataGrid-overlay {
     display: none;
 }
@@ -176,7 +102,6 @@
     background-repeat: no-repeat;
     animation: l11 1s infinite linear;
 }
-
 @keyframes l11 {
     100% {
         transform: rotate(1turn)

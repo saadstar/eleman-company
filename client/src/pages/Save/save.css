@@ -1,6 +1,7 @@
 .save {
     position: relative;
     min-height: 100vh;
+    height: 100%;
 }
 .hederDetails{
     display: flex;
@@ -58,87 +59,7 @@
 .MuiDataGrid-columnHeader.MuiDataGrid-columnHeader--alignCenter.MuiDataGrid-withBorderColor.MuiDataGrid-columnHeaderCheckbox {
     display: none;
 }
-.showSaveImg{
-    position: absolute;
-    top: 0;
-    left: 14%;
-    background-color: #818a9c;
-}
-.saveClose{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-/* // add user componnet  */
-.addTubes {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0%;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.724);
-}
 
-.modalll {
-    padding: 50px;
-    border-radius: 10px;
-    background-color: #2a3447;
-    padding: 50px;
-        border-radius: 10px;
-        position: absolute;
-        background-color: #2a3447;
-        top: 12px;
-        right: -50;
-        max-width: 98%;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.modalll h1 {
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #ddd;
-}
-
-.addTubes form {
-    display: flex;
-    max-width: 500px;
-    flex-direction: column;
-}
-
-.addTubes .formItem {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.formItem>.label {
-    font-size: 14px;
-}
-
-.formItem>input {
-    padding: 10px;
-    background-color: transparent;
-    color: white;
-    outline: none;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.addButton {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-}
 .css-1w53k9d-MuiDataGrid-overlay {
     display: none;
 }
@@ -170,14 +91,11 @@
     background-repeat: no-repeat;
     animation: l11 1s infinite linear;
 }
-
 @keyframes l11 {
     100% {
         transform: rotate(1turn)
     }
 }
-
-
 @media only screen and (max-width:480px) {
     .w-50{
         width: 70%;

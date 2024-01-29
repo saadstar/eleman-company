@@ -29,7 +29,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
     }
   };
   return (
-    <div className="myModal">
+    <div className="modalll">
       <span className="close" onClick={() => setAddOpen(false)}>
         X
       </span>

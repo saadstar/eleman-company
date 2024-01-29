@@ -16,7 +16,7 @@ export const DeleteInsurance = ({ setDeleteOpen, deleteUserId }) => {
     }
   };
   return (
-    <div className="myModal">
+    <div className="deleteModal">
       <span className="close" onClick={() => setDeleteOpen(false)}>
         X
       </span>

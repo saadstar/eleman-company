@@ -14,10 +14,10 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
   const [proccessName, setProccessName] = useState("لا يوجد");
   const navigate = useNavigate("");
 
-  // to activate img upload and recive dont forget to active img from backend
   const uploadNewPrice = async (e) => {
     try {
-      e.preventDefault();
+       e.preventDefault();
+       setLoading(true);
       const formData = new FormData();
       formData.append("file", file);
       formData.append("name", name);
@@ -30,36 +30,17 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
         "https://api.eleaman.com/api/save",
         formData
       );
-      toast.success("تم بنجاح.");
-      setAddOpen(false);
-      setOutOpen(false);
-      res.status === 200 && navigate("/save");
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  // to activate upload  without img and recived name
-  const uploadNewPriceWithoutImg = async (e) => {
-    try {
-      e.preventDefault();
-      setLoading(true)
-      const res = await axios.post("https://api.eleaman.com/api/save", {
-        name,
-        out,
-        inn,
-        proccessName,
-      });
-      toast.success("تم بنجاح.");
+     toast.success("تم بنجاح.");
     type !== "out" && setAddOpen(false);
-      setLoading(false);
-      type === 'out' && setOutOpen(false);
+    setLoading(false);
+    type === "out" && setOutOpen(false);
       res.status === 200 && navigate("/save");
     } catch (err) {
       console.log(err);
     }
   };
+  
   return (
-    <div className="addTubes">
       <div className="modalll">
         <span
           className="close"
@@ -92,7 +73,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
                 onChange={(e) => setOut(e.target.value)}
               />
             </div>
-            {/* <div className="formItem">
+            <div className="formItem">
               <label htmlFor="recived">اسم المستلم : </label>
               <input
                 name="recived"
@@ -101,7 +82,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
                 required
                 onChange={(e) => setRecived(e.target.value)}
               />
-            </div> */}
+            </div>
             <div className="formItem">
               <label htmlFor="proccessName">العمليه</label>
               <input
@@ -111,14 +92,14 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
                 onChange={(e) => setProccessName(e.target.value)}
               />
             </div>
-            {/* <div className="formItem">
+            <div className="formItem">
               <label htmlFor="img">صورة ايصال العهده الماليه : </label>
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-            </div> */}
+            </div>
             {loading === true ? (
               <span className="loader"></span>
             ) : (
-              <button className="addButton" onClick={uploadNewPriceWithoutImg}>
+              <button className="addButton" onClick={uploadNewPrice}>
                 أضافه
               </button>
             )}
@@ -134,18 +115,19 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen,outOpen }) => {
                 onChange={(e) => setIn(e.target.value)}
               />
             </div>
-            {/* <div className="formItem">
+            <div className="formItem">
               <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
               <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-            </div> */}
-              {loading === true ? (
-                <span className="loader"></span>
-              ) : (<button className="addButton" onClick={uploadNewPriceWithoutImg}>
+            </div>
+            {loading === true ? (
+              <span className="loader"></span>
+            ) : (
+              <button className="addButton" onClick={uploadNewPrice}>
                 أضافه
-              </button>)}
+              </button>
+            )}
           </form>
         )}
       </div>
-    </div>
   );
 };

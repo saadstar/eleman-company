@@ -31,7 +31,7 @@ export const AddWood = ({ id, setAddOpen }) => {
     };
     
   return (
-      <div className="myModal">
+      <div className="modalll">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>

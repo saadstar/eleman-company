@@ -29,7 +29,7 @@ export const AddDetails = ({ id, setAddOpen,sort }) => {
     }
   };
   return (
-      <div className="myModal">
+      <div className="modalll">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>

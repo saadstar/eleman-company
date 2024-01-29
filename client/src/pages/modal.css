@@ -8,7 +8,23 @@
     right: 40%;
     box-shadow: rgba(182, 184, 186, 0.35) 0px 50px 100px -20px, rgba(182, 184, 186, 0.35) 0px 30px 60px -30px, rgba(182, 184, 186, 0.35) 0px -2px 6px 0px inset;
 }
-
+.modalll {
+position: absolute;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #202e4e;
+    top: 2%;
+    right: 40%;
+    box-shadow: rgba(80, 81, 82, 0.35) 0px 50px 100px -20px, rgba(182, 184, 186, 0.35) 0px 30px 60px -30px, rgba(182, 184, 186, 0.35) 0px -2px 6px 0px inset;
+    background-color: rgb(46, 53, 73);
+}
+.no-pic {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               width: 600px;
+               height: 600px;
+}
 .close {
     position: absolute;
     top: 10px;
@@ -17,7 +33,6 @@
     font-weight: bold;
     font-size: 30px;
 }
-
 .close:hover {
     position: absolute;
     top: 10px;
@@ -25,31 +40,26 @@
     cursor: pointer;
     color: tomato;
 }
-
 .myModal h1 {
     margin-bottom: 40px;
     font-size: 24px;
     color: #ddd;
 }
-
-.myModal form {
+ form {
     display: flex;
     max-width: 500px;
     flex-direction: column;
 }
-
-.myModal .formItem {
+.formItem {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
-
 .formItem>.label {
     font-size: 14px;
     font-weight: 500;
 }
-
 .formItem>input {
     padding: 10px;
     background-color: transparent;
@@ -59,14 +69,12 @@
     border-radius: 3px;
     width: 100%;
 }
-
 .addButton {
     width: 100%;
     padding: 10px;
     cursor: pointer;
     transition: linear();
 }
-
 .addButton:hover {
     width: 100%;
     padding: 10px;
@@ -75,10 +83,33 @@
     background-color: #5778c6;
     color: white;
 }
-.myModal img{
-    width: 400px;
-    height: 400px;
+
+/* show img Modal Designs  */
+.showHugeImg {
+    position: absolute;
+    top: 0;
+    left: 17%;
+    max-height: 500px;
+    max-width: 500px;
+    background-color: #818a9c;
+}
+.showHugeImg .saveShowImgLimit {
+    max-width: 478px;
+    max-height: 430px;
     object-fit: contain;
+}
+
+/* delete modal  */
+.deleteModal {
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #2a3447;
+    padding: 50px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #2a3447;
+    top: 12px;
+    right: 40%;
 }
 /* // responsive design  */
 @media only screen and (max-width:480px) {
@@ -88,17 +119,59 @@
             border-radius: 10px;
             background-color: #202e4e;
             top: 4%;
-            right: 10%;
+            right: 0;
+            left: 0;
         }
+                .modalll {
+                    padding: 50px;
+                    border-radius: 10px;
+                    background-color: #2a3447;
+                    padding: 50px;
+                    border-radius: 10px;
+                    position: absolute;
+                    background-color: #2a3447;
+                    top: 10px;
+                    right: 0;
+                    left: 0;
+                }
                 .myModal h1 {
                     margin-bottom: 10px;
                     font-size: 24px;
                     color: #ddd;
                     padding-top: 10px;
                 }
-                              .myModal  img {
-                                    width: 250px;
-                                    height: 250px;
-                                    object-fit: contain;
-                                }
-}
+       /* // respoinsive design for show img in save and  */
+           .showHugeImg {
+               position: absolute;
+               top: 0;
+               left: 0%;
+               max-height: 537px;
+               max-width: 450px;
+               background-color: #818a9c;
+            }
+        .showHugeImg .saveShowImgLimit {
+        max-width: 361px;
+        max-height: 425px;
+        object-fit: contain;
+        }
+        .no-pic{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 300px;
+                    height: 300px;
+                }
+                /* delete modal  */
+        .deleteModal{
+                    padding: 50px;
+                    border-radius: 10px;
+                    background-color: #2a3447;
+                    padding: 50px;
+                    border-radius: 10px;
+                    position: absolute;
+                    background-color: #2a3447;
+                    top: 12px;
+                    right: 0;
+                    left: 0;
+        }        
+    } 

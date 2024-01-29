@@ -32,7 +32,7 @@ export const AddSand = ({ id, setAddOpen, type,ar }) => {
     }
   };
   return (
-      <div className="myModal">
+      <div className="modalll">
         <span className="close" onClick={() => setAddOpen(false)}>
           X
         </span>
