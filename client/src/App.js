@@ -1,20 +1,21 @@
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { AuthContext } from "./auth/authContext/authContext";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
-import { Navbar } from './component/Navbar';
-import { Footer } from './component/Footer';
-import { Home } from './pages/Home';
-import { Users } from './pages/usersFeatures/Users';
+import { Navbar } from "./component/Navbar";
+import { Footer } from "./component/Footer";
+import { Home } from "./pages/Home";
+import { Users } from "./pages/usersFeatures/Users";
 import { ProcessDetails } from "./pages/processDtails/ProcessDetails";
-import { Tubes } from './pages/processDtails/products/tubes/Tubes';
-import { Details } from './pages/processDtails/products/details/Details';
-import { Sand } from './pages/processDtails/products/sand/Sand';
-import { Store } from './pages/Store/Store';
-import { Save } from "./pages/Save/Save";
 import { ProcessHome } from "./pages/ProcessHome/ProcessHome";
+import { Tubes } from "./pages/processDtails/products/tubes/Tubes";
+import { Details } from "./pages/processDtails/products/details/Details";
+import { Sand } from "./pages/processDtails/products/sand/Sand";
+import { Store } from "./pages/Store/Store";
+import { Save } from "./pages/Save/Save";
 import { Car } from "./pages/car/Car";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
@@ -27,9 +28,16 @@ import { AnalyicsDetails } from "./pages/AnalyicsDetails/AnalyicsDetails";
 import { AnalyicsReport } from "./pages/AnalyicsDetails/AnalyicsReport/AnalyicsReport";
 import { LandingHome } from "./component/LandingHome/LandingHome";
 import { Insurance } from "./pages/processDtails/products/Insurance/Insurance";
-  
+import { LoadingPage } from "./Loading/LoadingPage";
+
 function App() {
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    },3000)
+  },[])
   return (
     <div className="">
       <div className="main">
@@ -42,8 +50,13 @@ function App() {
               ) : (
                 <Route exact path="/" element={<LandingHome />} />
               )}
-              <Route exact path="/process" element={<ProcessHome />} />
+              <Route
+                exact
+                path="/process"
+                element={loading === true ? <LoadingPage /> : <ProcessHome />}
+              />
               <Route exact path="/charts" element={<Home />} />
+              <Route exact path="/loading" element={<LoadingPage />} />
               <Route path="/process/:id" element={<ProcessDetails />} />
               <Route
                 path="/processDetails/tubes/:id"
@@ -130,11 +143,11 @@ function App() {
                 element={<AnalyicsReport type="two" dataNum={3} />}
               />
             </Routes>
+            <ToastContainer />
           </div>
         </div>
         <Footer />
       </div>
-      <ToastContainer />
     </div>
   );
 }

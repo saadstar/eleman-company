@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import "./processHome.css";
-import { ProcessModal } from './ProcessModal';
+import { ProcessModal } from "./ProcessModal";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -15,10 +15,16 @@ export const ProcessHome = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+  const openModalHandler = () => {
+    if (window.scrollY != 0) {
+      window.scrollTo(0, window.scrollY === 0);
+    }
+    setOpenModal(!openModal)
   }
   useEffect(() => {
     fetchProcess();
-  },[processData._id])
+  });  
   return (
     <div className="processHome">
       {processData.map((item) => (
@@ -29,10 +35,10 @@ export const ProcessHome = () => {
           </div>
         </Link>
       ))}
-      <div className="cardAdd" onClick={() => setOpenModal(!openModal)}>
+      <div className="cardAdd card" onClick={openModalHandler}>
         <div className="addProcess">+</div>
       </div>
       {openModal && <ProcessModal setOpenModal={setOpenModal} />}
     </div>
   );
-}
+};

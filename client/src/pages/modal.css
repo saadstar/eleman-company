@@ -40,7 +40,8 @@ position: absolute;
     cursor: pointer;
     color: tomato;
 }
-.myModal h1 {
+.myModal h1,
+.modalll h1 {
     margin-bottom: 40px;
     font-size: 24px;
     color: #ddd;

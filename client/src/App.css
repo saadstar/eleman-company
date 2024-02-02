@@ -25,6 +25,7 @@ body{
     padding: 0;
     box-sizing: border-box;
     background-color: var(--main-bg);
+    scroll-behaviour: smooth;
 }
 .main{
   font-family: "Inter",sans-serif;
@@ -33,7 +34,7 @@ body{
 }
 .container{
   display: flex;
-} 
+}
 .menuContainer{
   width: 250px;
   padding: 5px 20px;
@@ -46,7 +47,6 @@ body{
   color: white;
 }
 /* //navbar  */
-
 .navBar{
   position: sticky;
   padding: 10px;
@@ -66,7 +66,7 @@ body{
   padding: 10px;
 }
 .navBarCloser:hover{
-  background-color: rgba(240, 92, 92, 0.778);
+  background-color: var(--soft-bg);
 }
 a{
   color: var(--soft-color) !important;
@@ -74,7 +74,7 @@ a{
 .nAV{
       display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         gap: 10px;
         color: var(--soft-color) !important;
         font-weight: bold;
@@ -88,7 +88,8 @@ a{
 }
 .nav-item:hover{
   background-color: var(--soft-bg);
-  color: var(--soft-color);
+  /* color: var(--soft-color)  !important; */
+  color: var(--nav-color)  !important;
   
 }
 .navbar-toggler{

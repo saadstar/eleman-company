@@ -103,6 +103,9 @@ export const Save = () => {
       width: 110,
       renderCell: (params) => {
         const showHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setShowData(params.row);
           setShowImgOpen(true);
         };
@@ -129,6 +132,9 @@ export const Save = () => {
       width: 60,
       renderCell: (params) => {
         const deleteHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setDeleteUserId(params.row.id);
           setDeleteOpen(true);
         };

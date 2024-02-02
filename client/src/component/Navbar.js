@@ -63,7 +63,7 @@ export const Navbar = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {user !== null && (
-              <div class="navbar-nav me-auto color-light mb-2 mb-lg-0 nAV">
+              <div class="navbar-nav  color-light mb-2 mb-lg-0 nAV">
                 {user.isAdmin !== 3 && (
                   <Link
                     to="/process"

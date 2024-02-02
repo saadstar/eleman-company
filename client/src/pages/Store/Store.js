@@ -60,6 +60,9 @@ export const Store = ({ type }) => {
       width: 120,
       renderCell: (params) => {
         const showHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setShowData(params.row);
           setShowOpen(true);
         };
@@ -80,10 +83,12 @@ export const Store = ({ type }) => {
       width: 80,
       renderCell: (params) => {
         const editHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setEditData(params.row);
           setEditOpen(true);
         };
-
         return (
           <div className="action">
             <button className="storeActionButton" onClick={editHandler}>
@@ -99,6 +104,9 @@ export const Store = ({ type }) => {
       width: 60,
       renderCell: (params) => {
         const deleteHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setDeleteUserId(params.row.id);
           setDeleteOpen(true);
         };
@@ -172,6 +180,9 @@ export const Store = ({ type }) => {
       width: 120,
       renderCell: (params) => {
         const showHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setShowData(params.row);
           setShowOpen(!showOpen);
         };
@@ -192,6 +203,9 @@ export const Store = ({ type }) => {
       width: 100,
       renderCell: (params) => {
         const editHandler = () => {
+          if (window.scrollY != 0) {
+            window.scrollTo(0, window.scrollY === 0);
+          }
           setEditData(params.row);
           setOutOpen(true);
         };
@@ -211,7 +225,6 @@ export const Store = ({ type }) => {
       editable: false,
     },
   ];
-
   const existTwoRows = ExistTwoData.reverse().map((item) => {
     return {
       id: item._id,
