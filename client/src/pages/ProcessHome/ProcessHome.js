@@ -20,11 +20,11 @@ export const ProcessHome = () => {
     if (window.scrollY != 0) {
       window.scrollTo(0, window.scrollY === 0);
     }
-    setOpenModal(!openModal)
-  }
+    setOpenModal(!openModal);
+  };
   useEffect(() => {
     fetchProcess();
-  });  
+  });
   return (
     <div className="processHome">
       {processData.map((item) => (

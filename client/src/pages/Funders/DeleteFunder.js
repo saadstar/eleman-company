@@ -1,5 +1,5 @@
-import React from 'react'
-import { toast } from 'react-toastify';
+import React from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export const DeleteFunder = ({ setDeleteOpen, deleteUserId }) => {
@@ -14,7 +14,7 @@ export const DeleteFunder = ({ setDeleteOpen, deleteUserId }) => {
     } catch (err) {
       console.log(err);
     }
-    };
+  };
   return (
     <div className="deleteModal">
       <span className="close" onClick={() => setDeleteOpen(false)}>

@@ -15,7 +15,7 @@ export const Store = ({ type }) => {
   const [showOpen, setShowOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [outOpen, setOutOpen] = useState(false);
-  const [deleteOpen, setDeleteOpen] = useState(false); 
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleteUserId, setDeleteUserId] = useState("");
   const [exist, setExist] = useState(1);
   const [rowData, setRowData] = useState([]);

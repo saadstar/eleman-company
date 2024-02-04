@@ -7,14 +7,14 @@ import { useParams } from "react-router-dom";
 import { AddInsurance } from "./AddInsurance";
 import { DeleteInsurance } from "./DeleteInsurance";
 
-export const Insurance = ({ type ,ar}) => {
+export const Insurance = ({ type, ar }) => {
   const [rowData, setRowData] = useState([]);
   const [addOpen, setAddOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleteUserId, setDeleteUserId] = useState("");
   const { id } = useParams();
-    const inuranceFilteredData = rowData.filter((item) => item.type === type);
-    console.log(inuranceFilteredData);
+  const inuranceFilteredData = rowData.filter((item) => item.type === type);
+  console.log(inuranceFilteredData);
 
   const columns = [
     {
@@ -82,10 +82,10 @@ export const Insurance = ({ type ,ar}) => {
     try {
       const res = await axios.get(
         `https://api.eleaman.com/api/processDetailes/${id}`
-        );
-     const filteredData=   res.data.filter((item) => {
-            return item.type === type;
-        })
+      );
+      const filteredData = res.data.filter((item) => {
+        return item.type === type;
+      });
       setRowData(filteredData);
     } catch (err) {
       console.log(err);
@@ -114,7 +114,7 @@ export const Insurance = ({ type ,ar}) => {
               <DataGrid
                 className="dataGrid"
                 rows={rows}
-                columns={columns }
+                columns={columns}
                 initialState={{
                   pagination: {
                     paginationModel: {
@@ -140,13 +140,13 @@ export const Insurance = ({ type ,ar}) => {
           )}
         </div>
       </div>
-       {addOpen && <AddInsurance setAddOpen={setAddOpen} id={id} type={type} />}
+      {addOpen && <AddInsurance setAddOpen={setAddOpen} id={id} type={type} />}
       {deleteOpen && (
         <DeleteInsurance
           setDeleteOpen={setDeleteOpen}
           deleteUserId={deleteUserId}
         />
-      )} 
+      )}
     </div>
   );
 };

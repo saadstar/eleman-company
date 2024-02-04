@@ -1,20 +1,17 @@
 import React from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "../../../modal.css";
 
 export const DeleteWood = ({ setDeleteOpen, deleteUserId }) => {
-  const navigate = useNavigate("");
-    
+
   const handleSubmit = async () => {
     try {
       await axios.delete(
         `https://api.eleaman.com/api/processDetailes/${deleteUserId}`
       );
-        toast.success("تم حذف العنصر بنجاح");
+      toast.success("تم حذف العنصر بنجاح");
       setDeleteOpen(false);
-      navigate("/process");
     } catch (err) {
       console.log(err);
     }

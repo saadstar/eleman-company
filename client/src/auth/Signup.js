@@ -1,4 +1,4 @@
-import React,{useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -26,119 +26,121 @@ export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  
-const { dispatch} = useContext(AuthContext);
-const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-const clickHandler = async (e) => {
-  e.preventDefault();
-  dispatch({ type: "LOGIN_START" });
-  try {
-    const res = await axios.post("https://api.eleaman.com/api/auth/register", {
-      username,
-      password,
-      firstName,
-      lastName,
-    });
-    dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    navigate("/");
-    toast.success(" تم انشاء حسابك. ");
-  } catch (err) {
-    console.log(err);
-  }
-};
-    return (
-      <div className="login">
-        <ThemeProvider theme={defaultTheme}>
-          <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-              <LockOutlinedIcon/>
-              <Typography component="h1" variant="h5">
-                إنشاء حساب
-              </Typography>
-              <Box component="form" noValidate sx={{ mt: 3 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="given-name"
-                      name="firstName"
-                      required
-                      fullWidth
-                      id="firstName"
-                      label="الاسم الاول"
-                      onChange={(e) => setFirstName(e.target.value)}
-                      autoFocus
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="lastName"
-                      label="اسم العائلة"
-                      name="lastName"
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="usename"
-                      label="اسم المستخدم"
-                      name="usename"
-                      onChange={(e) => setUserName(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="password"
-                      label="كلمه المرور"
-                      type="password"
-                      id="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox value="allowExtraEmails" color="primary" />
-                      }
-                      label="استمرار في تلقي الاشعارات عبر البريد الالكتروني"
-                    />
-                  </Grid>
+  const clickHandler = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post(
+        "https://api.eleaman.com/api/auth/register",
+        {
+          username,
+          password,
+          firstName,
+          lastName,
+        }
+      );
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      navigate("/");
+      toast.success(" تم انشاء حسابك. ");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return (
+    <div className="login">
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+            <LockOutlinedIcon />
+            <Typography component="h1" variant="h5">
+              إنشاء حساب
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="الاسم الاول"
+                    onChange={(e) => setFirstName(e.target.value)}
+                    autoFocus
+                  />
                 </Grid>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                  onClick={clickHandler}
-                >
-                  إنشاء حساب{" "}
-                </Button>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Link href="/" variant="body2">
-                      لديك حساب بالفعل؟ تسجيل الدخول.
-                    </Link>
-                  </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="اسم العائلة"
+                    name="lastName"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
                 </Grid>
-              </Box>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="usename"
+                    label="اسم المستخدم"
+                    name="usename"
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="كلمه المرور"
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox value="allowExtraEmails" color="primary" />
+                    }
+                    label="استمرار في تلقي الاشعارات عبر البريد الالكتروني"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={clickHandler}
+              >
+                إنشاء حساب{" "}
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/" variant="body2">
+                    لديك حساب بالفعل؟ تسجيل الدخول.
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
-          </Container>
-        </ThemeProvider>
-      </div>
-    );
+          </Box>
+        </Container>
+      </ThemeProvider>
+    </div>
+  );
 }

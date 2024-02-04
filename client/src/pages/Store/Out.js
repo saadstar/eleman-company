@@ -44,9 +44,13 @@ export const Out = ({ setOutOpen, editData }) => {
               required
             />
           </div>
-          {loading === true ? <span className="loader"></span>: (<button className="addButton" onClick={btnHandler}>
-            صرف نهائي
-          </button>)}
+          {loading === true ? (
+            <span className="loader"></span>
+          ) : (
+            <button className="addButton" onClick={btnHandler}>
+              صرف نهائي
+            </button>
+          )}
         </form>
       </div>
     </div>

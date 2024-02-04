@@ -18,11 +18,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
     try {
       e.preventDefault();
       /// validation
-      if (name === "") {
-        toast.error("برجاء ادخال   اسم البيان");
-      } else if (out === 0) {
-        toast.error("برجاء ادخال   المبلغ.");
-      } else if (file === undefined) {
+      if (file === undefined) {
         toast.error("برجاء ادخال ايصال العهده الماليه .");
       } else {
         const formData = new FormData();

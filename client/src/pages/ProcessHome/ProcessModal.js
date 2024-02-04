@@ -1,32 +1,31 @@
-import React, {   useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
-import {  toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const ProcessModal = ({ setOpenModal }) => {
   const navigate = useNavigate("");
   const [title, setTitle] = useState("");
-  const addProcess = async (e) => {       
-      try {
-        if (title !== "") {          
-          const res = await axios.post("https://api.eleaman.com/api/process", {
-            title,
-          });          
-          if (res?.status === 200) {
-            setOpenModal(false);
-            navigate("/");          
-            toast.success(`تمت اضافه ${res.data.title} بنجاح  `);
-            
-          } else {
-            toast.error(`!برجاء التحقق من الانترنت`);          
-          }
+  const addProcess = async (e) => {
+    try {
+      if (title !== "") {
+        const res = await axios.post("https://api.eleaman.com/api/process", {
+          title,
+        });
+        if (res?.status === 200) {
+          setOpenModal(false);
+          navigate("/");
+          toast.success(`تمت اضافه ${res.data.title} بنجاح  `);
         } else {
-          toast.error("برجاء اضافه اسم العمليه");                    
+          toast.error(`!برجاء التحقق من الانترنت`);
         }
-      } catch (err) {
-        console.log(err);
+      } else {
+        toast.error("برجاء اضافه اسم العمليه");
       }
-    };
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="modalll">
       <h1 class="">أضافه عمليه</h1>
@@ -37,18 +36,17 @@ export const ProcessModal = ({ setOpenModal }) => {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="استخدم اللغه العربيه"
         />
-      </div>      
-        <button type="button" className="submit" onClick={addProcess}>
-          اضف العمليه
-        </button>
-        <button
-          type="button"
-          className="modalClose"
-          onClick={() => setOpenModal(false)}
-        >
-          اغلاق
-        </button>
-      
+      </div>
+      <button type="button" className="submit" onClick={addProcess}>
+        اضف العمليه
+      </button>
+      <button
+        type="button"
+        className="modalClose"
+        onClick={() => setOpenModal(false)}
+      >
+        اغلاق
+      </button>
     </div>
   );
 };

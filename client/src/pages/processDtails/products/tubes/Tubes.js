@@ -14,12 +14,12 @@ export const Tubes = ({ type }) => {
   const [deleteUserId, setDeleteUserId] = useState("");
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
   const [fullTotalQuantity, setFullTotalQuantity] = useState(0);
-  const [search,setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
   const FilteredData = rowData.filter((item) => {
-    return  item.type === type
+    return item.type === type;
   });
   const searchFilteredData = FilteredData.filter((item) => {
     return search === "" ? item : item.other === search;
@@ -184,17 +184,17 @@ export const Tubes = ({ type }) => {
       createdAt: item.createdAt.split("T")[0],
     };
   });
+  const fetchRow = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.eleaman.com/api/processDetailes/${id}`
+      );
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchRow = async () => {
-      try {
-        const res = await axios.get(
-          `https://api.eleaman.com/api/processDetailes/${id}`
-        );
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchRow();
   });
   return (
@@ -229,7 +229,7 @@ export const Tubes = ({ type }) => {
               <DataGrid
                 className="dataGrid"
                 rows={rows}
-                columns={type=== "tubes"?columns:WorkerColumns}
+                columns={type === "tubes" ? columns : WorkerColumns}
                 initialState={{
                   pagination: {
                     paginationModel: {
@@ -252,7 +252,9 @@ export const Tubes = ({ type }) => {
                 disableDensitySelector
               />
               <div className="sum">
-                <h2>{`اجمالي الكميات بالمتر: ${Math.round(fullTotalQuantity)}`}</h2>
+                <h2>{`اجمالي الكميات بالمتر: ${Math.round(
+                  fullTotalQuantity
+                )}`}</h2>
                 <h2>{`اجمالي السعر: ${Math.round(fullTotalPrice)}`}</h2>
               </div>
             </div>

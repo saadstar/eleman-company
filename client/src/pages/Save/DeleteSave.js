@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import '../modal.css';
+import "../modal.css";
 
 export const DeleteSave = ({ setDeleteOpen, deleteUserId }) => {
   const handleSubmit = async () => {

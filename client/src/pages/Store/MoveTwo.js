@@ -31,31 +31,28 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
       console.log(err);
     }
   };
-  const butnHandler = async(e) => {
-     try {
-       e.preventDefault();
-       setLoading(true);
-        await axios.put(
-         `https://api.eleaman.com/api/store/${editData.id}`,
-         {
-           ...editData,
-           nameOne,
-           nameTwo,
-           quantityOut,
-           exist: 2,
-         }
-       );
-        await axios.post(`https://api.eleaman.com/api/store`, {
-          ...editData,
-          exist: 1,
-          quantity: editData.quantity - quantityOut,
-        });
-         toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
-       setEditOpen(false);
-       setLoading(false);
-     } catch (err) {
-       console.log(err);
-     }
+  const butnHandler = async (e) => {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      await axios.put(`https://api.eleaman.com/api/store/${editData.id}`, {
+        ...editData,
+        nameOne,
+        nameTwo,
+        quantityOut,
+        exist: 2,
+      });
+      await axios.post(`https://api.eleaman.com/api/store`, {
+        ...editData,
+        exist: 1,
+        quantity: editData.quantity - quantityOut,
+      });
+      toast.success("تمت أضافه العنصر الي المخزن الفرعي . ");
+      setEditOpen(false);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="addTubes">
@@ -104,22 +101,23 @@ export const MoveTwo = ({ setEditOpen, editData }) => {
                 <input
                   name="quantityOut"
                   type="number"
-                  onChange={(e) => setQuantityOut(e.target.value)}                  
+                  onChange={(e) => setQuantityOut(e.target.value)}
                 />
               </div>
             )}
           </div>
           {loading === true ? (
-          <span className="loader"></span>
-          )
-         : (<button
-            className="addButton"
-            onClick={
-              quantityOut === editData.quantity ? editHandler : butnHandler
-            }
-          >
-            تحويل للفرعي
-          </button>)}
+            <span className="loader"></span>
+          ) : (
+            <button
+              className="addButton"
+              onClick={
+                quantityOut === editData.quantity ? editHandler : butnHandler
+              }
+            >
+              تحويل للفرعي
+            </button>
+          )}
         </form>
       </div>
     </div>

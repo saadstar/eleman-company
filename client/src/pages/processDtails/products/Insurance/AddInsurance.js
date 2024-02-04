@@ -5,13 +5,15 @@ import { toast } from "react-toastify";
 
 export const AddInsurance = ({ id, setAddOpen, type }) => {
   const [note, setNote] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(1);
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
   const [other, setOther] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAdd = async (e) => {
     try {
       e.preventDefault();
+      setLoading(true);
       await axios.post(`https://api.eleaman.com/api/processDetailes`, {
         processId: id,
         type,
@@ -20,6 +22,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
         price,
         other,
       });
+      setLoading(false);
       setAddOpen(false);
       setNote("");
       setPrice(0);
@@ -71,9 +74,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
         </div>
         {type === "finalInsurance" && (
           <div className="formItem">
-            <label htmlFor="other">
-              نوع التأمين :
-            </label>
+            <label htmlFor="other">نوع التأمين :</label>
             <input
               name="other"
               type="text"
@@ -81,13 +82,22 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
             />
           </div>
         )}
-        <button
-          className="addButton"
-          disabled={note === "" ? true : false}
-          onClick={handleAdd}
-        >
-          أضافه
-        </button>
+        {loading === true ? (
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <button
+            className="addButton"
+            disabled={note === "" ? true : false}
+            onClick={handleAdd}
+          >
+            أضافه
+          </button>
+        )}
       </form>
     </div>
   );

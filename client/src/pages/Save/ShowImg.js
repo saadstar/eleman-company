@@ -8,14 +8,14 @@ export const ShowImg = ({ setShowImgOpen, showData }) => {
         X
       </span>
       <h1>{`صورة الايصال : `}</h1>
-      {showData.filename !== undefined ?(
+      {showData.filename !== undefined ? (
         <img
           src={`https://api.eleaman.com/${showData.filename}`}
           alt=""
           className="saveShowImgLimit"
         />
-      ):(
-        <h1 className='no-pic'>لا توجد صوره </h1>
+      ) : (
+        <h1 className="no-pic">لا توجد صوره </h1>
       )}
     </div>
   );

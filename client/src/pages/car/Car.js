@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import "./car.css";
 import axios from "axios";
-import { AddCar } from './AddCar';
-
+import { AddCar } from "./AddCar";
 
 export const Car = () => {
   const [carData, setCarData] = useState([]);
@@ -15,20 +14,16 @@ export const Car = () => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   useEffect(() => {
     fetchCar();
-  })
+  });
 
   return (
     <div className="car">
       <div className="carHeader">
         <h1>السياره</h1>
-        <button
-          onClick={() => setOpenModal(true)}
-        >
-          اضف تحرك سياره
-        </button>
+        <button onClick={() => setOpenModal(true)}>اضف تحرك سياره</button>
       </div>
       <table class="table table-hover mt-3">
         <thead>
@@ -62,7 +57,7 @@ export const Car = () => {
           ))}
         </tbody>
       </table>
-       {openModal && <AddCar setOpenModal={setOpenModal} />} 
+      {openModal && <AddCar setOpenModal={setOpenModal} />}
     </div>
   );
-}
+};

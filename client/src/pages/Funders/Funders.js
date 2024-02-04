@@ -1,27 +1,30 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import "./funder.css";
 import axios from "axios";
-import { FunderDetails } from './FunderDetails';
+import { FunderDetails } from "./FunderDetails";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-export const Funders = ({ar}) => {
+export const Funders = ({ ar }) => {
   const [addCompany, setAddCompany] = useState(false);
   const [funderCompanyData, setFunderCompanyData] = useState([]);
   const [companyName, setCompanyName] = useState("");
 
   const postCompanyName = async (e) => {
-     try {
-       e.preventDefault();
-       const res = await axios.post("https://api.eleaman.com/api/funderCompany", {
-         companyName,
-       });
-       res.status === 200 && toast.success("تم اضافه الممول بنجاح");
-       setAddCompany(false);
-     } catch (err) {
-       console.log(err);
-     }
-  }
+    try {
+      e.preventDefault();
+      const res = await axios.post(
+        "https://api.eleaman.com/api/funderCompany",
+        {
+          companyName,
+        }
+      );
+      res.status === 200 && toast.success("تم اضافه الممول بنجاح");
+      setAddCompany(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const fetchCompany = async () => {
     try {
       const res = await axios.get("https://api.eleaman.com/api/funderCompany");
@@ -29,11 +32,11 @@ export const Funders = ({ar}) => {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   useEffect(() => {
-    fetchCompany();    
+    fetchCompany();
     // postCompanyName();
-  })
+  });
   return (
     <div className="funder">
       <div className="container">
@@ -69,28 +72,27 @@ export const Funders = ({ar}) => {
         )}
       </div>
       {addCompany && (
-          <div className="myModal">
-            <span className="close" onClick={() => setAddCompany(false)}>
-              X
-            </span>
-            <h1>{`أضافه عنصر جديد`}</h1>
-            <form onSubmit={(e) => e.preventDefault}>
-              <div className="formItem d-flex direction-column">
-                <label htmlFor="name">اسم الشركه: </label>
-                <input
-                  name="name"
-                  type="text"
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  required
-                />
-              </div>
-              <button className="addButton mt-4" onClick={postCompanyName}>
-                أضافه
-              </button>
-            </form>
-          </div>
-       
+        <div className="myModal">
+          <span className="close" onClick={() => setAddCompany(false)}>
+            X
+          </span>
+          <h1>{`أضافه عنصر جديد`}</h1>
+          <form onSubmit={(e) => e.preventDefault}>
+            <div className="formItem d-flex direction-column">
+              <label htmlFor="name">اسم الشركه: </label>
+              <input
+                name="name"
+                type="text"
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+              />
+            </div>
+            <button className="addButton mt-4" onClick={postCompanyName}>
+              أضافه
+            </button>
+          </form>
+        </div>
       )}
     </div>
   );
-}
+};

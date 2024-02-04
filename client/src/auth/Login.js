@@ -1,4 +1,4 @@
-import  React,{useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -23,25 +23,24 @@ const defaultTheme = createTheme();
 export default function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
- const { dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-  
- const clickHandler = async (e) => {
-   e.preventDefault();
-   dispatch({ type: "LOGIN_START" });
-   try {
-     const res = await axios.post("https://api.eleaman.com/api/auth/login", {
-       username,
-       password,
-     });
-     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-     toast.success("مرحباً");
-     navigate("/");
-   } catch (err) {
-     console.log(err);
-   }
- };
 
+  const clickHandler = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("https://api.eleaman.com/api/auth/login", {
+        username,
+        password,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      toast.success("مرحباً");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="login" style={{ height: "100vh", color: "white" }}>
@@ -57,7 +56,7 @@ export default function Login() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-            <LockOutlinedIcon/>
+            <LockOutlinedIcon />
             <Typography component="h1" variant="h5">
               تسجيل الدخول
             </Typography>
@@ -72,7 +71,7 @@ export default function Login() {
                 autoComplete="email"
                 autoFocus
                 style={{ color: "white" }}
-                onChange={(e) => setUserName(e.target.value)}               
+                onChange={(e) => setUserName(e.target.value)}
               />
               <TextField
                 margin="normal"

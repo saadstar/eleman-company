@@ -1,31 +1,41 @@
 import React, { useState } from "react";
 import "../../../modal.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const AddTubes = ({ id, setAddOpen, type }) => {
   const [note, setNote] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(1);
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
   const [other, setOther] = useState("");
-  const navigate = useNavigate("");
+  const [loading, setLoading] = useState(false);
 
-  const handleAdd = async () => {
+  const handleAdd = async (e) => {
     try {
-      await axios.post(`https://api.eleaman.com/api/processDetailes`, {
-        processId: id,
-        type,
-        note,
-        quantity,
-        price,
-        other,
-        value: price * quantity,
-      });
-      navigate(`/process/${id}`);
-      setNote("");
-      setPrice(0);
-      toast.success("تمت اضافه عنصر بنجاح. ");
+      e.preventDefault();
+      if (note === "") {
+        toast.error("برجاء ادخال اسم البيان");
+      } else if (quantity === 0) {
+        toast.error("برجاء ادخال الكميه");
+      } else if (price === 0) {
+        toast.error("برجاء ادخال السعر");
+      } else {
+        setLoading(true);
+        await axios.post(`https://api.eleaman.com/api/processDetailes`, {
+          processId: id,
+          type,
+          note,
+          quantity,
+          price,
+          other,
+          value: price * quantity,
+        });
+        setLoading(false);
+        setAddOpen(false);
+        setNote("");
+        setPrice(0);
+        toast.success("تمت اضافه عنصر بنجاح. ");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -75,18 +85,27 @@ export const AddTubes = ({ id, setAddOpen, type }) => {
           <label htmlFor="price">السعر:</label>
           <input
             name="price"
-            placeholder="ادخل السعر بالجنيه"
+            placeholder="ادخل السعر المتر الواحد"
             type="number"
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
-        <button
-          className="addButton"
-          disabled={note === "" ? true : false}
-          onClick={handleAdd}
-        >
-          أضافه
-        </button>
+        {loading === true ? (
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <button
+            className="addButton"
+            disabled={note === "" ? true : false}
+            onClick={handleAdd}
+          >
+            أضافه
+          </button>
+        )}
       </form>
     </div>
   );

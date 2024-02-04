@@ -17,7 +17,7 @@ export const Wood = () => {
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
-    const FilteredData = rowData.filter((item) => item.type === "wood");
+  const FilteredData = rowData.filter((item) => item.type === "wood");
 
   const totalValue = () => {
     FilteredData.forEach((item) => {
@@ -121,19 +121,19 @@ export const Wood = () => {
       createdAt: item.createdAt.split("T")[0],
     };
   });
+  const fetchRow = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.eleaman.com/api/processDetailes/${id}`
+      );
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchRow = async () => {
-        try {
-        const res = await axios.get(
-          `https://api.eleaman.com/api/processDetailes/${id}`
-        );
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchRow();
-  }, [rowData._id]);
+  });
   return (
     <div className="tubes">
       <div className="container loober">
@@ -186,10 +186,7 @@ export const Wood = () => {
       </div>
       {addOpen && <AddWood setAddOpen={setAddOpen} id={id} type={"wood"} />}
       {deleteOpen && (
-        <DeleteWood
-          setDeleteOpen={setDeleteOpen}
-          deleteUserId={deleteUserId}
-        />
+        <DeleteWood setDeleteOpen={setDeleteOpen} deleteUserId={deleteUserId} />
       )}
     </div>
   );

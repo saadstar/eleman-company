@@ -9,18 +9,15 @@ export const ShowImg = ({ setShowOpen, showData }) => {
         X
       </span>
       <h1>{`صورة البون : `}</h1>
-      {showData.filename !==
-        undefined ?(
-          <img
-            src={`https://api.eleaman.com/${showData.filename}`}
-            alt=""
-            className="saveShowImgLimit"
-          />
+      {showData.filename !== undefined ? (
+        <img
+          src={`https://api.eleaman.com/${showData.filename}`}
+          alt=""
+          className="saveShowImgLimit"
+        />
       ) : (
-          <h1 className="no-pic">
-            لا توجد صورة
-          </h1>
-        )}
+        <h1 className="no-pic">لا توجد صورة</h1>
+      )}
     </div>
   );
 };

@@ -39,19 +39,19 @@ export const Details = ({ sort, ar }) => {
     totalValue();
     totalValueFun();
   }, [totalArr]);
+  const fetchRow = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.eleaman.com/api/processDetailes/${id}`
+      );
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchRow = async () => {
-      try {
-        const res = await axios.get(
-          `https://api.eleaman.com/api/processDetailes/${id}`
-        );
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchRow();
-  }, [rowData._id]);
+  });
   const columns = [
     {
       field: "note",
@@ -105,7 +105,7 @@ export const Details = ({ sort, ar }) => {
       price: item.price,
       value: item.value,
       createdAt: item.createdAt.split("T")[0],
-      entry:user.username
+      entry: user.username,
     };
   });
 

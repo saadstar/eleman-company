@@ -62,19 +62,19 @@ export const Sand = ({ type, ar }) => {
     totalQuantityValue();
     totalQuantityValueFun();
   }, [totalQuantityArr]);
+  const fetchRow = async () => {
+    try {
+      const res = await axios.get(
+        `https://api.eleaman.com/api/processDetailes/${id}`
+      );
+      setRowData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const fetchRow = async () => {
-      try {
-        const res = await axios.get(
-          `https://api.eleaman.com/api/processDetailes/${id}`
-        );
-        setRowData(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchRow();
-  }, [rowData._id]);
+  });
   const columns = [
     {
       field: "note",

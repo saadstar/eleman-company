@@ -22,7 +22,7 @@ export const Save = () => {
   let totalArr = [];
   let totalOutArr = [];
   const filteredRecivedData = rowData.filter((item) => {
-    return search === "" ? item :  item.proccessName = search;
+    return search === "" ? item : (item.proccessName = search);
   });
 
   const totalValue = () => {
@@ -170,81 +170,83 @@ export const Save = () => {
   });
   return (
     <div className="save">
-        <div className="">
-          <div className="hederDetails">
-            <div className="saveHeader">
-              <h1 className="saveH1">الخزنه</h1>
-              <button className="" onClick={() => setOutOpen(true)}>
-                صرف مبلغ
-              </button>
-              <button className="" onClick={() => setAddOpen(true)}>
-                أضافه مبلغ
-              </button>
-            </div>
-            <div className="saveHeader">
-              <h1>رصيدي : </h1>
-              <h1>{fullValue - fullOutValue}</h1>
-            </div>
-          </div>
-          <div
-            class="d-flex mb-4 align-center justify-content-center gap-2"
-            role="search"
-          >
-            <input
-              class="form-control w-50 me-2 p-2"
-              onChange={(e) => setSearch(e.target.value)}
-              type="search"
-              placeholder="ابحث باسم العمليه"
-              aria-label="Search"
-            />
-            <button type="button" class="btn btn-light">
-              بحث
+      <div className="">
+        <div className="hederDetails">
+          <div className="saveHeader">
+            <h1 className="saveH1">الخزنه</h1>
+            <button className="" onClick={() => setOutOpen(true)}>
+              صرف مبلغ
+            </button>
+            <button className="" onClick={() => setAddOpen(true)}>
+              أضافه مبلغ
             </button>
           </div>
-          {filteredRecivedData.length === 0 ? (
-            <div class="d-flex fw-bold fz-5 text-center justify-center ">
-              لا يوجد عناصر
-            </div>
-          ) : (
-            <>
-              <div className="dataTable">
-                <DataGrid
-                  className="dataGrid"
-                  rows={rows}
-                  columns={columns}
-                  initialState={{
-                    pagination: {
-                      paginationModel: {
-                        pageSize: 99,
-                      },
-                    },
-                  }}
-                  slots={{ toolbar: GridToolbar }}
-                  slotProps={{
-                    toolbar: {
-                      showQuickFilter: true,
-                      quickFilterProps: { debounceMs: 500 },
-                    },
-                  }}
-                  pageSizeOptions={[5]}
-                  checkboxSelection
-                  disableRowSelectionOnClick
-                  disableColumnFilter
-                  disableColumnSelector
-                  disableDensitySelector
-                />
-              </div>
-            </>
-          )}
+          <div className="saveHeader">
+            <h1>رصيدي : </h1>
+            <h1>{fullValue - fullOutValue}</h1>
+          </div>
         </div>
+        <div
+          class="d-flex mb-4 align-center justify-content-center gap-2"
+          role="search"
+        >
+          <input
+            class="form-control w-50 me-2 p-2"
+            onChange={(e) => setSearch(e.target.value)}
+            type="search"
+            placeholder="ابحث باسم العمليه"
+            aria-label="Search"
+          />
+          <button type="button" class="btn btn-light">
+            بحث
+          </button>
+        </div>
+        {filteredRecivedData.length === 0 ? (
+          <div class="d-flex fw-bold fz-5 text-center justify-center ">
+            لا يوجد عناصر
+          </div>
+        ) : (
+          <>
+            <div className="dataTable">
+              <DataGrid
+                className="dataGrid"
+                rows={rows}
+                columns={columns}
+                initialState={{
+                  pagination: {
+                    paginationModel: {
+                      pageSize: 99,
+                    },
+                  },
+                }}
+                slots={{ toolbar: GridToolbar }}
+                slotProps={{
+                  toolbar: {
+                    showQuickFilter: true,
+                    quickFilterProps: { debounceMs: 500 },
+                  },
+                }}
+                pageSizeOptions={[5]}
+                checkboxSelection
+                disableRowSelectionOnClick
+                disableColumnFilter
+                disableColumnSelector
+                disableDensitySelector
+              />
+            </div>
+          </>
+        )}
+      </div>
       {filteredRecivedData.length !== 0 && (
         <div>
           <h1> أجمالي المصروف : {fullOutValue}</h1>
           <h1> أجمالي الوارد : {fullValue}</h1>
         </div>
       )}
-      {addOpen && <AddPrice setAddOpen={setAddOpen} type='in' />}
-      {outOpen && <AddPrice setOutOpen={setOutOpen} type="out" outOpen={outOpen} />}
+      {addOpen && <AddPrice setAddOpen={setAddOpen} type="in" />}
+      {outOpen && (
+        <AddPrice setOutOpen={setOutOpen} type="out" outOpen={outOpen} />
+      )}
       {showImgOpen && (
         <ShowImg setShowImgOpen={setShowImgOpen} showData={showData} />
       )}
