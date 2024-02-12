@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AddSand } from "./AddSand";
 import { DeleteSand } from "./DeleteSand";
+import { LoadingPage } from "../../../../Loading/LoadingPage";
 
 export const Sand = ({ type, ar }) => {
   const [rowData, setRowData] = useState([]);
@@ -166,7 +167,7 @@ export const Sand = ({ type, ar }) => {
             </button>
           </div>
           {rowData.length === 0 ? (
-            <div class="">لا يوجد عناصر</div>
+            <LoadingPage/>
           ) : (
             <div className="dataTable">
               <DataGrid

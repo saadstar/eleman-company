@@ -9,6 +9,7 @@ import { Out } from "./Out";
 import { Link } from "react-router-dom";
 import { DeleteStore } from "./DeleteStore";
 import { AuthContext } from "../../auth/authContext/authContext";
+import { LoadingPage } from "../../Loading/LoadingPage";
 
 export const Store = ({ type }) => {
   const [addOpen, setAddOpen] = useState(false);
@@ -121,12 +122,6 @@ export const Store = ({ type }) => {
         );
       },
     },
-    {
-      field: "entry",
-      headerName: "المدخل",
-      width: 100,
-      editable: false,
-    },
   ];
   const rows = existData.reverse().map((item) => {
     return {
@@ -218,12 +213,6 @@ export const Store = ({ type }) => {
         );
       },
     },
-    {
-      field: "entry",
-      headerName: "المدخل",
-      width: 50,
-      editable: false,
-    },
   ];
   const existTwoRows = ExistTwoData.reverse().map((item) => {
     return {
@@ -259,7 +248,7 @@ export const Store = ({ type }) => {
           )}
         </div>
         {rowData.length === 0 ? (
-          <div class="">لا يوجد عناصر</div>
+          <LoadingPage/>
         ) : (
           <div className="dataTable">
             <DataGrid

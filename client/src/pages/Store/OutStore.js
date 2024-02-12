@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { ShowImg } from "./ShowImg";
 import { toast } from "react-toastify";
+import { LoadingPage } from "../../Loading/LoadingPage";
 
 export const OutStore = () => {
   const [rowData, setRowData] = useState([]);
@@ -144,7 +145,7 @@ export const OutStore = () => {
           <h1>المنصرف </h1>
         </div>
         {filteredData.length === 0 ? (
-          <div class="">لا يوجد عناصر منصرفه</div>
+          <LoadingPage />
         ) : (
           <div className="dataTable">
             <DataGrid

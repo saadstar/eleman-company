@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AddWood } from "./AddWood";
 import { DeleteWood } from "./DeleteWood";
+import { LoadingPage } from "../../../../Loading/LoadingPage";
 
 export const Wood = () => {
   const [rowData, setRowData] = useState([]);
@@ -148,7 +149,7 @@ export const Wood = () => {
             </button>
           </div>
           {FilteredData.length === 0 ? (
-            <div class="">لا يوجد عناصر</div>
+            <LoadingPage/>
           ) : (
             <div className="dataTable">
               <DataGrid

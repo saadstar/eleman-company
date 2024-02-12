@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AddInsurance } from "./AddInsurance";
 import { DeleteInsurance } from "./DeleteInsurance";
+import { LoadingPage } from "../../../../Loading/LoadingPage";
 
 export const Insurance = ({ type, ar }) => {
   const [rowData, setRowData] = useState([]);
@@ -14,7 +15,6 @@ export const Insurance = ({ type, ar }) => {
   const [deleteUserId, setDeleteUserId] = useState("");
   const { id } = useParams();
   const inuranceFilteredData = rowData.filter((item) => item.type === type);
-  console.log(inuranceFilteredData);
 
   const columns = [
     {
@@ -68,7 +68,7 @@ export const Insurance = ({ type, ar }) => {
       },
     },
   ];
-  const rows = rowData.reverse().map((item) => {
+  const rows = inuranceFilteredData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,
@@ -108,7 +108,7 @@ export const Insurance = ({ type, ar }) => {
             </button>
           </div>
           {rowData.length === 0 ? (
-            <div class="">لا يوجد عناصر</div>
+            <LoadingPage/>
           ) : (
             <div className="dataTable">
               <DataGrid

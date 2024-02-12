@@ -6,6 +6,7 @@ import { Menu } from "../../Menu/Menu";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { AddDetails } from "./AddDetails";
 import { DeleteDetails } from "./DeleteDetails";
+import { LoadingPage } from "../../../../Loading/LoadingPage";
 import { AuthContext } from "../../../../auth/authContext/authContext";
 
 export const Details = ({ sort, ar }) => {
@@ -90,13 +91,7 @@ export const Details = ({ sort, ar }) => {
           </div>
         );
       },
-    },
-    {
-      field: "entry",
-      headerName: "المدخل",
-      width: 200,
-      editable: false,
-    },
+    },   
   ];
   const rows = FilteredData.reverse().map((item) => {
     return {
@@ -123,7 +118,7 @@ export const Details = ({ sort, ar }) => {
             </button>
           </div>
           {rowData.length === 0 ? (
-            <div class="">لا يوجد عناصر </div>
+            <LoadingPage/>
           ) : (
             <div className="dataTable">
               <DataGrid

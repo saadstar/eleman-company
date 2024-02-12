@@ -6,6 +6,7 @@ import { AddPrice } from "./AddPrice";
 import { ShowImg } from "./ShowImg";
 import { DeleteSave } from "./DeleteSave";
 import { AuthContext } from "../../auth/authContext/authContext";
+import { LoadingPage } from "../../Loading/LoadingPage";
 
 export const Save = () => {
   const [addOpen, setAddOpen] = useState(false);
@@ -22,7 +23,7 @@ export const Save = () => {
   let totalArr = [];
   let totalOutArr = [];
   const filteredRecivedData = rowData.filter((item) => {
-    return search === "" ? item : (item.proccessName = search);
+    return search === "" ? item : item.proccessName === search;
   });
 
   const totalValue = () => {
@@ -149,11 +150,6 @@ export const Save = () => {
         );
       },
     },
-    {
-      field: "entry",
-      headerName: "المدخل",
-      width: 60,
-    },
   ];
   const rows = filteredRecivedData.reverse().map((item) => {
     return {
@@ -197,14 +193,9 @@ export const Save = () => {
             placeholder="ابحث باسم العمليه"
             aria-label="Search"
           />
-          <button type="button" class="btn btn-light">
-            بحث
-          </button>
         </div>
         {filteredRecivedData.length === 0 ? (
-          <div class="d-flex fw-bold fz-5 text-center justify-center ">
-            لا يوجد عناصر
-          </div>
+          <LoadingPage />
         ) : (
           <>
             <div className="dataTable">

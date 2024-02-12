@@ -6,6 +6,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AddTubes } from "./AddTubes";
 import { DeleteTubes } from "./DeleteTubes";
+import { LoadingPage } from "../../../../Loading/LoadingPage";
 
 export const Tubes = ({ type }) => {
   const [rowData, setRowData] = useState([]);
@@ -223,7 +224,7 @@ export const Tubes = ({ type }) => {
             </button>
           </div>
           {rowData.length === 0 ? (
-            <div class="">لا يوجد عناصر</div>
+            <LoadingPage/>
           ) : (
             <div className="dataTable">
               <DataGrid
