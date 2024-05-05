@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import "./save.css";
 
 
 export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
@@ -13,7 +11,6 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
   const [out, setOut] = useState(0);
   const [inn, setIn] = useState(0);
   const [proccessName, setProccessName] = useState("لا يوجد");
-  const navigate = useNavigate("");
 
   const uploadNewPrice = async (e) => {
     try {
@@ -31,29 +28,19 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
           formData
         );
         toast.success("تم بنجاح.");
-        type !== "out" && setAddOpen(false);
+      res.status===200 &&  type !== "out" && setAddOpen(false);
         setLoading(false);
-        type === "out" && setOutOpen(false);
-        res.status === 200 && navigate("/save");    
+      res.status === 200 && type === "out" && setOutOpen(false);    
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="modalll">
-      <span
-        className="close"
-        onClick={
-          type === "out" ? () => setOutOpen(false) : () => setAddOpen(false)
-        }
-      >
-        X
-      </span>
-      <h1>{type === "out" ? `صرف مبلغ مالي` : `أضافه مبلغ مالي`}</h1>
+    <div className="addWrapper">
       {type === "out" ? (
         <form onSubmit={(e) => e.preventDefault}>
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="name">اسم البيان :*</label>
             <input
               name="name"
@@ -63,7 +50,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="out"> المبلغ المصروف:* </label>
             <input
               name="out"
@@ -73,7 +60,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
               onChange={(e) => setOut(e.target.value)}
             />
           </div>
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="recived">اسم المستلم : </label>
             <input
               name="recived"
@@ -83,7 +70,7 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
               onChange={(e) => setRecived(e.target.value)}
             />
           </div>
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="proccessName">العمليه</label>
             <input
               name="proccessName"
@@ -92,21 +79,22 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
               onChange={(e) => setProccessName(e.target.value)}
             />
           </div>
-          {/* <div className="formItem">
+          {/* <div className="inputContainer">
             <label htmlFor="img">صورة ايصال العهده الماليه : </label>
             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           </div> */}
-          {loading === true ? (
-            <span className="loader"></span>
-          ) : (
-            <button className="addButton" onClick={uploadNewPrice}>
-              أضافه
+          <div className="inputButtons">
+            <button className="doneBtn" onClick={uploadNewPrice}>
+              {loading === true ? "برجاء الانتظار" : "إضافه"}
             </button>
-          )}
+            <button className="cancelBtn" onClick={() => setOutOpen(false)}>
+              إالغاء
+            </button>
+          </div>
         </form>
       ) : (
         <form onSubmit={(e) => e.preventDefault}>
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="in"> المبلغ الوارد*: </label>
             <input
               placeholder="ادخل المبلغ الوارد"
@@ -115,17 +103,18 @@ export const AddPrice = ({ setAddOpen, type, setOutOpen, outOpen }) => {
               onChange={(e) => setIn(e.target.value)}
             />
           </div>
-          {/* <div className="formItem">
+          {/* <div className="inputContainer">
             <label htmlFor="img">صورة ايصال استلام المبلغ : </label>
             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           </div> */}
-          {loading === true ? (
-            <span className="loader"></span>
-          ) : (
-            <button className="addButton" onClick={uploadNewPrice}>
-              أضافه
+          <div className="inputButtons">
+            <button className="doneBtn" onClick={uploadNewPrice}>
+              {loading === true ? "برجاء الانتظار" : "إضافه"}
             </button>
-          )}
+            <button className="cancelBtn" onClick={() => setAddOpen(false)}>
+              إالغاء
+            </button>
+          </div>
         </form>
       )}
     </div>

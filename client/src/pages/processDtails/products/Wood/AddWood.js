@@ -38,13 +38,9 @@ export const AddWood = ({ id, setAddOpen }) => {
   };
 
   return (
-    <div className="modalll">
-      <span className="close" onClick={() => setAddOpen(false)}>
-        X
-      </span>
-      <h1>{`أضافه عنصر جديد`}</h1>
+    <div className="addWrapper">
       <form onSubmit={(e) => e.preventDefault}>
-        <div className="formItem">
+        <div className="inputContainer">
           <label htmlFor="notes">اسم البيان: </label>
           {note === "" && (
             <span style={{ color: "red", fontSize: "10px", fontWeight: "300" }}>
@@ -58,7 +54,7 @@ export const AddWood = ({ id, setAddOpen }) => {
             onChange={(e) => setNote(e.target.value)}
           />
         </div>
-        <div className="formItem">
+        <div className="inputContainer">
           <label htmlFor="quantity">الكميه:</label>
           <input
             name="quantity"
@@ -67,7 +63,7 @@ export const AddWood = ({ id, setAddOpen }) => {
             onChange={(e) => setQuantity(e.target.value)}
           />
         </div>
-        <div className="formItem">
+        <div className="inputContainer">
           <label htmlFor="price">السعر:</label>
           <input
             name="price"
@@ -76,22 +72,14 @@ export const AddWood = ({ id, setAddOpen }) => {
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
-        {loading === true ? (
-          <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        ) : (
-          <button
-            className="addButton"
-            disabled={note === "" ? true : false}
-            onClick={handleAdd}
-          >
-            أضافه
+        <div className="inputButtons">
+          <button className="doneBtn" onClick={handleAdd}>
+            {loading === true ? "برجاء الانتظار" : "إضافه"}
           </button>
-        )}
+          <button className="cancelBtn" onClick={() => setAddOpen(false)}>
+            إالغاء
+          </button>
+        </div>
       </form>
     </div>
   );

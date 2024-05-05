@@ -24,7 +24,6 @@ export const OutStore = () => {
     };
     fetchData();
   }, [rowData.id]);
-
   const columns = [
     {
       field: "name",
@@ -81,36 +80,7 @@ export const OutStore = () => {
         );
       },
     },
-    {
-      field: "driver",
-      headerName: "السائق",
-      width: 150,
-      editable: false,
-    },
-    {
-      field: "return",
-      headerName: "اعاده",
-      width: 100,
-      renderCell: (params) => {
-        const retrunStore = async (e) => {
-          try {
-            e.preventDefault();
-            const res = await axios.put(
-              `https://api.eleaman.com/api/store/${params.row.id}`,
-              { exist: 1 }
-            );
-            res.status === 200 && toast.success("تمت الأعاده.");
-          } catch (err) {
-            console.log(err);
-          }
-        };
-        return (
-          <button className="btn btn-outline-primary" onClick={retrunStore}>
-            أعاده للمخزن
-          </button>
-        );
-      },
-    },
+    
   ];
   const rows = filteredData.reverse().map((item) => {
     return {

@@ -13,6 +13,11 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
   const handleAdd = async (e) => {
     try {
       e.preventDefault();
+      if (note === "") {
+        toast.error("برجاء ادخل البيان");
+      } else if (price === 0) {
+        toast.error("برجاء ادخل مبلغ التأمين");
+      } else {        
       setLoading(true);
       await axios.post(`https://api.eleaman.com/api/processDetailes`, {
         processId: id,
@@ -27,24 +32,16 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
       setNote("");
       setPrice(0);
       toast.success("تمت اضافه التأمين بنجاح. ");
+    }
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    <div className="modalll">
-      <span className="close" onClick={() => setAddOpen(false)}>
-        X
-      </span>
-      <h1>{`أضافه تأمين جديد`}</h1>
+    <div className="addWrapper">
       <form onSubmit={(e) => e.preventDefault}>
-        <div className="formItem">
+        <div className="inputContainer">
           <label htmlFor="notes">اسم البيان: </label>
-          {note === "" && (
-            <span style={{ color: "red", fontSize: "10px", fontWeight: "300" }}>
-              برجاء ادخل البيان
-            </span>
-          )}
           <input
             name="notes"
             type="text"
@@ -52,7 +49,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
           />
         </div>
         {type !== "returnInsurance" && (
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="quantity">
               {type === "workerInsurance" ? "الدفعه :" : "رقم خطاب الضمان :"}
             </label>
@@ -63,7 +60,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
             />
           </div>
         )}
-        <div className="formItem">
+        <div className="inputContainer">
           <label htmlFor="price">المبلغ:</label>
           <input
             name="price"
@@ -73,7 +70,7 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
           />
         </div>
         {type === "finalInsurance" && (
-          <div className="formItem">
+          <div className="inputContainer">
             <label htmlFor="other">نوع التأمين :</label>
             <input
               name="other"
@@ -82,22 +79,14 @@ export const AddInsurance = ({ id, setAddOpen, type }) => {
             />
           </div>
         )}
-        {loading === true ? (
-          <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        ) : (
-          <button
-            className="addButton"
-            disabled={note === "" ? true : false}
-            onClick={handleAdd}
-          >
-            أضافه
+        <div className="inputButtons">
+          <button className="doneBtn" onClick={handleAdd}>
+            {loading === true ? "برجاء الانتظار" : "إضافه"}
           </button>
-        )}
+          <button className="cancelBtn" onClick={() => setAddOpen(false)}>
+            إالغاء
+          </button>
+        </div>
       </form>
     </div>
   );

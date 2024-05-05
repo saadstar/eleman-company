@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./processHome.css";
-import { ProcessModal } from "./ProcessModal";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { LoadingPage } from "../../Loading/LoadingPage";
+import { Box } from "@mui/material";
+import Header from "../../components/Header";
 
 export const ProcessHome = () => {
-  const [openModal, setOpenModal] = useState(false);
   const [processData, setProcessData] = useState([]);
 
   const fetchProcess = async () => {
@@ -17,17 +17,14 @@ export const ProcessHome = () => {
       console.log(err);
     }
   };
-  const openModalHandler = () => {
-    if (window.scrollY != 0) {
-      window.scrollTo(0, window.scrollY === 0);
-    }
-    setOpenModal(!openModal);
-  };
   useEffect(() => {
     fetchProcess();
   });
   return (
-    <>
+    <div className="processHomeContainer">
+      <Box className="headerBox">
+        <Header title={"كل العمليات"} subtitle={`استكشف كل العمليات هنا`} />
+      </Box>
       {processData.length === 0 ? (
         <div>
           <LoadingPage />
@@ -42,12 +39,8 @@ export const ProcessHome = () => {
               </div>
             </Link>
           ))}
-          <div className="cardAdd card" onClick={openModalHandler}>
-            <div className="addProcess">+</div>
-          </div>
-          {openModal && <ProcessModal setOpenModal={setOpenModal} />}
         </div>
       )}
-    </>
+    </div>
   );
 };
