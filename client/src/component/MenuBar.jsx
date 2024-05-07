@@ -154,7 +154,7 @@ export const MenuBar = () => {
         </div> )}
           <div className='menuBarWrapper'>
               <div className="imgLogo">
-                  <img src="./images/newLogo.png" alt='logo'/>
+                  <img src="./images/companylogo.png" alt='logo'/>
               </div>
               <hr/>
               <div className="menuItems">
