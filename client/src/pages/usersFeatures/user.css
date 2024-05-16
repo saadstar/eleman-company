@@ -360,4 +360,7 @@ border: 1px solid #FFB801;
      display: flex;
      gap: 15px;
  }
+ .addWrapper .inputsContainer .inputContainer input{
+    width: 40vw;
+ }
 }

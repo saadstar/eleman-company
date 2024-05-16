@@ -6,7 +6,6 @@
         cursor: pointer;
         position: absolute;
         top: 0.5%;
-        left: 2%;
         z-index: 9999999;
         color: red;
         .closeIcon {
@@ -16,7 +15,6 @@
             font-size: 30px;
         }
     }
-
     .menuBarWrapper {
         margin: 10px;
         margin-top: 20px;
@@ -112,7 +110,6 @@
 
 .w-zero {
     width: 0vw;
-
     .menuOppener {
         position: fixed;
         top: 2.7%;
