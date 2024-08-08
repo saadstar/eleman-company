@@ -204,7 +204,7 @@ export const Store = ({ exist,ar }) => {
         {rowData.length === 0 ? (
           <LoadingPage/>
         ) : (
-          <div className="main-marg">
+          <div className="main-store-marg">
             <Box className='headerBox'>
               <Header title={ar} style={{color:"#FFB801"}} /> 
       </Box>

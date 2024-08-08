@@ -4,6 +4,9 @@
     min-height: 100vh;
     height:100%;
 }
+.store .main-store-marg{
+    margin: 100px 22% 0px 10px;
+}
 .full-width{
     width: 100%;
     padding: 10px;

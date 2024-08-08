@@ -68,12 +68,12 @@ export const AnalyicsReport = ({ dataNum }) => {
           <div className="report-title p-3">
             <h2>التقرير {dataNum === 2 ? "الاول" : "النهائي "}</h2>
           </div>
-          <Inflication
+          {/* <Inflication
             data1={data1}
             data2={data2}
             loading={loading}
             analyicsData={analyicsData}
-          />
+          /> */}
           <div className="hrChart">
             <HrChart />
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const Inflication = ({ loading, data1, data2, analyicsData }) => {
+  console.log('inflication rendering')
   return (
     <div className="inflicationBox">
       {loading === true ? (

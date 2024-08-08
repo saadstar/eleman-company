@@ -334,6 +334,9 @@ border: 1px solid #FFB801;
     justify-content: center;
     align-items: center;
 }
+.main-store-marg {
+    margin: 100px 10% 0px 10px;
+}
 /* Responsive Design  */
 @media only screen and (max-width: 480px){ 
     .main-marg {

@@ -21,11 +21,11 @@ export const Details = ({ sort, ar }) => {
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
   const { id } = useParams();
   const totalArr = [];
-  const FilteredData = rowData.filter((item) => item.type === sort);
+  // const FilteredData = rowData.filter((item) => item.type === sort);
   const { user } = useContext(AuthContext);
 
   const totalValue = () => {
-    FilteredData.forEach((item) => {
+    rowData.forEach((item) => {
       if (item.price === undefined) {
         totalArr.push(0);
       } else {
@@ -47,7 +47,8 @@ export const Details = ({ sort, ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        `https://api.eleaman.com/api/processDetailes/${id}`
+        // `https://api.eleaman.com/api/processDetailes/${id}/${sort}`
+        `http://localhost:3500/api/processDetailes/${id}/${sort}`
       );
       setRowData(res.data);
     } catch (err) {
@@ -93,7 +94,7 @@ export const Details = ({ sort, ar }) => {
       },
     },
   ];
-  const rows = FilteredData.reverse().map((item) => {
+  const rows = rowData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,

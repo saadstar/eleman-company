@@ -17,6 +17,7 @@ body,
   background-image: linear-gradient(to right, #00054F, #130C34);
   height: max-content;
   overflow-x: hidden;
+  gap: 1.3%;
 }
 
 .none {

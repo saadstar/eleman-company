@@ -63,17 +63,17 @@ export const FinalReport = ({ data1, data2, loading }) => {
   useEffect(() => {
     const mapping2 = () => {
       data2Arr.map((item) => {
-        if (Object.values(item) == maxTwo) {
+        if (Object.values(item) === maxTwo) {
           setMaxData(item);
         }
-        if (Object.values(item) == minTwo) {
+        if (Object.values(item) === minTwo) {
           setMinData(item);
         } 
       });
     }
     
     mapping2();
-  }, ['']);
+  }, data2Arr);
   useEffect(() => {
     const mapping = () => {
       data1Arr.map((item) => {
@@ -86,7 +86,7 @@ export const FinalReport = ({ data1, data2, loading }) => {
 
     };
     mapping();
-  })
+  },data1Arr)
     return (
       <>
         {loading === true ? (
