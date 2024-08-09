@@ -17,7 +17,6 @@ export const Insurance = ({ type, ar }) => {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleteUserId, setDeleteUserId] = useState("");
   const { id } = useParams();
-  const inuranceFilteredData = rowData.filter((item) => item.type === type);
 
   const columns = [
     {
@@ -70,7 +69,7 @@ export const Insurance = ({ type, ar }) => {
       },
     },
   ];
-  const rows = inuranceFilteredData.reverse().map((item) => {
+  const rows = rowData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,
@@ -83,12 +82,10 @@ export const Insurance = ({ type, ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        `https://api.eleaman.com/api/processDetailes/${id}`
+        `https://api.eleaman.com/api/processDetailes/${id}/${type}`
       );
-      const filteredData = res.data.filter((item) => {
-        return item.type === type;
-      });
-      setRowData(filteredData);
+     
+      setRowData(res.data);
     } catch (err) {
       console.log(err);
     }

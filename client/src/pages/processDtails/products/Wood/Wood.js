@@ -22,10 +22,9 @@ export const Wood = ({ar,type}) => {
   const { id } = useParams();
   const totalArr = [];
   const totalQuantityArr = [];
-  const FilteredData = rowData.filter((item) => item.type === type);
 
   const totalValue = () => {
-    FilteredData.forEach((item) => {
+    rowData.forEach((item) => {
       if (item.value === undefined) {
         totalArr.push(0);
       } else {
@@ -43,9 +42,9 @@ export const Wood = ({ar,type}) => {
   useEffect(() => {
     totalValue();
     totalValueFun();
-  }, [FilteredData]);
+  }, [rowData]);
   const totalQuantityValue = () => {
-    FilteredData.forEach((item) => {
+    rowData.forEach((item) => {
       if (item.quantity === undefined) {
         totalQuantityArr.push(0);
       } else {
@@ -115,7 +114,7 @@ export const Wood = ({ar,type}) => {
       },
     },
   ];
-  const rows = FilteredData.reverse().map((item) => {
+  const rows = rowData.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,
@@ -128,7 +127,7 @@ export const Wood = ({ar,type}) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        `https://api.eleaman.com/api/processDetailes/${id}`
+        `https://api.eleaman.com/api/processDetailes/${id}/${type}`
       );
       setRowData(res.data);
     } catch (err) {

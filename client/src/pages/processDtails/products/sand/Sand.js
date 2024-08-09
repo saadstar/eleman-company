@@ -14,9 +14,6 @@ export const Sand = ({ type, ar }) => {
    const theme = useTheme();
    const colors = tokens(theme.palette.mode);
   const [rowData, setRowData] = useState([]);
-  const filterData = rowData.filter((item) => {
-    return item.type === type;
-  });
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleteUserId, setDeleteUserId] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -25,9 +22,12 @@ export const Sand = ({ type, ar }) => {
   const totalQuantityArr = [];
   const [fullTotalPrice, setFullTotalPrice] = useState(0);
   const [fullTotalQuantity, setFullTotalQuantity] = useState(0);
+  const [searchNote, setSearchNote] = useState("");
+  const filterSearch = rowData.filter(item => searchNote ? item.note === searchNote :item);
+
 
   const totalValue = () => {
-    filterData.forEach((item) => {
+    filterSearch.forEach((item) => {
       if (item.value === undefined) {
         totalArr.push(0);
       } else {
@@ -41,14 +41,13 @@ export const Sand = ({ type, ar }) => {
       sum += totalArr[i];
     }
     setFullTotalPrice(sum);
-    console.log(fullTotalPrice);
   };
   useEffect(() => {
     totalValue();
     totalValueFun();
   }, [totalArr]);
   const totalQuantityValue = () => {
-    filterData.forEach((item) => {
+    filterSearch.forEach((item) => {
       if (item.quantity === undefined) {
         totalQuantityArr.push(0);
       } else {
@@ -70,7 +69,7 @@ export const Sand = ({ type, ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        `https://api.eleaman.com/api/processDetailes/${id}`
+        `https://api.eleaman.com/api/processDetailes/${id}/${type}`
       );
       setRowData(res.data);
     } catch (err) {
@@ -144,7 +143,7 @@ export const Sand = ({ type, ar }) => {
       },
     },
   ];
-  const rows = filterData.reverse().map((item) => {
+  const rows = filterSearch.reverse().map((item) => {
     return {
       id: item._id,
       note: item.note,
@@ -172,50 +171,54 @@ export const Sand = ({ type, ar }) => {
                 {addOpen === true ? "رجوع" : `إضافه ${ar}`}
               </button>
             </Box>
-            {/* <div class="d-flex pb-2" role="search">
-          <input
-    class="inputContainer"
-    type="search"
-    placeholder="أبحث باسم الصنايعي"
-    aria-label="Search"
-        onChange={(e) => setSearch(e.target.value)}
-  />
-</div> */}
             {addOpen === false ? (
-              <Box
-                m="10px 0 0 0"
-                height="70vh"
-                border="1px solid #6E6C77"
-                borderRadius={2}
-                sx={{
-                  "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
-                    {
-                      border: "none",
+              <>
+                <input
+                  class="searchInput"
+                  type="text"
+                  placeholder="ادخل اسم البيان"
+                  onChange={(e) => setSearchNote(e.target.value)}
+                  style={{
+                    padding: "2px",
+                    border: "5px solid rgb(240 205 9)",
+                    borderRadius: "10px",
+                  }}
+                />
+                <Box
+                  m="10px 0 0 0"
+                  height="70vh"
+                  border="1px solid #6E6C77"
+                  borderRadius={2}
+                  sx={{
+                    "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
+                      {
+                        border: "none",
+                      },
+                    "& .MuiDataGrid-cell": {
+                      borderBottom: "none",
                     },
-                  "& .MuiDataGrid-cell": {
-                    borderBottom: "none",
-                  },
-                  "& .name-column--cell": {
-                    color: colors.greenAccent[500],
-                  },
-                  "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: colors.primary[500],
-                    borderBottom: "1px solid #6E6C77",
-                  },
-                  "& .MuiDataGrid-virtualScroller": {
-                    backgroundColor: colors.primary[400],
-                  },
-                  "& .MuiDataGrid-footerContainer": {
-                    borderTop: "none",
-                    backgroundColor: colors.primary[500],
-                  },
-                  "& .MuiCheckbox-root": {
-                    color: `${colors.greenAccent[200]} !important`,
-                  },
-                }}
-              >
-                <DataGrid rows={rows} columns={columns} />
-              </Box>
+                    "& .name-column--cell": {
+                      color: colors.greenAccent[500],
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                      backgroundColor: colors.primary[500],
+                      borderBottom: "1px solid #6E6C77",
+                    },
+                    "& .MuiDataGrid-virtualScroller": {
+                      backgroundColor: colors.primary[400],
+                    },
+                    "& .MuiDataGrid-footerContainer": {
+                      borderTop: "none",
+                      backgroundColor: colors.primary[500],
+                    },
+                    "& .MuiCheckbox-root": {
+                      color: `${colors.greenAccent[200]} !important`,
+                    },
+                  }}
+                >
+                  <DataGrid rows={rows} columns={columns} />
+                </Box>
+              </>
             ) : (
               <>
                 <AddSand setAddOpen={setAddOpen} id={id} type={type} ar={ar} />
@@ -231,10 +234,7 @@ export const Sand = ({ type, ar }) => {
         </div>
       </main>
       {deleteOpen && (
-        <DeleteSand
-          setDeleteOpen={setDeleteOpen}
-          deleteUserId={deleteUserId}
-        />
+        <DeleteSand setDeleteOpen={setDeleteOpen} deleteUserId={deleteUserId} />
       )}
     </div>
   );

@@ -22,12 +22,9 @@ export const Tubes = ({ type,ar }) => {
   const [search, setSearch] = useState("");
   const { id } = useParams();
   const totalArr = [];
-  const totalQuantityArr = [];
-  const FilteredData = rowData.filter((item) => {
-    return item.type === type;
-  });
-  const searchFilteredData = FilteredData.filter((item) => {
-    return search === "" ? item : item.other === search;
+  const totalQuantityArr = []; 
+  const searchFilteredData = rowData.filter((item) => {
+    return search === "" ? item :  item.note === search;
   });
 
   const totalValue = () => {
@@ -136,7 +133,7 @@ export const Tubes = ({ type,ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        `https://api.eleaman.com/api/processDetailes/${id}`
+        `https://api.eleaman.com/api/processDetailes/${id}/${type}`
       );
       setRowData(res.data);
     } catch (err) {
@@ -161,50 +158,54 @@ export const Tubes = ({ type,ar }) => {
                 {addOpen === true ? "رجوع" : `إضافه ${ar}`}
               </button>
             </Box>
-            {/* <div class="d-flex pb-2" role="search">
-          <input
-    class="inputContainer"
-    type="search"
-    placeholder="أبحث باسم الصنايعي"
-    aria-label="Search"
-        onChange={(e) => setSearch(e.target.value)}
-  />
-</div> */}
             {addOpen === false ? (
-              <Box
-                m="10px 0 0 0"
-                height="70vh"
-                border="1px solid #6E6C77"
-                borderRadius={2}
-                sx={{
-                  "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
-                    {
-                      border: "none",
+              <>
+                <input
+                  class="searchInput"
+                  type="text"
+                  placeholder="ادخل اسم البيان"
+                  onChange={(e) => setSearch(e.target.value)}
+                  style={{
+                    padding: "2px",
+                    border: "5px solid rgb(240 205 9)",
+                    borderRadius: "10px",
+                  }}
+                />
+                <Box
+                  m="10px 0 0 0"
+                  height="70vh"
+                  border="1px solid #6E6C77"
+                  borderRadius={2}
+                  sx={{
+                    "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
+                      {
+                        border: "none",
+                      },
+                    "& .MuiDataGrid-cell": {
+                      borderBottom: "none",
                     },
-                  "& .MuiDataGrid-cell": {
-                    borderBottom: "none",
-                  },
-                  "& .name-column--cell": {
-                    color: colors.greenAccent[500],
-                  },
-                  "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: colors.primary[500],
-                    borderBottom: "1px solid #6E6C77",
-                  },
-                  "& .MuiDataGrid-virtualScroller": {
-                    backgroundColor: colors.primary[400],
-                  },
-                  "& .MuiDataGrid-footerContainer": {
-                    borderTop: "none",
-                    backgroundColor: colors.primary[500],
-                  },
-                  "& .MuiCheckbox-root": {
-                    color: `${colors.greenAccent[200]} !important`,
-                  },
-                }}
-              >
-                <DataGrid rows={rows} columns={columns} />
-              </Box>
+                    "& .name-column--cell": {
+                      color: colors.greenAccent[500],
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                      backgroundColor: colors.primary[500],
+                      borderBottom: "1px solid #6E6C77",
+                    },
+                    "& .MuiDataGrid-virtualScroller": {
+                      backgroundColor: colors.primary[400],
+                    },
+                    "& .MuiDataGrid-footerContainer": {
+                      borderTop: "none",
+                      backgroundColor: colors.primary[500],
+                    },
+                    "& .MuiCheckbox-root": {
+                      color: `${colors.greenAccent[200]} !important`,
+                    },
+                  }}
+                >
+                  <DataGrid rows={rows} columns={columns} />
+                </Box>
+              </>
             ) : (
               <>
                 <AddTubes setAddOpen={setAddOpen} id={id} type={type} ar={ar} />
