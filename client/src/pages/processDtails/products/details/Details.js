@@ -47,8 +47,7 @@ export const Details = ({ sort, ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-        // `https://api.eleaman.com/api/processDetailes/${id}/${sort}`
-        `http://localhost:3500/api/processDetailes/${id}/${sort}`
+      `https://api.eleaman.com/api/processDetailes/${id}/${sort}`
       );
       setRowData(res.data);
     } catch (err) {
