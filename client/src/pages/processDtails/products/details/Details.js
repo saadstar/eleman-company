@@ -47,11 +47,7 @@ export const Details = ({ sort, ar }) => {
   const fetchRow = async () => {
     try {
       const res = await axios.get(
-<<<<<<< HEAD
         `https://api.eleaman.com/api/processDetailes/${id}/${sort}`
-=======
-      `https://api.eleaman.com/api/processDetailes/${id}/${sort}`
->>>>>>> 32836dfdf49e47511f18b4586c67e6c8df1a2410
       );
       setRowData(res.data);
     } catch (err) {
@@ -60,7 +56,7 @@ export const Details = ({ sort, ar }) => {
   };
   useEffect(() => {
     fetchRow();
-  });
+  },[rowData]);
   const columns = [
     {
       field: "note",
