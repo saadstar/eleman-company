@@ -23,7 +23,7 @@ export const Car = () => {
   };
   useEffect(() => {
     fetchCar();
-  });
+  }, [carData]);
    const columns = [
      {
        field: "name",
@@ -62,7 +62,7 @@ export const Car = () => {
      };
    });
   return (
-    <div className="users">
+    <div className="carContainer">
       <div className="main-marg">
         <Box className="headerBox">
           <Header

@@ -74,7 +74,7 @@ export const Sallery = () => {
       };
     });
   return (
-    <div className="users">
+    <div className="salleryContainer">
       <div className="main-marg">
         <Box className="headerBox">
           <Header

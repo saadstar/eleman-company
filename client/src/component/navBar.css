@@ -142,7 +142,7 @@
 }
 
 /* // resposive Design */
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:600px) {
     .topBar {
         width: 100%;
         margin-left: 0px;
@@ -176,5 +176,6 @@
         display: flex;
         align-items: center;
         gap: 7px;
+        margin-left: 25px;
     }
 }

@@ -2,30 +2,31 @@
     /* width: 13vw; */
 }
 .processMenu .processmenuBarWrapper {  
-    padding: 10px;
+    padding: 2px;
         border-radius: 20px;
         background-color: #eaeaea22;
         -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        height: 13vh;
+        backdrop-filter: blur(15px);     
         overflow-x: auto;
         position: absolute;
-        top: 84px;
-        width: 79vw;
-        overflow-y: hidden;
+            top: 84px;
+            width: 77vw;
+            overflow-y: hidden;
+            left: 1%;
     }
     .processMenu .processmenuBarWrapper .menuItems{
         display: flex;
-        gap: 20px;
+        gap: 9px;
     }
     .processMenu .processmenuBarWrapper .menuItems .menuItemHeader{
-        font-size: 11px;
-            width:max-content;
-            padding: 5px 15px;
+    font-size: 11px;
+        width: max-content;
+        padding: 4px 12px;
         font-weight: bold;
         border-radius: 8px;
         color: #CDCDCD;
-            border: 1px solid #CDCDCD;
+        border: 1px solid #CDCDCD;
+        margin-right: 10px;
     }
     .processMenu .processmenuBarWrapper .menuItemHeader:hover{       
         color: #FFB801;
@@ -39,34 +40,28 @@
         line-height: 150%;
         color: #FFB801;
     }
-    .processMenu .menuItemWrapper{
-        position: relative;
-    }
     .processMenu .menuItemWrapper .processmenuItemHeader{
-        font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            width: max-content;
-            border: 1px solid #FFB801;
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 5px;
+    font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        width: max-content;
+        border: 1px solid #FFB801;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin-top: 5px;
     }
     .processMenu .menuItemWrapper .processmenuItemHeader:hover{        
-            color: #FFB801;
+            color: #CDCDCD;
             border:1px solid #CDCDCD;           
     }
-        @media only screen and (max-width:500px) {
-            .processMenu {
-                    width: 0vw;
+        @media only screen and (max-width:600px) {
+            .processMenu {                    
                 }
             .processMenu .processmenuBarWrapper {
-                        padding: 10px;
                             border-radius: 20px;
                             background-color: #eaeaea22;
                             -webkit-backdrop-filter: blur(15px);
                             backdrop-filter: blur(15px);
-                            height: 13vh;
                             overflow-x: auto;
                             position: absolute;
                             top: 65px;
@@ -75,10 +70,29 @@
                 }
                 .processMenu .processmenuBarWrapper .menuItems{
                     display: flex;
+                    gap:7px;
                 }
-                .processMenu .processmenuBarWrapper .menuItems .menuItem{
-                display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                }
+                                .processMenu .menuItemWrapper .processmenuItemHeader {
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    cursor: pointer;
+                                    width: max-content;
+                                    border: 1px solid #FFB801;
+                                    padding: 4px 7px;
+                                    border-radius: 15px;
+                                    margin-top:-1px;
+                                }   
+                                                                .processMenu .processmenuBarWrapper .menuItems .menuItemHeader {
+                                                                    font-size: 10px;
+                                                                    width: max-content;
+                                                                    padding: 4px 10px;
+                                                                    font-weight: bold;
+                                                                    border-radius: 8px;
+                                                                    color: #CDCDCD;
+                                                                    border: 1px solid #CDCDCD;
+                                                                    margin-right: 10px;
+                                                                }
+                                                                   .processMenu .processmenuBarWrapper .menuItems .menuItemHeader h3 {
+                                                                    margin: 0;
+                                                                }
         }

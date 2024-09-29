@@ -31,7 +31,6 @@ export const Save = () => {
   const filteredRecivedData = rowData.filter((item) => {
     return search === "" ? item : item.proccessName === search;
   });
-
   const totalValue = () => {
     filteredRecivedData.forEach((item) => {
       totalArr.push(item.inn);
@@ -74,7 +73,7 @@ export const Save = () => {
   };
   useEffect(() => {
     fetchData();
-  });
+  }, [rowData]);
   const columns = [
     {
       field: "name",
@@ -169,7 +168,7 @@ export const Save = () => {
     };
   });
   return (
-    <div className="users">
+    <div className="saveContainer">
       {rowData.length === 0 ? (
         <LoadingPage />
       ) : (
@@ -177,7 +176,7 @@ export const Save = () => {
           {outOpen === true ? (
             <Box className="headerBox">
               <Header title={"صرف مبلغ"} style={{ color: "#FFB801" }} />
-              </Box>
+            </Box>
           ) : (
             <Box className="headerBox">
               <Header title={"الخزنه"} style={{ color: "#FFB801" }} />

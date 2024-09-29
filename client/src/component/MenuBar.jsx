@@ -165,8 +165,8 @@ export const MenuBar = () => {
                               </div>
                               {
                                   item.listBody.map((ele) => (
-                                      <Link to={ele.to} style={{textDecoration:"none"}}>
-                      <div className={ locate === ele.to ? `menuItemContent active`:"menuItemContent"}>
+                                      <Link to={ele.to} style={{textDecoration:"none"}} >
+                      <div className={ locate === ele.to ? `menuItemContent active`:"menuItemContent"} onClick={!isNonMobile ? ()=>setIsClicked(true):()=>setIsClicked(false)}>
                           <div className="menuContentContainer">
                           {ele.icon}                            
                           <h6>{ele.title}</h6>

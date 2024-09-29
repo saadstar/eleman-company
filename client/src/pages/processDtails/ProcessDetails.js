@@ -6,8 +6,10 @@ import { Box, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { DataGrid } from "@mui/x-data-grid";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const ProcessDetails = () => {
+  const isNonMobile = useMediaQuery("(min-width:600px)");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [processBand, setProcessBand] = useState([]);
@@ -296,7 +298,11 @@ export const ProcessDetails = () => {
     <div className="app">
       <Menu />
       <div className="content">
-        <div style={{ margin: "200px 10px 0px 10px" }}>
+        <div
+          style={{
+            margin: isNonMobile ? "200px 10px 0px 10px" : "160px 5px 0px 5px",
+          }}
+        >
           <Box className="headerBox">
             <Header
               title={"البيان العام للمصروفات"}
@@ -308,7 +314,7 @@ export const ProcessDetails = () => {
             height="60vh"
             border="1px solid #6E6C77"
             borderRadius={2}
-            width="65vw"
+            width={isNonMobile ? "65vw" : "90vw"}
             sx={{
               "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
                 {
@@ -336,7 +342,7 @@ export const ProcessDetails = () => {
               },
             }}
           >
-            <DataGrid rows={rows} columns={columns} />           
+            <DataGrid rows={rows} columns={columns} />
           </Box>
           <Box className="headerBox">
             <Header

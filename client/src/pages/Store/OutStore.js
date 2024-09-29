@@ -28,7 +28,7 @@ export const OutStore = () => {
     {
       field: "name",
       headerName: "اسم العنصر",
-      width: 190,
+      width: 140,
       editable: false,
     },
     {

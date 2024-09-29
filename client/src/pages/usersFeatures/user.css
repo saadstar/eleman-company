@@ -1,5 +1,6 @@
 .users{
     position: relative;
+    margin-top: 190px;
 }
 .main-marg {
     margin: 100px 10px 0px 10px;
@@ -32,6 +33,7 @@
     border: 1px solid #FFB801;
     border-radius: 20px;
     outline: none;
+    width: 30%;
 }
 .setAdminDeleteBtn {
     display: inline-flex;
@@ -334,13 +336,23 @@ border: 1px solid #FFB801;
     justify-content: center;
     align-items: center;
 }
+.storeContainer{
+    width: 80vw;
+}
 .main-store-marg {
-    margin: 100px 10% 0px 10px;
+    margin: 100px 2% 0px 10px;
+}
+.saveContainer, .carContainer,.salleryContainer{
+    width: 78vw;
 }
 /* Responsive Design  */
-@media only screen and (max-width: 480px){ 
+@media only screen and (max-width: 600px){ 
+    .users{
+        position: relative;
+        margin-top: 120px;
+    }
     .main-marg {
-        margin: 80px 10px 0px 10px;
+        margin: 80px 0px 0px 10px;
 }
 /* delete user  */
 .deleteModal {
@@ -349,8 +361,8 @@ border: 1px solid #FFB801;
     border-radius: 20px;
     position: absolute;
     background-color: #2a3447;
-    top: 15% !important;
-    width: 98vw;
+    top: 20% !important;
+    width: 96vw;
 }
  /* add process page  */
  .main-marg {
@@ -366,4 +378,13 @@ border: 1px solid #FFB801;
  .addWrapper .inputsContainer .inputContainer input{
     width: 40vw;
  }
+ .storeContainer , .saveContainer,.carContainer,.salleryContainer {
+     width: 99vw;
+ }
+ .main-store-marg {
+    margin: 90px 1% 0px 10px;
+}
+.headerBox .searchHeader {
+    width: 35%;
+}
 }

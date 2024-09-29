@@ -97,7 +97,7 @@ export const Insurance = ({ type, ar }) => {
     <div className="app">
       <Menu style={{ marginTop: "120px" }} />
       <main className="content">
-        <div className="users" style={{ marginTop: "190px" }}>
+        <div className="users" >
           <div className="main-marg">
             <Box className="headerBox">
               <Header

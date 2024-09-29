@@ -32,7 +32,7 @@ export const FunderDetails = () => {
   };
   useEffect(() => {
     fetchData();
-  });
+  }, [rowData]);
   const columns = [
     {
       field: "name",
@@ -113,7 +113,7 @@ export const FunderDetails = () => {
     };
   });
   return (
-    <div className="users">
+    <div className="salleryContainer">
       <div className="main-marg">
         <Box className="headerBox">
           <Header
@@ -167,10 +167,10 @@ export const FunderDetails = () => {
       </div>
       {deleteOpen && (
         <DeleteFunder
-        setDeleteOpen={setDeleteOpen}
-        deleteUserId={deleteUserId}
+          setDeleteOpen={setDeleteOpen}
+          deleteUserId={deleteUserId}
         />
-        )}
-        </div>
+      )}
+    </div>
   );
 };

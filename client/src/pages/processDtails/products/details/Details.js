@@ -107,7 +107,7 @@ export const Details = ({ sort, ar }) => {
     <div className="app">
       <Menu style={{ marginTop: "120px" }} />
       <main className="content">       
-          <div className="users" style={{ marginTop: "190px" }}>
+          <div className="users" >
             <div className="main-marg">
               <Box className="headerBox">
                 <Header title={addOpen === true ?`إضافه ${ar}`: ar} subtitle={`استكشف كل ${ar} هنا`} />

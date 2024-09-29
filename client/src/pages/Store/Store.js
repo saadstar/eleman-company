@@ -37,12 +37,12 @@ export const Store = ({ exist,ar }) => {
   };
   useEffect(() => {
     fetchData();
-  });
+  }, [rowData]);
   const columns = [
     {
       field: "name",
       headerName: "اسم العنصر",
-      flex: 1,
+      width: 140,
     },
     {
       field: "quantity",
@@ -200,56 +200,61 @@ export const Store = ({ exist,ar }) => {
     };
   });
   return (
-    <div className="users">
-        {rowData.length === 0 ? (
-          <LoadingPage/>
-        ) : (
-          <div className="main-store-marg">
-            <Box className='headerBox'>
-              <Header title={ar} style={{color:"#FFB801"}} /> 
-      </Box>
-    <Box
-        m="10px 0 0 0"
-        height="75vh"
-        border="1px solid #6E6C77"
-        borderRadius={2}
-        sx={{
-          "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root": {
-            border: "none",
-            },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[500],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.primary[500],
-            borderBottom: "1px solid #6E6C77",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.primary[500],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-            <DataGrid
-              rows={ rows }
-              columns={ columns }              
-            />
-                </Box>
-      </div>
-        )}
+    <div className="storeContainer">
+      {rowData.length === 0 ? (
+        <LoadingPage />
+      ) : (
+        <div className="main-store-marg">
+          <Box className="headerBox">
+            <Header title={ar} style={{ color: "#FFB801" }} />
+          </Box>
+          <Box
+            m="10px 0 0 0"
+            height="75vh"
+            border="1px solid #6E6C77"
+            borderRadius={2}
+            sx={{
+              "& .MuiDataGrid-root.MuiDataGrid-root--densityStandard.css-1kt8ah5-MuiDataGrid-root":
+                {
+                  border: "none",
+                },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .name-column--cell": {
+                color: colors.greenAccent[500],
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: colors.primary[500],
+                borderBottom: "1px solid #6E6C77",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: colors.primary[400],
+              },
+              "& .MuiDataGrid-footerContainer": {
+                borderTop: "none",
+                backgroundColor: colors.primary[500],
+              },
+              "& .MuiCheckbox-root": {
+                color: `${colors.greenAccent[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid rows={rows} columns={columns} />
+          </Box>
+        </div>
+      )}
       {showOpen && <ShowImg setShowOpen={setShowOpen} showData={showData} />}
       {editOpen && <MoveTwo setEditOpen={setEditOpen} editData={editData} />}
-      {outOpen && <MoveToOutStore setOutOpen={setOutOpen} editData={editData} />}
-  {deleteOpen && <DeleteStore setDeleteOpen={setDeleteOpen} deleteUserId={deleteUserId}/>}
+      {outOpen && (
+        <MoveToOutStore setOutOpen={setOutOpen} editData={editData} />
+      )}
+      {deleteOpen && (
+        <DeleteStore
+          setDeleteOpen={setDeleteOpen}
+          deleteUserId={deleteUserId}
+        />
+      )}
     </div>
   );
 };
